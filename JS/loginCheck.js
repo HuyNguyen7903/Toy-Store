@@ -21,26 +21,3 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 });
 
-// Hàm kiểm tra thông tin đăng nhập cho trang login.html
-function loginCheck() {
-    const email = document.getElementById('email').value;
-    const password = document.getElementById('password').value;
-
-    const users = [
-        { email: 'admin@example.com', password: 'admin123' },
-        { email: 'tinh@gmail.com', password: 'tinh123' },
-        { email: 'huy@gmail.com', password: 'huy123' },
-    ];
-
-    const user = users.find(user => user.email === email && user.password === password);
-
-    if (user) {
-        // Lưu thông tin người dùng vào localStorage
-        localStorage.setItem('loggedInUser', user.email);
-        // Chuyển hướng tới trang user.html
-        window.location.href = 'user.html';
-    } else {
-        // Thông báo lỗi
-        alert('Email hoặc mật khẩu không đúng!');
-    }
-}

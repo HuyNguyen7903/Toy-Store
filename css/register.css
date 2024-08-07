@@ -327,283 +327,304 @@ body {
       margin-bottom: 10px;
     }
   }
-  .container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: calc(100vh - 200px); /* Adjust height to account for header and footer */
+/* chinh form dang ky*/
+.form-container {
+    max-width: 500px;
+    margin: 50px auto;
     padding: 20px;
-    font-size: x-large;
-  }
-  .container a,p {
+    background-color: white;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 20px;
+}
+
+.form-container h1 {
     text-align: center;
-  }
-  #loginForm h1,label{
-    text-align: center;
+    margin-bottom: 20px;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.form-group input,
+.form-group select {
+    width: 100%;
+    padding: 15px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 20px;
+    box-sizing: border-box;
+}
+h1, label {
     color: darkblue;
-  }
-  /* chỉnh các trường input */
-  form input[type="email"] {
-      width: 100%;
-      padding: 15px;
-      margin: 8px 0;
-      display: inline-block;
-      border: 1px solid #ccc;
-      border-radius: 20px;
-      box-sizing: border-box;
-      font-size: x-large;
-  }
-  
-  /* chỉnh nút "Đăng nhập" */
-  form button[type="submit"] {
-      width: 40%;
-      background-color: #FF0000;
-      color: white;
-      padding: 15px;
-      border: none;
-      border-radius: 20px;
-      cursor: pointer;
-      font-size: x-large;
-      text-align: center;
-      display: block;
-      margin: 20px auto;
-      
-  }
-  form .forgot-password {
+}
+.pass {
+    display: flex;
+    gap: 10px;
+}
+
+.pass .form-group {
+    flex: 1;
+}
+
+.checkbox-group {
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    
+}
+.checkbox-group input[type="checkbox"] {
+    margin-right: 10px;
+    
+}
+
+.checkbox-group label {
+    display: inline;
+    
+}
+.sdt {
+    font-style: italic;
+    color: red;
+    font-size: small;
+}
+button[type="submit"] {
+    width: 40%;
+    padding: 10px;
+    border: none;
+    background-color: #ff0000;
+    color: white;
+    font-size: 16px;
+    border-radius: 20px;
+    cursor: pointer;
     text-align: center;
     display: block;
-    width: 100%;
-  }
-  form button[type="submit"]:hover {
-      background-color: #cc0000;
-  }
-  
-  form a {
-      color: #0000FF;
-      display: inline-block;
-      margin-top: 10px;
-      font-size: x-large;
-  }
-  
-  form a:hover {
-      text-decoration: underline;
-  }
-  
-  /* chỉnh nút password 👁️ */
-  .password-container {
-      position: relative;
-  }
-  
-  .password-container input[type="password"] {
-      width: calc(100% - 40px);
-      width: 100%;
-      padding: 15px;
-      margin: 8px 0;
-      display: inline-block;
-      border: 1px solid #ccc;
-      border-radius: 20px;
-      box-sizing: border-box;
-      font-size: x-large;
-  }
-  .password-container input[type="text"] {
-      width: calc(100% - 40px);
-      width: 100%;
-      padding: 15px;
-      margin: 8px 0;
-      display: inline-block;
-      border: 1px solid #ccc;
-      border-radius: 20px;
-      box-sizing: border-box;
-      font-size: x-large;
-  }
-  .password-container button {
-      position: absolute;
-      right: 10%;
-      top: 0;
-      height: 100%;
-      font-size: 20px;
-      background: none;
-      border: none;
-      cursor: pointer;
-  }
-  form p a {
-    color: #cc0000; 
-    text-decoration: none;
-  }
-  
-  form p a:hover {
-    text-decoration: underline; }
-  .required-fields {
-      color: red;
-      font-size: 20px;
-  }
-  
+    margin: 20px auto;
+}
 
-  /* phần footer */
+button[type="submit"]:hover {
+    background-color: #cc0000;
+}
+
+
+p a {
+    color: blue;
+    text-decoration: none;
+    text-align: center;
+}
+.password-container {
+    position: relative;
+}
+
+.password-container input[type="password"],
+.password-container input[type="text"] {
+    width: 100%;
+    padding: 15px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 20px;
+    box-sizing: border-box;
+}
+
+.password-container button {
+    position: absolute;
+    right: 5%;
+    top: 15%;
+    height: 100%;
+    font-size: 15px;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+p a:hover {
+    text-decoration: underline;
+}
+form label a {
+    text-decoration: none;
+}
+form p {
+    text-align: center;
+    margin-top: 20px;
+}
+form p a {
+    color: rgb(12, 136, 252);
+}
+.required-fields {
+    color: red;
+    font-size: 20px;
+}
+
+/* phần footer */
 /* top */
 .footer {
-    background-color: #fff;
-    color: #333;
-    font-family: Arial, sans-serif;
-  }
-  
-  .footer-top {
-    background-color: rgb(211, 3, 3);
-    color: #fff;
-    padding: 10px 0;
-  }
-  
-  .footer-top-text {
-    display: flex;
-    justify-content: space-evenly;
-  }
-  
-  .footer-top-text span {
-    margin: 0 10px;
-    font-size: 20px;
-  }
-  /* middle */
-  .footer-middle {
-    background-color: #f2f2f2;
-    padding: 20px 0;
-  }
-  
-  .footer-middle .container {
-    text-align: center;
-  }
-  
-  .footer-middle h2 {
-    font-size: 24px;
-    margin-bottom: 20px;
-  }
-  
-  .subscribe-form {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  
-  .subscribe-form input {
-    padding: 10px;
-    font-size: 16px;
-    border: 1px solid #ccc;
-    border-radius: 5px 0 0 5px;
-    width: 300px;
-  }
-  
-  .subscribe-form button {
-    padding: 10px 20px;
-    font-size: 16px;
-    border: none;
-    background-color: #e60000;
-    color: #fff;
-    border-radius: 0 5px 5px 0;
-    cursor: pointer;
-  }
-  /* bottom mid*/
-  .footer-bottom {
-    background-color: #fff;
-    padding: 40px 0;
-  }
-  
-  .footer-bottom .container {
-    display: flex;
-    justify-content: space-evenly;
-    flex-wrap: wrap;
-  }
-  
-  .footer-column {
-    flex: 0;
-    margin: 10px;
-    min-width: 300px;
-  }
-  
-  .footer-column h3 {
-    font-size: 18px;
-    margin-bottom: 15px;
-  }
-  
-  .footer-column p {
-    margin: 5px 0;
-  }
-  
-  .footer-column img {
-    width: 45%;
-    border-radius: 10px;
-  }
-  
-  .imgstore {
-    display: flex;
-    flex-direction: column;
-  
-    align-items: center;
-  }
-  /* End */
-  .social-media {
-    text-align: center;
-    margin-top: 20px;
-  }
-  
-  .social-media p {
-    font-size: 18px;
-  }
-  
-  .social-icons {
-    display: flex;
-    justify-content: center;
-    margin: 10px 0;
-    font-size: 30px;
-  }
-  
-  .fa-square-facebook {
-    color: #0e23e0;
-  }
-  .fa-square-instagram {
-    color: #d6247d;
-  }
-  .fa-youtube {
-    color: red;
-  }
-  .fa-tiktok {
-    color: black;
-  }
-  .social-icons a {
-    margin: 0 10px;
-  }
-  
-  .social-icons img {
-    width: 32px;
-    height: 32px;
-  }
-  
-  .footer-bottom-links {
-    text-align: center;
-    margin-top: 20px;
-  }
-  
-  .footer-bottom-links p {
-    font-size: 18px;
-  }
-  
-  .group-websites {
-    display: flex;
-    justify-content: center;
-    margin: 10px 0;
-  }
-  
-  .group-websites a {
-    margin: 0 10px;
-  }
-  
-  .group-websites img {
-    width: 100px;
-    height: auto;
-  }
-  
-  .footer-company-info {
-    text-align: center;
-    font-size: 14px;
-    margin-top: 20px;
-    color: #666;
-  }
-  
+  background-color: #fff;
+  color: #333;
+  font-family: Arial, sans-serif;
+}
+
+.footer-top {
+  background-color: rgb(211, 3, 3);
+  color: #fff;
+  padding: 10px 0;
+}
+
+.footer-top-text {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.footer-top-text span {
+  margin: 0 10px;
+  font-size: 20px;
+}
+/* middle */
+.footer-middle {
+  background-color: #f2f2f2;
+  padding: 20px 0;
+}
+
+.footer-middle .container {
+  text-align: center;
+}
+
+.footer-middle h2 {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.subscribe-form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.subscribe-form input {
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 5px 0 0 5px;
+  width: 300px;
+}
+
+.subscribe-form button {
+  padding: 10px 20px;
+  font-size: 16px;
+  border: none;
+  background-color: #e60000;
+  color: #fff;
+  border-radius: 0 5px 5px 0;
+  cursor: pointer;
+}
+/* bottom mid*/
+.footer-bottom {
+  background-color: #fff;
+  padding: 40px 0;
+}
+
+.footer-bottom .container {
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+}
+
+.footer-column {
+  flex: 0;
+  margin: 10px;
+  min-width: 300px;
+}
+
+.footer-column h3 {
+  font-size: 18px;
+  margin-bottom: 15px;
+}
+
+.footer-column p {
+  margin: 5px 0;
+}
+
+.footer-column img {
+  width: 45%;
+  border-radius: 10px;
+}
+
+.imgstore {
+  display: flex;
+  flex-direction: column;
+
+  align-items: center;
+}
+/* End */
+.social-media {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.social-media p {
+  font-size: 18px;
+}
+
+.social-icons {
+  display: flex;
+  justify-content: center;
+  margin: 10px 0;
+  font-size: 30px;
+}
+
+.fa-square-facebook {
+  color: #0e23e0;
+}
+.fa-square-instagram {
+  color: #d6247d;
+}
+.fa-youtube {
+  color: red;
+}
+.fa-tiktok {
+  color: black;
+}
+.social-icons a {
+  margin: 0 10px;
+}
+
+.social-icons img {
+  width: 32px;
+  height: 32px;
+}
+
+.footer-bottom-links {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.footer-bottom-links p {
+  font-size: 18px;
+}
+
+.group-websites {
+  display: flex;
+  justify-content: center;
+  margin: 10px 0;
+}
+
+.group-websites a {
+  margin: 0 10px;
+}
+
+.group-websites img {
+  width: 100px;
+  height: auto;
+}
+
+.footer-company-info {
+  text-align: center;
+  font-size: 14px;
+  margin-top: 20px;
+  color: #666;
+}

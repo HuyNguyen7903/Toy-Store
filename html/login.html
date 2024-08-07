@@ -7,83 +7,84 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="shortcut icon" href="../images/android-icon-48x48.png" />
     <title>Login Page</title>
-    <script src="../js/loginCheck.js"></script>
-    <script src="../js/updateNavbar.js"></script>
-    <script src="../js/logout.js"></script>
-    <script src="../JS/hidemk.js"></script> 
+    <script src="../js/toy.js"></script>
 <body>
-    <header>
-        <div class="navigation-top">
-          <a href="#">Đăng nhập</a>
-          <a href="#">Thông tin liên hệ</a>
-          <a href="#">Vị trí</a>
-        </div>
-        <div class="logo-search-container">
-          <div class="logo">
-            <a href="../html/toy.html"><img src="../images/logo.png" alt="Logo" /></a>
-          </div>
-          <div class="search-box">
-            <input type="text" placeholder="Find your NEW favorite toy!" />
-            <button type="submit">Search</button>
-          </div>
-          <div class="follow">
-            <h4><i class="icon">&#128077;</i> Theo dõi chúng tôi trên facebook!!!</h4>
-            <p>Ấn vào đường link dưới trang!</p>
-          </div>
-        </div>
-    </header>
-    <div class="main-nav-container">
-        <nav class="main-nav">
-          <ul>
-            <li>
-              <a class="navigation-main" href="#">ĐỒ CHƠI PHƯƠNG TIỆN</a>
-              <div class="content">
-                <div class="categories">
-                  <h3>Phân loại</h3>
-                  <ul>
-                    <li><a href="#">Xe điều khiển</a></li>
-                    <li><a href="#">Xe mô hình</a></li>
-                    <li><a href="#">Xe lắp ráp</a></li>
-                  </ul>
-                </div>
-                <div class="featured-products">
-                  <img src="../images/nav car 1.png" alt="Product 1" />
-                  <img src="../images/nav car 2 .png" alt="Product 2" />
-                  <img src="../images/nav car 3.png" alt="Product 3" />
-                </div>
-              </div>
-            </li>
-            <li>
-              <a class="navigation-main" href="#">ĐỒ CHƠI SÁNG TẠO</a>
-              <div class="content">
-                <div class="categories">
-                  <h3>CATEGORIES</h3>
-                  <ul>
-                    <li><a href="#">Bột nặng</a></li>
-                    <li><a href="#">Bút màu & bảng vẽ</a></li>
-                    <li><a href="#">Đồ chơi lắp ghép</a></li>
-                  </ul>
-                </div>
-                <div class="featured-products">
-                  <img src="../images/nav bot.png"/>
-                  <img src="../images/nav color.png"/>
-                  <img src="../images/nav lapghep.png"/>
-                </div>
-              </div>
-            </li>
-            <li><a class="navigation-main" href="#">ĐỒ DÙNG HỌC TẬP</a></li>
-            <li><a class="navigation-main" href="#">THÚ BÔNG</a></li>
-            <li><a class="navigation-main" href="#">ROBOT</a></li>
-            <li>
-              <a href="#" class="cart">
-                <i class="icon heart">&#9829;</i>Yêu thích
-                <i class="icon cart">&#128722;</i> Giỏ hàng
-              </a>
-            </li>
-          </ul>
-        </nav>
+  <header>
+    <div class="navigation">
+      <div class="navigation-top">
+        <a href="./user.html">Đăng nhập</a>
+        <a href="#">Thông tin liên hệ</a>
+        <a href="#">Vị trí</a>
+      </div>
     </div>
-    <hr>
+    <div class="logo-search-container">
+      <div class="logo">
+        <a href="toy.html"><img src="../images/logo.png" alt="Logo" /></a>
+      </div>
+      <div class="search-box">
+        <input type="text" placeholder="Find your NEW favorite toy!" />
+        <button type="submit">Search</button>
+      </div>
+      <div class="cart-content">
+        <a href="#" class="cart-main heart">
+          <i class="icon heart">&#9829;</i>Yêu thích
+        </a>
+        <a href="#" class="cart-main cart">
+          <i class="icon cart">&#128722;</i>Giỏ hàng
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Thanh phân loại sản phẩm -->
+  <div class="main-nav-container">
+    <nav class="main-nav">
+      <ul>
+        <li>
+          <a class="navigation-main" href="#">ĐỒ CHƠI PHƯƠNG TIỆN</a>
+          <div class="content">
+            <div class="categories">
+              <h3>Phân loại</h3>
+              <ul>
+                <li><a href="#">Xe điều khiển</a></li>
+                <li><a href="#">Xe mô hình</a></li>
+                <li><a href="#">Xe lắp ráp</a></li>
+                <li><a href="#">Xe sưu tập</a></li>
+              </ul>
+            </div>
+            <div class="featured-products">
+              <img src="../images/nav car 1.png" alt="Product 1" />
+              <img src="../images/nav car 2.png" alt="Product 2" />
+              <img src="../images/nav car 3.png" alt="Product 3" />
+            </div>
+          </div>
+        </li>
+        <li>
+          <a class="navigation-main" href="#">ĐỒ CHƠI SÁNG TẠO</a>
+          <div class="content">
+            <div class="categories">
+              <h3>Phân loại</h3>
+              <ul>
+                <li><a href="#">Bột nặng</a></li>
+                <li><a href="#">Bút màu & bảng vẽ</a></li>
+                <li><a href="#">Đồ chơi lắp ghép</a></li>
+              </ul>
+            </div>
+            <div class="featured-products">
+              <img src="../images/nav bot.png" />
+              <img src="../images/nav color.png" />
+              <img src="../images/nav lapghep.png" />
+            </div>
+          </div>
+        </li>
+        <li><a class="navigation-main" href="#">ĐỒ DÙNG HỌC TẬP</a></li>
+        <li><a class="navigation-main" href="#">THÚ BÔNG</a></li>
+        <li><a class="navigation-main" href="#">ROBOT</a></li>
+      </ul>
+    </nav>
+  </div>
+  <hr />
+  <!-- form dang nhap -->
     <div class="container">
       <form id="loginForm" action="javascript:void(0);" method="POST">
         <h1>Đăng Nhập</h1>
@@ -101,6 +102,98 @@
         <a href="/forgot-password" class="forgot-password">Quên mật khẩu?</a>
         <p>Chưa có tài khoản? <a href="../html/register.html">Đăng ký tài khoản</a></p>
       </form>
+    </div>
+    <!-- phan footer -->
+    <div class="footer">
+      <div class="footer-top">
+        <div class="container">
+          <div class="footer-top-text">
+            <span>
+              <i class="fa-solid fa-truck-fast"></i>
+              Miễn phí giao hàng đơn từ 500k
+            </span>
+            <span>
+              <i class="fa-solid fa-box"></i>
+              Giao hàng hỏa tốc 4 tiếng
+            </span>
+            <span>
+              <i class="fa-solid fa-store"></i>
+              Hệ thống 2320 cửa hàng
+            </span>
+          </div>
+        </div>
+      </div>
+      <!-- middle -->
+      <div class="footer-middle">
+        <div class="container">
+          <h2>Đăng Kí Nhận Thông Tin Khuyến Mãi</h2>
+          <div class="subscribe-form">
+            <input type="email" placeholder="Nhập email của bạn" />
+            <button type="submit">Gửi</button>
+          </div>
+        </div>
+      </div>
+      <!-- bottom -->
+      <div class="footer-bottom">
+        <div class="container">
+          <div class="footer-column">
+            <h3>LIÊN HỆ</h3>
+            <p>
+              Email: <br />
+              <a href="mailto:2151150041@ut.edu.vn">2151150041@ut.edu.vn</a>
+              <a href="mailto:2151150063@ut.edu.vn">2151150063@ut.edu.vn</a>
+            </p>
+            <p>Giờ làm việc:</p>
+            <p>Thứ 2 đến thứ 7: 8:00 - 17:00</p>
+            <p>Chủ nhật: 8:00 - 12:00</p>
+          </div>
+          <div class="footer-column">
+            <h3>ĐIỀU KHOẢN & CHÍNH SÁCH</h3>
+            <p>Chính sách giao hàng</p>
+            <p>Chính sách tích lũy điểm</p>
+            <p>Điều khoản điều kiện</p>
+          </div>
+          <div class="footer-column">
+            <h3>HỖ TRỢ KHÁCH HÀNG</h3>
+            <p>Chính sách bảo mật</p>
+            <p>Chính sách bảo hành đổi trả hàng hóa</p>
+            <p>Chính sách thanh toán</p>
+            <p>Những câu hỏi thường gặp</p>
+          </div>
+          <div class="footer-column imgstore">
+            <h3>HỆ THỐNG 2320 CỬA HÀNG</h3>
+            <img src="../images/logo.png" alt="Store Image" />
+          </div>
+        </div>
+        <!-- bottom end -->
+        <div class="social-media">
+          <p>THEO DÕI CHÚNG TÔI</p>
+          <div class="social-icons">
+            <a href="#"><i class="fa-brands fa-square-facebook"></i></a>
+            <a href="#"><i class="fa-brands fa-square-instagram"></i></a>
+            <a href="#"><i class="fa-brands fa-youtube"></i></a>
+            <a href="#"><i class="fa-brands fa-tiktok"></i></a>
+          </div>
+        </div>
+        <div class="footer-bottom-links">
+          <p>WEBSITE CÙNG TẬP ĐOÀN</p>
+          <div class="group-websites">
+            <a href="#"><img src="../images/logo.png" /></a>
+            <a href="#"><img src="../images/logo.png" /></a>
+            <a href="#"><img src="../images/logo.png" /></a>
+          </div>
+        </div>
+        <div class="footer-company-info">
+          <p>
+            Công ty cổ phần Việt Tinh Anh Số ĐKKD: 0309132354 do sở kế hoạch và
+            đầu tư cấp ngày 14/07/09
+          </p>
+          <p>
+            Địa chỉ: 33-35 đường số D4, khu Đô thị mới Him Lam, Phường Tân Hưng,
+            Quận 7, TP. Hồ Chí Minh Điện thoại: 0286.2638.600
+          </p>
+        </div>
+      </div>
     </div>
 </body>
 </html>
