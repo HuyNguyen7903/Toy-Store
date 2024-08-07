@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="../images/android-icon-48x48.png" />
+    <link rel="stylesheet" href="../css/user.css">
+    <script src="../JS/updateNavbar.js"></script>
+    <script src="../js/loginCheck.js"></script>
+    <script src="../js/logout.js"></script>
+    <title>Thông tin khách hàng</title>
+</head>
+<body>
+    <header>
+        <div class="navigation-top">
+          <a href="./user.html">Đăng nhập</a>
+          <a href="./contact.html">Thông tin liên hệ</a>
+          <a href="#">Vị trí</a>
+        </div>
+        <div class="logo-search-container">
+          <div class="logo">
+            <a href="toy.html"><img src="../images/logo.png" alt="Logo" /></a>
+          </div>
+          <div class="search-box">
+            <input type="text" placeholder="Find your NEW favorite toy!" />
+            <button type="submit">Search</button>
+          </div>
+          <div class="follow">
+            <h4><i class="icon">&#128077;</i> Theo dõi chúng tôi trên facebook!!!</h4>
+            <p>Ấn vào đường link dưới trang!</p>
+          </div>
+        </div>
+      </header>
+  
+      <!-- Thanh phân loại sản phẩm -->
+      <div class="main-nav-container">
+        <nav class="main-nav">
+          <ul>
+            <li>
+              <a class="navigation-main" href="#">ĐỒ CHƠI PHƯƠNG TIỆN</a>
+              <div class="content">
+                <div class="categories">
+                  <h3>Phân loại</h3>
+                  <ul>
+                    <li><a href="#">Xe điều khiển</a></li>
+                    <li><a href="#">Xe mô hình</a></li>
+                    <li><a href="#">Xe lắp ráp</a></li>
+                  </ul>
+                </div>
+                <div class="featured-products">
+                  <img src="../images/nav car 1.png" alt="Product 1" />
+                  <img src="../images/nav car 2 .png" alt="Product 2" />
+                  <img src="../images/nav car 3.png" alt="Product 3" />
+                </div>
+              </div>
+            </li>
+            <li>
+              <a class="navigation-main" href="#">ĐỒ CHƠI SÁNG TẠO</a>
+              <div class="content">
+                <div class="categories">
+                  <h3>CATEGORIES</h3>
+                  <ul>
+                    <li><a href="#">Bột nặng</a></li>
+                    <li><a href="#">Bút màu & bảng vẽ</a></li>
+                    <li><a href="#">Đồ chơi lắp ghép</a></li>
+                  </ul>
+                </div>
+                <div class="featured-products">
+                  <img src="../images/nav bot.png"/>
+                  <img src="../images/nav color.png"/>
+                  <img src="../images/nav lapghep.png"/>
+                </div>
+              </div>
+            </li>
+            <li><a class="navigation-main" href="#">ĐỒ DÙNG HỌC TẬP</a></li>
+            <li><a class="navigation-main" href="#">THÚ BÔNG</a></li>
+            <li><a class="navigation-main" href="#">ROBOT</a></li>
+            <li>
+              <a href="#" class="cart">
+                <i class="icon heart">&#9829;</i>Yêu thích
+                <i class="icon cart">&#128722;</i> Giỏ hàng
+              </a>
+            </li>
+          </nav>
+          </ul>
+      </div>
+      <hr />
+      <div class="main-content">
+        <h1 class="center-text">Tài Khoản Của Bạn</h1>
+        <div class="content-wrapper">
+          <div class="sidebar">
+            <h2>Tài khoản của bạn</h2>
+            <a href="#">Tài Khoản</a>
+            <a href="#">Lịch sử mua hàng</a>
+            <a href="#">Danh sách yêu thích</a>
+            <a href="#">Địa chỉ giao hàng</a>
+            <a onclick="logout()">Đăng xuất</a>
+          </div>
+          <div class="info">
+            <div class="container">
+              <div class="section">
+                <h3>Thông tin tài khoản</h3>
+                <div id="user-info">
+                  <p id="user-name"><span class="text-deco">Họ và tên:</span></p>
+                  <p id="user-phone"><span class="text-deco">Điện thoại:</span></p>
+                  <p id="user-email"><span class="text-deco">Email:</span></p>
+                  <p id="gender"><span class="text-deco">Giới tính:</span></p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>       
+</body>
+</html>
