@@ -106,28 +106,23 @@ function togglePasswordVisibility(id) {
 }
 /*them san pham vao gio hang*/
 document.addEventListener("DOMContentLoaded", () => {
-  const addToCartButtons = document.querySelectorAll(".add-to-cart a");
+  // Function to update cart count based on items in localStorage
+  function updateCartCount() {
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+    const totalItems = cart.reduce(
+      (total, product) => total + product.quantity,
+      0
+    );
+    const cartCountElement = document.getElementById("cart-count");
+    if (totalItems > 0) {
+      cartCountElement.classList.add("visible");
+      cartCountElement.querySelector("label").innerText = totalItems;
+    } else {
+      cartCountElement.classList.remove("visible");
+    }
+  }
 
-  addToCartButtons.forEach((button) => {
-    button.addEventListener("click", (e) => {
-      e.preventDefault();
-      const productElement = e.target.closest(".product");
-      const product = {
-        id: productElement.querySelector("img").alt, // using alt text as a unique id
-        name: productElement.querySelector("p").innerText,
-        price: parseFloat(
-          productElement
-            .querySelector(".price")
-            .innerText.replace(" Đ", "")
-            .replace(/\./g, '') // remove dots
-            .replace(",", ".")
-        ),
-        imgSrc: productElement.querySelector("img").src,
-      };
-      addToCart(product);
-    });
-  });
-
+  // Function to add product to cart and update cart count
   function addToCart(product) {
     let cart = JSON.parse(localStorage.getItem("cart")) || [];
     const existingProductIndex = cart.findIndex(
@@ -146,15 +141,29 @@ document.addEventListener("DOMContentLoaded", () => {
     updateCartCount();
   }
 
-  function updateCartCount() {
-    let cart = JSON.parse(localStorage.getItem("cart")) || [];
-    const totalItems = cart.reduce(
-      (total, product) => total + product.quantity, 0);
-    const cartCountElement = document.getElementById("cart-count");
-    if (cartCountElement) {
-      cartCountElement.innerText = totalItems;
-    }
-  }
+  // Attach event listeners to "Add to cart" buttons
+  const addToCartButtons = document.querySelectorAll(".add-to-cart a");
+  addToCartButtons.forEach((button) => {
+    button.addEventListener("click", (e) => {
+      e.preventDefault();
+      const productElement = e.target.closest(".product");
+      const product = {
+        id: productElement.querySelector("img").alt, // using alt text as a unique id
+        name: productElement.querySelector("p").innerText,
+        price: parseFloat(
+          productElement
+            .querySelector(".price")
+            .innerText.replace(" Đ", "")
+            .replace(/\./g, "") // remove dots
+            .replace(",", ".")
+        ),
+        imgSrc: productElement.querySelector("img").src,
+      };
+      addToCart(product);
+    });
+  });
+
+  // Call updateCartCount when the page is loaded
   updateCartCount();
 });
 
