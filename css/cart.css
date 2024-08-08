@@ -136,3 +136,88 @@
 .thanhtoan div p a:hover {
   text-decoration: underline;
 }
+#cart-items {
+  max-width: 650px;
+  margin-left: 10%;
+}
+.product {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #ddd;
+}
+
+.product img {
+  width: 20%;
+  height: auto;
+  object-fit: cover;
+}
+
+.product-details {
+  flex: 1;
+  margin-left: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.product-details h3 {
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+
+.product-action {
+  display: flex;
+  flex-direction: column; 
+  align-items: flex-end;
+}
+
+.quantity {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start; 
+  margin-bottom: 10px; 
+}
+
+.quantity span {
+  width: 50px;
+  text-align: center;
+  border: 1px solid gray;
+  border-radius: 20px;
+  padding: 5px 10px;
+}
+
+.quantity button {
+  background-color: white;
+  border: 1px solid #ff0000;
+  padding: 5px 10px;
+  cursor: pointer;
+  font-size: 16px;
+  margin: 0 5px;
+  border-radius: 50px;
+}
+
+.quantity-value {
+  font-size: 16px;
+}
+
+.remove-product {
+  padding: 10px;
+  background-color: transparent;
+  border: none;
+  color: red;
+  cursor: pointer;
+  font-size: 14px;
+  text-decoration: underline;
+}
+
+.price {
+  font-size: 18px;
+  color: #ff0000;
+  text-align: right;
+}
+.total {
+  color:grey;
+}
