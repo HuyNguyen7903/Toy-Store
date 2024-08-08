@@ -107,7 +107,6 @@ function togglePasswordVisibility(id) {
 /*them san pham vao gio hang*/
 document.addEventListener("DOMContentLoaded", () => {
   const addToCartButtons = document.querySelectorAll(".add-to-cart a");
-  const cartCountElement = document.getElementById("cart-count");
 
   addToCartButtons.forEach((button) => {
     button.addEventListener("click", (e) => {
@@ -120,7 +119,7 @@ document.addEventListener("DOMContentLoaded", () => {
           productElement
             .querySelector(".price")
             .innerText.replace(" Đ", "")
-            .replace(".", "")
+            .replace(/\./g, '') // remove dots
             .replace(",", ".")
         ),
         imgSrc: productElement.querySelector("img").src,
@@ -150,12 +149,12 @@ document.addEventListener("DOMContentLoaded", () => {
   function updateCartCount() {
     let cart = JSON.parse(localStorage.getItem("cart")) || [];
     const totalItems = cart.reduce(
-      (total, product) => total + product.quantity,
-      0
-    );
-    cartCountElement.innerText = totalItems;
+      (total, product) => total + product.quantity, 0);
+    const cartCountElement = document.getElementById("cart-count");
+    if (cartCountElement) {
+      cartCountElement.innerText = totalItems;
+    }
   }
-
   updateCartCount();
 });
 
