@@ -99,6 +99,50 @@ function togglePasswordVisibility(id) {
         icon.classList.add('fa-eye');
     }
 };
+/*them san pham vao gio hang*/
+document.addEventListener('DOMContentLoaded', () => {
+    const addToCartButtons = document.querySelectorAll('.add-to-cart a');
+    const cartCountElement = document.getElementById('cart-count');
+
+    addToCartButtons.forEach(button => {
+        button.addEventListener('click', (e) => {
+            e.preventDefault();
+            const productElement = e.target.closest('.product');
+            const product = {
+                id: productElement.querySelector('img').alt, // using alt text as a unique id
+                name: productElement.querySelector('p').innerText,
+                price: parseFloat(productElement.querySelector('.price').innerText.replace(' Đ', '').replace('.', '').replace(',', '.')),
+                imgSrc: productElement.querySelector('img').src
+            };
+            addToCart(product);
+        });
+    });
+
+    function addToCart(product) {
+        let cart = JSON.parse(localStorage.getItem('cart')) || [];
+        const existingProductIndex = cart.findIndex(item => item.id === product.id);
+
+        if (existingProductIndex !== -1) {
+            cart[existingProductIndex].quantity += 1;
+        } else {
+            product.quantity = 1;
+            cart.push(product);
+        }
+
+        localStorage.setItem('cart', JSON.stringify(cart));
+        alert('Sản phẩm đã được thêm vào giỏ hàng!');
+        updateCartCount();
+    }
+
+    function updateCartCount() {
+        let cart = JSON.parse(localStorage.getItem('cart')) || [];
+        const totalItems = cart.reduce((total, product) => total + product.quantity, 0);
+        cartCountElement.innerText = totalItems;
+    }
+
+    updateCartCount();
+});
+
 
 /* thay doi chu dang nhap thanh ten user */
 window.onload = function() {
