@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+      integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="stylesheet" href="../css/header.css" />
+    <title>Toy Store</title>
+  </head>
+  <body>
+    <header>
+      <div class="navigation">
+        <div class="navigation-top">
+          <a href="./user.html">Đăng nhập</a>
+          <a href="#">Thông tin liên hệ</a>
+          <a href="#">Vị trí</a>
+        </div>
+      </div>
+      <div class="logo-search-container">
+        <div class="logo">
+          <a href="toy.html"><img src="../images/logo.png" alt="Logo" /></a>
+        </div>
+        <div class="search-box">
+          <input type="text" placeholder="Find your NEW favorite toy!" />
+          <button type="submit">Search</button>
+        </div>
+        <div class="cart-content">
+          <a href="#" class="cart-main heart">
+            <i class="icon heart">&#9829;</i>Yêu thích
+          </a>
+          <a href="./cart.html" class="cart-main cart">
+            <i class="icon cart">&#128722;</i>Giỏ hàng
+            <span id="cart-count">0</span>
+          </a>
+        </div>
+      </div>
+    </header>
+
+    <!-- Thanh phân loại sản phẩm -->
+    <div class="main-nav-container">
+      <nav class="main-nav">
+        <ul>
+          <li>
+            <a class="navigation-main" href="#">ĐỒ CHƠI PHƯƠNG TIỆN</a>
+            <div class="content">
+              <div class="categories">
+                <h3>Phân loại</h3>
+                <ul>
+                  <li><a href="#">Xe điều khiển</a></li>
+                  <li><a href="#">Xe mô hình</a></li>
+                  <li><a href="#">Xe lắp ráp</a></li>
+                  <li><a href="#">Xe sưu tập</a></li>
+                </ul>
+              </div>
+              <div class="featured-products">
+                <img src="../images/nav car 1.png" alt="Product 1" />
+                <img src="../images/nav car 2.png" alt="Product 2" />
+                <img src="../images/nav car 3.png" alt="Product 3" />
+              </div>
+            </div>
+          </li>
+          <li>
+            <a class="navigation-main" href="#">ĐỒ CHƠI SÁNG TẠO</a>
+            <div class="content">
+              <div class="categories">
+                <h3>Phân loại</h3>
+                <ul>
+                  <li><a href="#">Bột nặng</a></li>
+                  <li><a href="#">Bút màu & bảng vẽ</a></li>
+                  <li><a href="#">Đồ chơi lắp ghép</a></li>
+                </ul>
+              </div>
+              <div class="featured-products">
+                <img src="../images/nav bot.png" />
+                <img src="../images/nav color.png" />
+                <img src="../images/nav lapghep.png" />
+              </div>
+            </div>
+          </li>
+          <li><a class="navigation-main" href="#">ĐỒ DÙNG HỌC TẬP</a></li>
+          <li><a class="navigation-main" href="#">THÚ BÔNG</a></li>
+          <li><a class="navigation-main" href="#">ROBOT</a></li>
+        </ul>
+      </nav>
+    </div>
+    <hr />
+  </body>
+</html>

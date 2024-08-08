@@ -4,118 +4,6 @@ body {
   padding: 0;
 }
 
-.login-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: calc(
-    100vh - 200px
-  ); /* Adjust height to account for header and footer */
-  padding: 20px;
-  font-size: x-large;
-}
-
-#loginForm h1,
-label {
-  text-align: center;
-  color: darkblue;
-}
-/* chỉnh các trường input */
-form input[type="email"] {
-  width: 100%;
-  padding: 15px;
-  margin: 8px 0;
-  display: inline-block;
-  border: 1px solid #ccc;
-  border-radius: 20px;
-  box-sizing: border-box;
-  font-size: x-large;
-}
-
-/* chỉnh nút "Đăng nhập" */
-form button[type="submit"] {
-  width: 40%;
-  background-color: #ff0000;
-  color: white;
-  padding: 15px;
-  border: none;
-  border-radius: 20px;
-  cursor: pointer;
-  font-size: x-large;
-  text-align: center;
-  display: block;
-  margin: 20px auto;
-}
-form .forgot-password {
-  text-align: center;
-  display: block;
-  width: 100%;
-}
-form button[type="submit"]:hover {
-  background-color: #cc0000;
-}
-
-form a {
-  color: #0000ff;
-  display: inline-block;
-  margin-top: 10px;
-  font-size: x-large;
-}
-
-form a:hover {
-  text-decoration: underline;
-}
-
-/* chỉnh nút password 👁️ */
-.password-container {
-  position: relative;
-}
-
-.password-container input[type="password"] {
-  width: calc(100% - 40px);
-  width: 100%;
-  padding: 15px;
-  margin: 8px 0;
-  display: inline-block;
-  border: 1px solid #ccc;
-  border-radius: 20px;
-  box-sizing: border-box;
-  font-size: x-large;
-}
-.password-container input[type="text"] {
-  width: calc(100% - 40px);
-  width: 100%;
-  padding: 15px;
-  margin: 8px 0;
-  display: inline-block;
-  border: 1px solid #ccc;
-  border-radius: 20px;
-  box-sizing: border-box;
-  font-size: x-large;
-}
-.password-container button {
-  position: absolute;
-  right: 10%;
-  top: 0;
-  height: 100%;
-  font-size: 20px;
-  background: none;
-  border: none;
-  cursor: pointer;
-}
-form p a {
-  color: #cc0000;
-  text-decoration: none;
-}
-
-form p a:hover {
-  text-decoration: underline;
-}
-.required-fields {
-  color: red;
-  font-size: 20px;
-}
-
 /* phần footer */
 /* top */
 .footer {
@@ -145,7 +33,7 @@ form p a:hover {
   padding: 20px 0;
 }
 
-.footer-middle .container {
+.footer-middle .footer-container {
   text-align: center;
 }
 
@@ -183,7 +71,7 @@ form p a:hover {
   padding: 40px 0;
 }
 
-.footer-bottom .container {
+.footer-bottom .footer-container {
   display: flex;
   justify-content: space-evenly;
   flex-wrap: wrap;

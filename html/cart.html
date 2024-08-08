@@ -1,121 +1,58 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="shortcut icon" href="../images/android-icon-48x48.png" />
     <title>Giỏ hàng</title>
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
-      integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
-      crossorigin="anonymous"
-      referrerpolicy="no-referrer"
-    />
-    <link rel="stylesheet" href="../css/cart.css">
+    <link rel="stylesheet" href="../css/cart.css" />
     <script src="../JS/cart.js"></script>
-</head>
-<body>
-    <header>
-        <div class="navigation">
-          <div class="navigation-top">
-            <a href="./user.html">Đăng nhập</a>
-            <a href="#">Thông tin liên hệ</a>
-            <a href="#">Vị trí</a>
-          </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+      $(document).ready(function () {
+        $("#header").load("header.html");
+        $("#footer").load("footer.html");
+      });
+    </script>
+  </head>
+  <body>
+    <!-- header -->
+    <div id="header"></div>
+
+    <!-- Phan gio hang -->
+    <div class="cart-container">
+      <div class="cart-info">
+        <h1>Giỏ hàng của bạn</h1>
+        <div id="cart-items"></div>
+        <div class="total">
+          <p>Tổng cộng: <span id="total">0</span></p>
         </div>
-        <div class="logo-search-container">
-          <div class="logo">
-            <a href="toy.html"><img src="../images/logo.png" alt="Logo" /></a>
-          </div>
-          <div class="search-box">
-            <input type="text" placeholder="Find your NEW favorite toy!" />
-            <button type="submit">Search</button>
-          </div>
-          <div class="cart-content">
-            <a href="#" class="cart-main heart">
-              <i class="icon heart">&#9829;</i>Yêu thích
-            </a>
-            <a href="#" class="cart-main cart">
-              <i class="icon cart">&#128722;</i>Giỏ hàng
-            </a>
-          </div>
-        </div>
-      </header>
-  
-      <!-- Thanh phân loại sản phẩm -->
-      <div class="main-nav-container">
-        <nav class="main-nav">
-          <ul>
-            <li>
-              <a class="navigation-main" href="#">ĐỒ CHƠI PHƯƠNG TIỆN</a>
-              <div class="content">
-                <div class="categories">
-                  <h3>Phân loại</h3>
-                  <ul>
-                    <li><a href="#">Xe điều khiển</a></li>
-                    <li><a href="#">Xe mô hình</a></li>
-                    <li><a href="#">Xe lắp ráp</a></li>
-                    <li><a href="#">Xe sưu tập</a></li>
-                  </ul>
-                </div>
-                <div class="featured-products">
-                  <img src="../images/nav car 1.png" alt="Product 1" />
-                  <img src="../images/nav car 2.png" alt="Product 2" />
-                  <img src="../images/nav car 3.png" alt="Product 3" />
-                </div>
-              </div>
-            </li>
-            <li>
-              <a class="navigation-main" href="#">ĐỒ CHƠI SÁNG TẠO</a>
-              <div class="content">
-                <div class="categories">
-                  <h3>Phân loại</h3>
-                  <ul>
-                    <li><a href="#">Bột nặng</a></li>
-                    <li><a href="#">Bút màu & bảng vẽ</a></li>
-                    <li><a href="#">Đồ chơi lắp ghép</a></li>
-                  </ul>
-                </div>
-                <div class="featured-products">
-                  <img src="../images/nav bot.png" />
-                  <img src="../images/nav color.png" />
-                  <img src="../images/nav lapghep.png" />
-                </div>
-              </div>
-            </li>
-            <li><a class="navigation-main" href="#">ĐỒ DÙNG HỌC TẬP</a></li>
-            <li><a class="navigation-main" href="#">THÚ BÔNG</a></li>
-            <li><a class="navigation-main" href="#">ROBOT</a></li>
-          </ul>
-        </nav>
       </div>
-      <hr />
-      <!-- Phan gio hang -->
-    <div class="container">
-        <div class="cart">
-            <h1>Giỏ hàng của bạn</h1>
-            <div id="cart-items">
-                
-            </div>
-            <div class="total">
-                <p>Tổng cộng: <span id="total">0</span></p>
-            </div>
+
+      <div class="thanhtoan">
+        <div class="tienhang">Tiền Hàng hóa</div>
+        <div class="giamgia">Giảm giá</div>
+        <div class="tongtien">Tổng cộng</div>
+        <button id="checkout-button">Thanh Toán Ngay</button>
+        <div class="checkbox-group">
+          <input type="checkbox" id="terms" name="terms" required />
+          <label for="terms"
+            >Tôi đã đọc và đồng ý với <a href="#">Điều khoản sử dụng</a> và
+            <a href="#">Chính sách Thành viên thân thiết My Points</a>.</label
+          >
         </div>
-        
-        <div class="thanhtoan">
-            <div class="tienhang">Tiền Hàng hóa</div>
-            <div class="giamgia">Giảm giá</div>
-            <div class="tongtien">Tổng cộng</div>
-            <button id="checkout-button">Thanh Toán Ngay</button>
-            <div class="checkbox-group">
-                <input type="checkbox" id="terms" name="terms" required>
-                <label for="terms">Tôi đã đọc và đồng ý với <a href="#">Điều khoản sử dụng</a> và <a href="#">Chính sách Thành viên thân thiết My Points</a>.</label>
-            </div>
-            <div>
-                <p><a href="./login.html">Đăng nhập</a><label> hoặc </label><a href="./register.html">Đăng ký</a> để mua hàng với nhiều ưu đãi hơn</p>
-            </div>
+        <div>
+          <p>
+            <a href="./login.html">Đăng nhập</a><label> hoặc </label
+            ><a href="./register.html">Đăng ký</a> để mua hàng với nhiều ưu đãi
+            hơn
+          </p>
         </div>
+      </div>
     </div>
-</body>
+
+    <!-- footer -->
+    <div id="footer"></div>
+  </body>
 </html>
