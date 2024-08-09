@@ -129,7 +129,7 @@ header {
   transform: scale(1.3);
 }
 
-#cart-count label {
+#cart-count,#wishlist-count label {
   display: none;
   background-color: red;
   color: white;
@@ -138,9 +138,9 @@ header {
   margin-left: 5px;
 }
 
-#cart-count.visible label {
+#cart-count.visible label,#wishlist-count.visible label {
   display: inline-block;
-}
+} 
 @media (max-width: 768px) {
   .logo-search-container {
     flex-direction: column;
