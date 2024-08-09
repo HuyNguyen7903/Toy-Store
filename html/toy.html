@@ -27,7 +27,7 @@
 
     <!-- phần Danh mục -->
     <div class="popular-content">
-      <h1>DANH MỤC NỔI BẬT</h1>
+      <h1>Danh Mục Nổi Bật</h1>
       <div class="main-popular">
         <a href="#"><img src="../images/popular car.png" /></a>
         <p>Xe Mô Hình</p>
@@ -47,39 +47,38 @@
         </div>
       </div>
     </div>
-
+    <!-- hãy chỉnh cho thương hiệu nổi bật hiển thị 2 hàng, 3 cột có scrollbar nằm ngang -->
     <!-- Thương hiệu nổi bật -->
     <div class="brand-container">
-      <h2>THƯƠNG HIỆU NỔI BẬT</h2>
-      <div class="brands-wrapper">
-        <div class="brands">
-          <div class="brand">
-            <a href="#"><img src="../images/duka.png" alt="Clever Hippo" /></a>
-          </div>
-          <div class="brand">
-            <a href="#"><img src="../images/popmart.png" alt="Peek A Boo" /></a>
-          </div>
-          <div class="brand">
-            <a href="#"><img src="../images/munchkin.png" alt="Vecto" /></a>
-          </div>
-          <div class="brand">
-            <a href="#"><img src="../images/hotwheels.png" alt="Barbie" /></a>
-          </div>
-          <div class="brand">
-            <a href="#"><img src="../images/lego.png" alt="Hot Wheels" /></a>
-          </div>
-          <div class="brand">
-            <a href="#"><img src="../images/monopoly.png" alt="Beyblade" /></a>
-          </div>
-          <div class="brand">
-            <a href="#"><img src="../images/bakugan.png" alt="Rastar" /></a>
-          </div>
-          <div class="brand">
-            <a href="#"><img src="../images/polesie.png" alt="CoolKids" /></a>
-          </div>
-          <div class="brand">
-            <a href="#"><img src="../images/beyblade.png" alt="CoolKids" /></a>
-          </div>
+      <h2>Thương Hiệu Nổi Bật</h2>
+
+      <div class="brands">
+        <div class="brand">
+          <a href="#"><img src="../images/duka.png" alt="Clever Hippo" /></a>
+        </div>
+        <div class="brand">
+          <a href="#"><img src="../images/popmart.png" alt="Peek A Boo" /></a>
+        </div>
+        <div class="brand">
+          <a href="#"><img src="../images/munchkin.png" alt="Vecto" /></a>
+        </div>
+        <div class="brand">
+          <a href="#"><img src="../images/hotwheels.png" alt="Barbie" /></a>
+        </div>
+        <div class="brand">
+          <a href="#"><img src="../images/lego.png" alt="Hot Wheels" /></a>
+        </div>
+        <div class="brand">
+          <a href="#"><img src="../images/monopoly.png" alt="Beyblade" /></a>
+        </div>
+        <div class="brand">
+          <a href="#"><img src="../images/bakugan.png" alt="Rastar" /></a>
+        </div>
+        <div class="brand">
+          <a href="#"><img src="../images/polesie.png" alt="CoolKids" /></a>
+        </div>
+        <div class="brand">
+          <a href="#"><img src="../images/beyblade.png" alt="CoolKids" /></a>
         </div>
       </div>
     </div>
@@ -211,5 +210,23 @@
 
     <!-- footer -->
     <div id="footer"></div>
+
+    <script>
+      const productList = document.querySelector(".product-list");
+
+      productList.addEventListener("scroll", function () {
+        const scrollWidth = productList.scrollWidth - productList.clientWidth;
+        const scrollLeft = productList.scrollLeft;
+        const thumb = window.getComputedStyle(productList, "::before");
+        const thumbWidth = parseInt(thumb.width);
+
+        // Tính toán vị trí mới của thumb
+        const newLeft =
+          (scrollLeft / scrollWidth) * (productList.clientWidth - thumbWidth);
+
+        // Cập nhật vị trí của thumb
+        productList.style.setProperty("--thumb-left", `${newLeft}px`);
+      });
+    </script>
   </body>
 </html>
