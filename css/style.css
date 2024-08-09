@@ -248,6 +248,9 @@ h2 {
   font-size: 32px;
   margin-left: 12px;
 }
+.heart-icon:hover {
+  cursor: pointer;
+}
 .discount {
   position: absolute;
   top: 10px;
