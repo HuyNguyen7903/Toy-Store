@@ -43,8 +43,10 @@ header {
 }
 
 /* chỉnh logo */
+
 .logo img {
-  height: 100px;
+  width: 80px;
+  height: 70px;
   margin-left: 10px;
 }
 
@@ -53,33 +55,48 @@ header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  max-width: 1430px;
-  margin: 0 auto;
+  margin: 10px auto 15px auto;
+  max-width: 77%;
 }
 
-.search-box input[type="text"] {
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 4px 0 0 4px;
+.search-box {
+  display: flex;
+  align-items: center;
+  background-color: white;
+  border-radius: 30px;
   outline: none;
-  width: 200px;
-  font-size: larger;
+  width: 50%;
+  padding: 0 15px;
+  margin-left: 20px;
 }
 
-.search-box > button {
-  padding: 10px;
+.search-text {
+  border: none;
+  outline: none;
+  background: none;
+  padding: 10px 0px;
   font-size: larger;
-  border: 1px solid #ccc;
-  border-left: none;
-  background-color: #333;
-  color: white;
-  border-radius: 0 4px 4px 0;
+  flex: 1;
+}
+
+#search-btn {
+  background-color: rgb(255, 255, 255);
   cursor: pointer;
+  border: none;
+  padding: 10px;
+  border-radius: 50%;
+  margin-left: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  max-width: 40px;
+  max-height: 40px;
 }
 
 .search-box > button:hover {
-  background-color: #555;
+  color: #cf102d;
 }
+
 /* chỉnh giỏ hàng và yêu thích */
 .cart-content {
   text-align: right;
@@ -90,7 +107,7 @@ header {
 }
 
 .cart-content .icon {
-  font-size: 24px;
+  font-size: 20px;
   vertical-align: middle;
   margin-right: 5px;
 }
@@ -106,6 +123,7 @@ header {
   padding: 10px 20px;
   background-color: #ffffff;
   transition: background-color 0.3s ease, color 0.3s ease;
+  text-wrap: nowrap;
 }
 
 .cart-content a:hover {
@@ -141,7 +159,8 @@ header {
 #cart-count.visible label {
   display: inline-block;
 }
-@media (max-width: 768px) {
+
+@media (max-width: 870px) {
   .logo-search-container {
     flex-direction: column;
     align-items: center;
@@ -149,72 +168,31 @@ header {
 
   .search-box input[type="text"],
   .search-box button {
+    width: 100%;
+    font-size: larger;
+  }
+
+  .search-box {
     width: 50%;
-    font-size: medium;
-  }
-
-  .search-box {
-    width: 70%;
     display: flex;
     margin-top: 10px;
+    margin-right: 35px;
   }
 
   .cart-content {
-    align-items: center;
-    gap: 5px;
-    margin-top: 10px;
-  }
-
-  .cart-content a {
-    padding: 8px 15px;
-    font-size: 14px;
-  }
-
-  .cart-content .icon {
-    font-size: 20px;
-  }
-
-  .cart-main .heart:hover {
-    transform: scale(1.5);
-  }
-
-  .cart-main .cart:hover {
-    transform: scale(1.2);
-  }
-}
-
-@media (max-width: 480px) {
-  .logo-search-container {
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .search-box input[type="text"],
-  .search-box button {
-    width: 100%;
-    font-size: small;
-  }
-
-  .search-box {
-    width: 100%;
-    display: flex;
-    margin-top: 10px;
-  }
-
-  .cart-content {
-    flex-direction: column;
-    align-items: center;
     gap: 3px;
     margin-top: 10px;
   }
 
   .cart-content a {
     padding: 5px 10px;
-    font-size: 12px;
+    font-size: 15px;
   }
-
-  .cart-content .icon {
-    font-size: 18px;
+  .cart-main.heart {
+    width: 90px;
+  }
+  .icon.cart {
+    font-size: 15px;
   }
 
   .cart-main .heart:hover {
@@ -227,7 +205,6 @@ header {
 }
 
 /* chỉnh mục lục */
-
 .main-nav {
   display: flex;
   justify-content: space-evenly;
@@ -235,6 +212,19 @@ header {
   background-color: #cf102d;
   margin: -15px 0px 40px;
   border-bottom: 1px solid black;
+}
+
+.menu-toggle {
+  display: none;
+  background: none;
+  border: none;
+  font-size: 1.5em;
+  color: white;
+  cursor: pointer;
+  color: white;
+}
+.main-nav:hover i {
+  color: black;
 }
 .main-nav:hover {
   background-color: white;
@@ -327,7 +317,30 @@ header {
   color: #cf102d;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 870px) {
+  .main-nav ul {
+    display: none;
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .main-nav.active ul {
+    display: flex;
+  }
+
+  .menu-toggle {
+    display: block;
+  }
+
+  .main-nav ul li {
+    width: 100%;
+    text-align: left;
+  }
+
+  .main-nav ul li a {
+    padding: 10px 20px;
+  }
+
   .content {
     flex-direction: column;
     width: 100%;

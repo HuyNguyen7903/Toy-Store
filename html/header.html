@@ -13,6 +13,13 @@
     <link rel="stylesheet" href="../css/header.css" />
     <script src="../JS/updatecarticon.js"></script>
     <title>Toy Store</title>
+    <script>
+      document
+        .querySelector(".menu-toggle")
+        .addEventListener("click", function () {
+          document.querySelector(".main-nav").classList.toggle("active");
+        });
+    </script>
   </head>
   <body>
     <header>
@@ -27,10 +34,17 @@
         <div class="logo">
           <a href="toy.html"><img src="../images/logo.png" alt="Logo" /></a>
         </div>
-        <div class="search-box">
-          <input type="text" placeholder="Find your NEW favorite toy!" />
-          <button type="submit">Search</button>
-        </div>
+        <form class="search-box">
+          <input
+            class="search-text"
+            type="text"
+            placeholder="Nhập từ khóa để tìm kiếm"
+            required
+          />
+          <button id="search-btn">
+            <i class="fa-solid fa-magnifying-glass"></i>
+          </button>
+        </form>
         <div class="cart-content">
           <a href="#" class="cart-main heart">
             <i class="icon heart">&#9829;</i>Yêu thích
@@ -41,10 +55,12 @@
           </a>
         </div>
       </div>
-
       <!-- Thanh phân loại sản phẩm -->
       <div class="main-nav-container">
         <nav class="main-nav">
+          <button class="menu-toggle">
+            <i class="fa fa-bars"></i>
+          </button>
           <ul>
             <li>
               <a class="navigation-main" href="#">ĐỒ CHƠI PHƯƠNG TIỆN</a>
