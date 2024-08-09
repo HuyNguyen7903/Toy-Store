@@ -98,3 +98,14 @@ h1 {
   font-size: 14px;
   text-decoration: underline;
 }
+.add-cart {
+  background-color: #ff0000;
+  color: white;
+  border-radius: 10px;
+  padding: 10px;
+  border: none;
+}
+.add-cart:hover{
+  background-color: #cc0000;
+  color: whitesmoke;
+}
