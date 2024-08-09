@@ -122,6 +122,18 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
+  // Function to update wishlist count based on items in localStorage
+  function updateWishlistCount() {
+    let wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
+    const wishlistCountElement = document.getElementById("wishlist-count");
+    if (wishlist.length > 0) {
+      wishlistCountElement.classList.add("visible");
+      wishlistCountElement.querySelector("label").innerText = wishlist.length;
+    } else {
+      wishlistCountElement.classList.remove("visible");
+    }
+  }
+
   // Function to add product to cart and update cart count
   function addToCart(product) {
     let cart = JSON.parse(localStorage.getItem("cart")) || [];
@@ -139,6 +151,23 @@ document.addEventListener("DOMContentLoaded", () => {
     localStorage.setItem("cart", JSON.stringify(cart));
     alert("Sản phẩm đã được thêm vào giỏ hàng!");
     updateCartCount();
+  }
+
+  // Function to add product to wishlist
+  function addToWishlist(product) {
+    let wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
+    const existingProductIndex = wishlist.findIndex(
+      (item) => item.id === product.id
+    );
+
+    if (existingProductIndex === -1) {
+      wishlist.push(product);
+      localStorage.setItem("wishlist", JSON.stringify(wishlist));
+      alert("Sản phẩm đã được thêm vào danh sách yêu thích!");
+      updateWishlistCount(); // Update the wishlist count
+    } else {
+      alert("Sản phẩm đã có trong danh sách yêu thích!");
+    }
   }
 
   // Attach event listeners to "Add to cart" buttons
@@ -163,9 +192,33 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  // Call updateCartCount when the page is loaded
+  // Attach event listeners to "Add to wishlist" buttons
+  const wishlistButtons = document.querySelectorAll(".heart-icon");
+  wishlistButtons.forEach((button) => {
+    button.addEventListener("click", (e) => {
+      e.preventDefault();
+      const productElement = e.target.closest(".product");
+      const product = {
+        id: productElement.querySelector("img").alt, // using alt text as a unique id
+        name: productElement.querySelector("p").innerText,
+        price: parseFloat(
+          productElement
+            .querySelector(".price")
+            .innerText.replace(" Đ", "")
+            .replace(/\./g, "") // remove dots
+            .replace(",", ".")
+        ),
+        imgSrc: productElement.querySelector("img").src,
+      };
+      addToWishlist(product);
+    });
+  });
+
+  // Call updateCartCount and updateWishlistCount when the page is loaded
   updateCartCount();
+  updateWishlistCount();
 });
+
 
 /* thay doi chu dang nhap thanh ten user */
 window.onload = function () {
