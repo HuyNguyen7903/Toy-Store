@@ -5,8 +5,8 @@ function loginCheck() {
 
   const users = [
     { email: "admin@example.com", password: "admin123" },
-    { email: "tinh@gmail.com", password: "tinh123" },
-    { email: "huy@gmail.com", password: "huy123" },
+    { email: "tinh@gmail.com", password: "tinh123",name:"Tinh",gender:"Nam" },
+    { email: "huy@gmail.com", password: "huy123",name:"Huy",gender:"Nam" },
   ];
 
   const user = users.find(
@@ -16,6 +16,9 @@ function loginCheck() {
   if (user) {
     // Lưu thông tin người dùng vào localStorage
     localStorage.setItem("loggedInUser", user.email);
+    localStorage.setItem("loggedInUserName",user.name);
+    localStorage.setItem("loggedInUserPhone",user.phone);
+    localStorage.setItem("loggedInUserGender",user.gender);
     // Chuyển hướng tới trang user.html
     window.location.href = "user.html";
   } else {
@@ -43,7 +46,7 @@ function displayLoggedInUserInfo() {
           /*check thong tin ten*/
           const nameElement = document.querySelector(".user-name");
           if (nameElement) {
-              nameElement.textContent = `Họ và tên: ${loggedInUserName || "Chưa cập nhật"}`;
+              nameElement.textContent = `Họ và tên: ${loggedInUserName}`;
           } else {
               console.error("Name element not found.");
           }
@@ -51,7 +54,7 @@ function displayLoggedInUserInfo() {
           /*check thong tin dien thoai*/
           const phoneElement = document.querySelector(".user-phone");
           if (phoneElement) {
-              phoneElement.textContent = `Điện thoại: ${loggedInUserPhone || "Chưa cập nhật"}`;
+              phoneElement.textContent = `Điện thoại: ${loggedInUserPhone}`;
           } else {
               console.error("Phone element not found.");
           }
@@ -59,7 +62,7 @@ function displayLoggedInUserInfo() {
           /*check thong tin gioi tinh*/
           const genderElement = document.querySelector(".gender");
           if (genderElement) {
-              genderElement.textContent = `Giới tính: ${loggedInUserGender || "Chưa cập nhật"}`;
+              genderElement.textContent = `Giới tính: ${loggedInUserGender}`;
           } else {
               console.error("Gender element not found.");
           }
