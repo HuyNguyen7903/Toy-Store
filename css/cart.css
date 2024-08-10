@@ -33,6 +33,7 @@
 
 .cart-item img {
   width: 100px;
+  object-fit: cover;
 }
 
 .cart-item-details {
@@ -151,24 +152,21 @@
 }
 
 .product img {
-  width: 30%;
+  width: 20%;
   height: auto;
   object-fit: cover;
 }
-
-.product-details {
+.product-info {
   flex: 1;
   margin-left: 20px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
 }
-
-.product-details h3 {
-  font-size: 16px;
+.product-info h3 {
+  font-size: 20px;
   margin-bottom: 10px;
 }
-
+.product-info p {
+  margin: 5px 0;
+}
 .product-action {
   display: flex;
   flex-direction: column;
