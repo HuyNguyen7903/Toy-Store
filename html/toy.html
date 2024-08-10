@@ -89,7 +89,9 @@
       <div class="product-list">
         <div class="product">
           <div class="discount">-10%</div>
-          <img src="../images/beyblade.png" alt="Backpack" />
+          <a href="../html/product.html">
+            <img src="../images/beyblade.png" alt="Backpack" />
+          </a>
           <div class="product-info">
             <h3>CLEVERHIPPO</h3>
             <p>Ba Lô Easy Go Emoji World Hồng CLEVERHIPPO BMO106</p>
@@ -103,7 +105,9 @@
           </div>
         </div>
         <div class="product">
-          <img src="../images/polesie.png" alt="LEGO Classic" />
+          <a href="../html/product.html">
+            <img src="../images/polesie.png" alt="LEGO Classic" />
+          </a>
           <div class="product-info">
             <h3>LEGO CLASSIC</h3>
             <p>
@@ -118,7 +122,9 @@
         </div>
         <div class="product">
           <div class="discount">-25%</div>
-          <img src="../images/monopoly.png" alt="Beyblade" />
+          <a href="../html/product.html">
+            <img src="../images/monopoly.png" alt="Beyblade" />
+          </a>
           <div class="product-info">
             <h3>BEYBLADE 6</h3>
             <p>
@@ -134,7 +140,9 @@
           </div>
         </div>
         <div class="product">
-          <img src="../images/hotwheels.png" alt="Hot Wheels" />
+          <a href="../html/product.html">
+            <img src="../images/hotwheels.png" alt="Hot Wheels" />
+          </a>
           <div class="product-info">
             <h3>HOT WHEELS</h3>
             <p>Trạm Vận Chuyển Trên Cao Hot Wheels City HOT WHEELS HDY92</p>
@@ -146,7 +154,9 @@
           </div>
         </div>
         <div class="product">
-          <img src="../images/hotwheels.png" alt="Hot Wheels" />
+          <a href="../html/product.html">
+            <img src="../images/hotwheels.png" alt="Hot Wheels" />
+          </a>
           <div class="product-info">
             <h3>HOT WHEELS</h3>
             <p>Trạm Vận Chuyển Trên Cao Hot Wheels City HOT WHEELS HDY92</p>
@@ -162,23 +172,5 @@
 
     <!-- footer -->
     <div id="footer"></div>
-
-    <script>
-      const productList = document.querySelector(".product-list");
-
-      productList.addEventListener("scroll", function () {
-        const scrollWidth = productList.scrollWidth - productList.clientWidth;
-        const scrollLeft = productList.scrollLeft;
-        const thumb = window.getComputedStyle(productList, "::before");
-        const thumbWidth = parseInt(thumb.width);
-
-        // Tính toán vị trí mới của thumb
-        const newLeft =
-          (scrollLeft / scrollWidth) * (productList.clientWidth - thumbWidth);
-
-        // Cập nhật vị trí của thumb
-        productList.style.setProperty("--thumb-left", `${newLeft}px`);
-      });
-    </script>
   </body>
 </html>
