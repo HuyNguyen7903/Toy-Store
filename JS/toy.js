@@ -23,6 +23,54 @@ function loginCheck() {
     alert("Email hoặc mật khẩu không đúng!");
   }
 }
+/* hien thi thong tin khach hang*/
+function displayLoggedInUserInfo() {
+  document.addEventListener("DOMContentLoaded", function () {
+      const loggedInUserEmail = localStorage.getItem("loggedInUser");
+      const loggedInUserName = localStorage.getItem("loggedInUserName"); 
+      const loggedInUserPhone = localStorage.getItem("loggedInUserPhone"); 
+      const loggedInUserGender = localStorage.getItem("loggedInUserGender");
+      
+      if (loggedInUserEmail) {
+          /*check thong tin email*/
+          const emailElement = document.querySelector(".email-user");
+          if (emailElement) {
+              emailElement.textContent = `Email: ${loggedInUserEmail}`;
+          } else {
+              console.error("Email element not found.");
+          }
+
+          /*check thong tin ten*/
+          const nameElement = document.querySelector(".user-name");
+          if (nameElement) {
+              nameElement.textContent = `Họ và tên: ${loggedInUserName || "Chưa cập nhật"}`;
+          } else {
+              console.error("Name element not found.");
+          }
+
+          /*check thong tin dien thoai*/
+          const phoneElement = document.querySelector(".user-phone");
+          if (phoneElement) {
+              phoneElement.textContent = `Điện thoại: ${loggedInUserPhone || "Chưa cập nhật"}`;
+          } else {
+              console.error("Phone element not found.");
+          }
+
+          /*check thong tin gioi tinh*/
+          const genderElement = document.querySelector(".gender");
+          if (genderElement) {
+              genderElement.textContent = `Giới tính: ${loggedInUserGender || "Chưa cập nhật"}`;
+          } else {
+              console.error("Gender element not found.");
+          }
+      } else {
+          alert("Vui lòng đăng nhập tài khoản");
+          window.location.href = "login.html"; 
+      }
+  });
+}
+
+
 
 /* dang xuat logout.js*/
 
@@ -213,7 +261,17 @@ document.addEventListener("DOMContentLoaded", () => {
       addToWishlist(product);
     });
   });
+  /* ham ấn thanh toán ở trang cart.html*/
+  document.getElementById("checkout-button").addEventListener("click", () => {
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
+    if (cart.length === 0) {
+      alert("Giỏ hàng của bạn đang trống.");
+    } else {
+      // Redirect to the pay.html page
+      window.location.href = "pay.html";
+    }
+  });
   // Call updateCartCount and updateWishlistCount when the page is loaded
   updateCartCount();
   updateWishlistCount();

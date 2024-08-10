@@ -6,7 +6,8 @@
     <link rel="shortcut icon" href="../images/android-icon-48x48.png" />
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"></script>
-    
+    <script src="../JS/pay.js"></script>
+    <script src="../JS/toy.js"></script>
     <link rel="stylesheet" href="../css/pay.css">
     <title>Thanh Toán</title>
     <script>
@@ -21,8 +22,8 @@
     <div class="pay-container">
         <div class="user-address">
             <h3>Thông tin liên hệ</h3>
-            <p class="email-user">Email: </p>
-            <button onclick="logout()">Đăng xuất</button>
+            <p class="email-user">Email: <script>displayLoggedInUserInfo()</script></p>
+            <a class="dangxuat" onclick="logout()">Đăng xuất</a>
             <div class="checkbox-group">
                 <input type="checkbox" id="uu-dai">
                 <label for="uu-dai">Gửi thông tin ưu đãi cho tôi qua Email</label>
@@ -103,12 +104,12 @@
         <div class="product"></div>
         <div class="magiamgia">
             <input type="text" name="nhapmagiam" id="nhapmagiam" placeholder="Nhập mã giảm giá">
-            <button id="nhapmagiam">Áp dụng</button>
+            <button id="magiamgia" type="submit">Áp dụng</button>
         </div>
         <div class="tienhang">Tiền Hàng hóa</div>
         <div class="giamgia">Giảm giá</div>
         <div class="tongtien">Tổng cộng</div>
-        <button id="checkout-button">Thanh Toán Ngay</button>
+        <button id="checkout-button" type="submit">Đặt hàng</button>
         <div class="checkbox-group">
             <input type="checkbox" id="bill-vat" name="bill-vat" required />
             <label for="bill-vat">Yêu cầu xuất thông tin VAT</label>
