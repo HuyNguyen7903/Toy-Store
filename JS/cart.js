@@ -75,4 +75,16 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     loadCart();
+
+    /* ham ấn thanh toán ở trang cart.html*/
+    document.getElementById("checkout-button").addEventListener("click", () => {
+        let cart = JSON.parse(localStorage.getItem("cart")) || [];
+    
+        if (cart.length === 0) {
+          alert("Giỏ hàng của bạn đang trống.");
+        } else {
+          // Redirect to the order.html page
+          window.location.href = "order.html";
+        }
+      });
 });

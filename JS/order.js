@@ -50,7 +50,16 @@ document.addEventListener("DOMContentLoaded", () => {
       document.querySelector(".giamgia").innerText = `Giảm giá: ${formatPrice(discount)}`;
       document.querySelector(".tongtien").innerText = `Tổng cộng: ${formatPrice(finalAmount)}`;
     }
+    document.getElementById("order-button").addEventListener("click", () => {
+      let cart = JSON.parse(localStorage.getItem("cart")) || [];
   
+      if (cart.length === 0) {
+        alert("Giỏ hàng của bạn đang trống.");
+      } else {
+        // Redirect to the order.html page
+        window.location.href = "pay.html";
+      }
+    });
     // Call the displayCartItems function when the page is loaded
     displayCartItems();
   });
