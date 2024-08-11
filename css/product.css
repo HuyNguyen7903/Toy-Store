@@ -128,11 +128,15 @@ body {
 .product-name h2 {
   font-size: 20px;
   margin-bottom: 20px;
+  flex: 1;
+  word-wrap: break-word;
+  text-transform: uppercase;
 }
 
 .brand-text a {
   color: #cf102d;
   text-decoration: none;
+  text-transform: uppercase;
 }
 .price-section {
   display: flex;
@@ -292,7 +296,7 @@ input[type="number"] {
 .product-description-section h3 {
   font-size: 20px;
   margin-bottom: 15px;
-  color: #cf102d;
+  font-weight: bolder;
 }
 
 .product-description-section p {

@@ -95,7 +95,7 @@ document.addEventListener("DOMContentLoaded", () => {
     e.preventDefault();
     const productElement = e.target.closest(".product-info-section");
     const product = {
-      id: productElement.querySelector("h2").innerText, // Sử dụng tên sản phẩm làm ID duy nhất
+      id: document.getElementById("main-image").alt, // Sử dụng thuộc tính alt của ảnh chính làm ID
       name: productElement.querySelector("h2").innerText,
       price: parseFloat(
         productElement
@@ -116,7 +116,7 @@ document.addEventListener("DOMContentLoaded", () => {
     e.preventDefault();
     const productElement = e.target.closest(".product-info-section");
     const product = {
-      id: productElement.querySelector("h2").innerText, // Sử dụng tên sản phẩm làm ID duy nhất
+      id: document.getElementById("main-image").alt, // Sử dụng thuộc tính alt của ảnh chính làm ID
       name: productElement.querySelector("h2").innerText,
       price: parseFloat(
         productElement

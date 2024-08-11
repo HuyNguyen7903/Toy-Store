@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+      integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="stylesheet" href="../css/product.css" />
+    <script src="../JS/toy.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+      $(document).ready(function () {
+        $("#header").load("header.html");
+        $("#footer").load("footer.html");
+      });
+    </script>
+
+    <title>Produt</title>
+  </head>
+  <body>
+    <div id="header"></div>
+    <div class="product-container">
+      <div class="product-image-section">
+        <img id="main-image" src="../images/paw patroy.png" alt="Paw Patroy" />
+        <div class="thumbnail-section">
+          <button class="prev-btn">
+            <i class="fa-solid fa-circle-chevron-left"></i>
+          </button>
+          <div class="thumbnails">
+            <img src="../images/paw patroy.png" onclick="changeImage(this)" />
+            <img src="../images/paw patroy2.png" onclick="changeImage(this)" />
+            <img src="../images/paw patroy3.png" onclick="changeImage(this)" />
+            <img src="../images/paw patroy4.png" onclick="changeImage(this)" />
+            <img src="../images/paw patroy5.png" onclick="changeImage(this)" />
+          </div>
+          <button class="next-btn">
+            <i class="fa-solid fa-circle-chevron-right"></i>
+          </button>
+        </div>
+      </div>
+      <!-- thông tin -->
+      <div class="product-info-section">
+        <div class="product-name">
+          <h2>
+            Đồ chơi xe cảnh sát biến hình Paw Patrol The Movie - Chase PAW
+            PATROL 6060759
+          </h2>
+          <span class="heart-icon">&#x2764;</span>
+        </div>
+        <p class="brand-text">Thương hiệu: <a href="#">PAW PATROL</a></p>
+        <div class="price-section">
+          <span class="original-price">1.299.000 Đ</span>
+          <span class="discounted-price">1.039.000 Đ</span>
+          <span class="discount">-20%</span>
+        </div>
+        <button class="exclusive-offer">
+          <h3>Giá độc quyền khi mua trên website</h3>
+        </button>
+        <ul class="shipping-info">
+          <li><i class="fa-solid fa-check"></i>Hàng Chính Hãng</li>
+          <li>
+            <i class="fa-solid fa-check"></i>Miễn Phí Giao Hàng Toàn Quốc Đơn Từ
+            500k
+          </li>
+          <li><i class="fa-solid fa-check"></i>Giao Hàng Hỏa Tốc 4 Tiếng</li>
+          <p>Số lượng</p>
+        </ul>
+
+        <div class="quantity-section">
+          <label for="quantity"></label>
+          <div class="quantity-input">
+            <button class="decrease-btn">-</button>
+            <input type="number" id="quantity" value="1" min="1" />
+            <button class="increase-btn">+</button>
+          </div>
+          <button class="add-to-cart">Thêm Vào Giỏ Hàng</button>
+        </div>
+
+        <div class="product-details">
+          <h2>Thông tin sản phẩm</h2>
+          <ul>
+            <li>Chủ đề: PAWPATROL PLAYSET</li>
+            <li>Xuất xứ: TRUNG QUỐC</li>
+            <li>Mã: 6060759</li>
+            <li>Tuổi: 1 tuổi trở lên</li>
+            <li>Thương hiệu: PAW PATROL</li>
+            <li>Thương hiệu Xuất Xứ: CANADA</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="product-description-section">
+      <h2>Mô tả sản phẩm</h2>
+      <h3>
+        Đồ Chơi PAW PATROL Đồ Chơi Xe Cảnh Sát Biến Hình The Movie - Chase
+        6060759
+      </h3>
+      <p>
+        Lấy cảm hứng từ thương hiệu nổi tiếng của Canada và bộ phim hoạt hình
+        đình đám "Đội Chó Cứu Hộ Paw Patrol", sản phẩm này mang thế giới phiêu
+        lưu từ màn ảnh nhỏ đến hiện thực qua bộ phim "Paw Patrol The Movie".
+      </p>
+      <p>
+        Bộ đồ chơi độc đáo này bao gồm hai xe trong một. Chiếc xe cảnh sát tuần
+        tra có khả năng biến hình đầy ấn tượng, với lớp vỏ giáp kiên cố che giấu
+        một chiếc mô tô siêu tốc bên dưới. Chiếc mô tô này giúp chú chó cứu hộ
+        dũng cảm Chase dễ dàng vượt qua những địa hình khó khăn nhất. Đèn và còi
+        hụ chân thực, kết hợp với hệ thống bắn đạn siêu đẳng, giúp Chase luôn
+        hoàn thành xuất sắc mọi nhiệm vụ cứu hộ.
+      </p>
+    </div>
+    <div id="footer"></div>
+    <script src="../JS/product.js"></script>
+  </body>
+</html>
