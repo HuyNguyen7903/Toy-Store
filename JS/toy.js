@@ -264,17 +264,7 @@ document.addEventListener("DOMContentLoaded", () => {
       addToWishlist(product);
     });
   });
-  /* ham ấn thanh toán ở trang cart.html*/
-  document.getElementById("checkout-button").addEventListener("click", () => {
-    let cart = JSON.parse(localStorage.getItem("cart")) || [];
-
-    if (cart.length === 0) {
-      alert("Giỏ hàng của bạn đang trống.");
-    } else {
-      // Redirect to the pay.html page
-      window.location.href = "pay.html";
-    }
-  });
+ 
   // Call updateCartCount and updateWishlistCount when the page is loaded
   updateCartCount();
   updateWishlistCount();
