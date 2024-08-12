@@ -160,32 +160,39 @@ document.addEventListener("DOMContentLoaded", () => {
   // Function to update cart count based on items in localStorage
   function updateCartCount() {
     let cart = JSON.parse(localStorage.getItem("cart")) || [];
-    const totalItems = cart.reduce(
-      (total, product) => total + product.quantity,
-      0
-    );
-    const cartCountElement = document.getElementById("cart-count");
+    const totalItems = cart.reduce((total, product) => total + product.quantity, 0);
+    const cartCountElement = document.getElementById('cart-count');
+    
     if (totalItems > 0) {
       cartCountElement.classList.add("visible");
       cartCountElement.querySelector("label").innerText = totalItems;
+      // Lưu số lượng sản phẩm vào localStorage
+      localStorage.setItem("cartCount", totalItems);
     } else {
       cartCountElement.classList.remove("visible");
+      // Nếu giỏ hàng trống, lưu giá trị 0 vào localStorage
+      localStorage.setItem("cartCount", 0);
     }
   }
 
-  // Function to update wishlist count based on items in localStorage
-  function updateWishlistCount() {
+function updateWishlistCount() {
     let wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
     const wishlistCountElement = document.getElementById("wishlist-count");
+    
     if (wishlist.length > 0) {
       wishlistCountElement.classList.add("visible");
       wishlistCountElement.querySelector("label").innerText = wishlist.length;
+      // Save the wishlist length to localStorage
+      localStorage.setItem("wishlistCount", wishlist.length);
     } else {
       wishlistCountElement.classList.remove("visible");
+      // Save the count as 0 to localStorage when wishlist is empty
+      localStorage.setItem("wishlistCount", 0);
     }
-  }
+}
 
-  // Function to add product to cart and update cart count
+
+  // Function to add a product to the cart
   function addToCart(product) {
     let cart = JSON.parse(localStorage.getItem("cart")) || [];
     const existingProductIndex = cart.findIndex(
@@ -204,7 +211,7 @@ document.addEventListener("DOMContentLoaded", () => {
     updateCartCount();
   }
 
-  // Function to add product to wishlist
+  // Function to add a product to the wishlist
   function addToWishlist(product) {
     let wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
     const existingProductIndex = wishlist.findIndex(
@@ -215,7 +222,7 @@ document.addEventListener("DOMContentLoaded", () => {
       wishlist.push(product);
       localStorage.setItem("wishlist", JSON.stringify(wishlist));
       alert("Sản phẩm đã được thêm vào danh sách yêu thích!");
-      updateWishlistCount(); // Update the wishlist count
+      updateWishlistCount();
     } else {
       alert("Sản phẩm đã có trong danh sách yêu thích!");
     }
@@ -264,7 +271,7 @@ document.addEventListener("DOMContentLoaded", () => {
       addToWishlist(product);
     });
   });
- 
+
   // Call updateCartCount and updateWishlistCount when the page is loaded
   updateCartCount();
   updateWishlistCount();
@@ -284,4 +291,5 @@ window.onload = function () {
       loginLink.href = "./user.html";
     }
   }
+  
 };
