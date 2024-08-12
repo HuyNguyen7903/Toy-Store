@@ -243,6 +243,27 @@ h2 {
   padding: 12px;
   border-radius: 5px;
 }
+.out-of-stock {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  margin-top: 10px;
+}
+.out-of-stock a {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+}
+.out-of-stock a:first-child {
+  width: 85%;
+  background-color: rgb(145, 144, 144);
+  color: #000000;
+  padding: 12px;
+  border-radius: 5px;
+  cursor: default;
+}
 .heart-icon {
   color: #d33;
   font-size: 32px;
@@ -306,6 +327,9 @@ h2 {
   }
 
   .add-to-cart a:first-child {
+    font-size: 14px;
+  }
+  .out-of-stock a:first-child {
     font-size: 14px;
   }
 

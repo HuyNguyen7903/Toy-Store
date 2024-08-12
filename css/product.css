@@ -256,6 +256,17 @@ body {
   margin-left: auto;
   width: 60%;
 }
+.out-of-stock {
+  background-color: rgb(145, 144, 144);
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-left: auto;
+  width: 60%;
+  cursor: not-allowed;
+}
 
 input[type="number"]::-webkit-outer-spin-button,
 input[type="number"]::-webkit-inner-spin-button {
