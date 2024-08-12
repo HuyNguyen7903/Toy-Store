@@ -132,7 +132,7 @@ header {
   transform: scale(1.2);
 }
 #cart-count,
-#wishlist-count label {
+#wishlist-count {
   display: none;
   background-color: red;
   color: white;
@@ -141,10 +141,11 @@ header {
   margin-left: 5px;
 }
 
-#cart-count.visible label,
-#wishlist-count.visible label {
+#cart-count.visible,
+#wishlist-count.visible {
   display: inline-block;
 }
+
 .cart-main {
   margin: 10px;
   display: flex;
@@ -158,15 +159,6 @@ header {
 
 .cart-main .cart:hover {
   transform: scale(1.3);
-}
-
-#cart-count label {
-  display: none;
-  background-color: red;
-  color: white;
-  border-radius: 50%;
-  padding: 2px 6px;
-  margin-left: 5px;
 }
 
 #cart-count.visible label {
