@@ -1,6 +1,8 @@
 document.addEventListener('DOMContentLoaded', () => {
     const cartItemsContainer = document.getElementById('cart-items');
     const totalElement = document.getElementById('total');
+    const popup = document.getElementById("popup");
+    const closePopupBtn = document.getElementById("close-popup");
 
     function loadCart() {
         const cart = JSON.parse(localStorage.getItem('cart')) || [];
@@ -76,15 +78,29 @@ document.addEventListener('DOMContentLoaded', () => {
 
     loadCart();
 
-    /* ham ấn thanh toán ở trang cart.html*/
+    function showPopup() { 
+        popup.style.display = "block"; 
+    } 
+
+    function hidePopup() { 
+        popup.style.display = "none"; 
+    } 
+
     document.getElementById("checkout-button").addEventListener("click", () => {
         let cart = JSON.parse(localStorage.getItem("cart")) || [];
-    
-        if (cart.length === 0) {
-          alert("Giỏ hàng của bạn đang trống.");
+        const loggedInUser = localStorage.getItem("loggedInUser");
+        if (loggedInUser === null) {
+            showPopup();
         } else {
-          // Redirect to the order.html page
-          window.location.href = "order.html";
+            hidePopup();
+            if (cart.length === 0) {
+                alert("Giỏ hàng của bạn đang trống.");
+            } else {
+                // Redirect to the order.html page
+                window.location.href = "order.html";
+            }
         }
-      });
+    });
+    
+    closePopupBtn.addEventListener("click", hidePopup);
 });

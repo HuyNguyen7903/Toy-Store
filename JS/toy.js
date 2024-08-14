@@ -67,8 +67,8 @@ function displayLoggedInUserInfo() {
               console.error("Gender element not found.");
           }
       } else {
-          alert("Vui lòng đăng nhập tài khoản");
-          window.location.href = "login.html"; 
+          // alert("Vui lòng đăng nhập tài khoản");
+          // window.location.href = "login.html"; 
       }
   });
 }

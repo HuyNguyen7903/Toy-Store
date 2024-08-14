@@ -63,6 +63,7 @@ label {
 
 .checkbox-group label {
   display: inline;
+  text-align: left;
 }
 .sdt {
   font-style: italic;
@@ -104,6 +105,7 @@ p a {
   border: 1px solid #ccc;
   border-radius: 20px;
   box-sizing: border-box;
+  font-size: 16px;
 }
 
 .password-container button {
@@ -122,6 +124,7 @@ p a:hover {
 }
 form label a {
   text-decoration: none;
+  font-size: 16px;
 }
 form p {
   text-align: center;
@@ -129,6 +132,7 @@ form p {
 }
 form p a {
   color: rgb(12, 136, 252);
+  font-size:16px;
 }
 .required-fields {
   color: red;

@@ -1,17 +1,17 @@
-// checkLoginStatus.js
-
 document.addEventListener('DOMContentLoaded', () => {
     const loggedInUser = localStorage.getItem('loggedInUser');
+    const popup = document.getElementById("popup");
+    const closePopupBtn = document.getElementById("close-popup");
+    const registerContent = document.getElementById("register-content");
 
-    // Kiểm tra xem có người dùng nào đang đăng nhập không
+    // Check if the user is logged in
     if (!loggedInUser) {
-        // Nếu không có, chuyển hướng đến trang login.html
         if (!window.location.href.includes('login.html')) {
             window.location.href = 'login.html';
         }
     }
 
-    // Gắn sự kiện submit cho form đăng nhập
+    // Handle login form submission
     const loginForm = document.getElementById('loginForm');
     if (loginForm) {
         loginForm.addEventListener('submit', (event) => {
@@ -19,5 +19,20 @@ document.addEventListener('DOMContentLoaded', () => {
             loginCheck();
         });
     }
-});
 
+    // Function to show the popup and load register.html
+    function showPopup() { 
+            popup.style.display = "block";
+    }
+
+    // Function to hide the popup
+    function hidePopup() { 
+        popup.style.display = "none"; 
+    } 
+
+    // Show popup when "Đăng ký tài khoản" link is clicked
+    document.querySelector(".register-acc").addEventListener("click", showPopup);
+
+    // Hide popup when the close button is clicked
+    closePopupBtn.addEventListener("click", hidePopup);
+});
