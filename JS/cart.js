@@ -2,6 +2,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const cartItemsContainer = document.getElementById('cart-items');
     const totalElement = document.getElementById('total');
     const popup = document.getElementById("popup");
+    const loginContent = document.getElementById("login-content");
     const closePopupBtn = document.getElementById("close-popup");
 
     function loadCart() {
@@ -78,29 +79,48 @@ document.addEventListener('DOMContentLoaded', () => {
 
     loadCart();
 
-    function showPopup() { 
-        popup.style.display = "block"; 
-    } 
+    function showPopup(contentUrl) {
+        loginContent.innerHTML = '';
+        popup.style.display = 'block';
+        fetch(contentUrl)
+            .then(response => response.text())
+            .then(html => {
+                loginContent.innerHTML = html;
+            })
+            .catch(err => console.error('Error loading content:', err));
+    }
 
-    function hidePopup() { 
-        popup.style.display = "none"; 
-    } 
+    function hidePopup() {
+        popup.style.display = 'none';
+    }
+    function handleRegisterClick() {
+        showPopup('register.html');
+    }
+
+    function handleLoginClick() {
+        showPopup('login.html');
+    }
 
     document.getElementById("checkout-button").addEventListener("click", () => {
-        let cart = JSON.parse(localStorage.getItem("cart")) || [];
         const loggedInUser = localStorage.getItem("loggedInUser");
         if (loggedInUser === null) {
-            showPopup();
+            showPopup('login.html');
+            loginContent.addEventListener('click', (e) => {
+                if (e.target.classList.contains('register-acc')) {
+                    handleRegisterClick();
+                }
+            });
         } else {
             hidePopup();
+            const cart = JSON.parse(localStorage.getItem('cart')) || [];
             if (cart.length === 0) {
                 alert("Giỏ hàng của bạn đang trống.");
             } else {
-                // Redirect to the order.html page
                 window.location.href = "order.html";
             }
         }
     });
-    
     closePopupBtn.addEventListener("click", hidePopup);
+
+    loadCart();
 });
