@@ -5,8 +5,13 @@ function loginCheck() {
 
   const users = [
     { email: "admin@example.com", password: "admin123" },
-    { email: "tinh@gmail.com", password: "tinh123",name:"Tinh",gender:"Nam" },
-    { email: "huy@gmail.com", password: "huy123",name:"Huy",gender:"Nam" },
+    {
+      email: "tinh@gmail.com",
+      password: "tinh123",
+      name: "Tinh",
+      gender: "Nam",
+    },
+    { email: "huy@gmail.com", password: "huy123", name: "Huy", gender: "Nam" },
   ];
 
   const user = users.find(
@@ -16,9 +21,9 @@ function loginCheck() {
   if (user) {
     // Lưu thông tin người dùng vào localStorage
     localStorage.setItem("loggedInUser", user.email);
-    localStorage.setItem("loggedInUserName",user.name);
-    localStorage.setItem("loggedInUserPhone",user.phone);
-    localStorage.setItem("loggedInUserGender",user.gender);
+    localStorage.setItem("loggedInUserName", user.name);
+    localStorage.setItem("loggedInUserPhone", user.phone);
+    localStorage.setItem("loggedInUserGender", user.gender);
     // Chuyển hướng tới trang user.html
     window.location.href = "user.html";
   } else {
@@ -29,51 +34,49 @@ function loginCheck() {
 /* hien thi thong tin khach hang*/
 function displayLoggedInUserInfo() {
   document.addEventListener("DOMContentLoaded", function () {
-      const loggedInUserEmail = localStorage.getItem("loggedInUser");
-      const loggedInUserName = localStorage.getItem("loggedInUserName"); 
-      const loggedInUserPhone = localStorage.getItem("loggedInUserPhone"); 
-      const loggedInUserGender = localStorage.getItem("loggedInUserGender");
-      
-      if (loggedInUserEmail) {
-          /*check thong tin email*/
-          const emailElement = document.querySelector(".email-user");
-          if (emailElement) {
-              emailElement.textContent = `Email: ${loggedInUserEmail}`;
-          } else {
-              console.error("Email element not found.");
-          }
+    const loggedInUserEmail = localStorage.getItem("loggedInUser");
+    const loggedInUserName = localStorage.getItem("loggedInUserName");
+    const loggedInUserPhone = localStorage.getItem("loggedInUserPhone");
+    const loggedInUserGender = localStorage.getItem("loggedInUserGender");
 
-          /*check thong tin ten*/
-          const nameElement = document.querySelector(".user-name");
-          if (nameElement) {
-              nameElement.textContent = `Họ và tên: ${loggedInUserName}`;
-          } else {
-              console.error("Name element not found.");
-          }
-
-          /*check thong tin dien thoai*/
-          const phoneElement = document.querySelector(".user-phone");
-          if (phoneElement) {
-              phoneElement.textContent = `Điện thoại: ${loggedInUserPhone}`;
-          } else {
-              console.error("Phone element not found.");
-          }
-
-          /*check thong tin gioi tinh*/
-          const genderElement = document.querySelector(".gender");
-          if (genderElement) {
-              genderElement.textContent = `Giới tính: ${loggedInUserGender}`;
-          } else {
-              console.error("Gender element not found.");
-          }
+    if (loggedInUserEmail) {
+      /*check thong tin email*/
+      const emailElement = document.querySelector(".email-user");
+      if (emailElement) {
+        emailElement.textContent = `Email: ${loggedInUserEmail}`;
       } else {
-          // alert("Vui lòng đăng nhập tài khoản");
-          // window.location.href = "login.html"; 
+        console.error("Email element not found.");
       }
+
+      /*check thong tin ten*/
+      const nameElement = document.querySelector(".user-name");
+      if (nameElement) {
+        nameElement.textContent = `Họ và tên: ${loggedInUserName}`;
+      } else {
+        console.error("Name element not found.");
+      }
+
+      /*check thong tin dien thoai*/
+      const phoneElement = document.querySelector(".user-phone");
+      if (phoneElement) {
+        phoneElement.textContent = `Điện thoại: ${loggedInUserPhone}`;
+      } else {
+        console.error("Phone element not found.");
+      }
+
+      /*check thong tin gioi tinh*/
+      const genderElement = document.querySelector(".gender");
+      if (genderElement) {
+        genderElement.textContent = `Giới tính: ${loggedInUserGender}`;
+      } else {
+        console.error("Gender element not found.");
+      }
+    } else {
+      // alert("Vui lòng đăng nhập tài khoản");
+      // window.location.href = "login.html";
+    }
   });
 }
-
-
 
 /* dang xuat logout.js*/
 
@@ -160,9 +163,12 @@ document.addEventListener("DOMContentLoaded", () => {
   // Function to update cart count based on items in localStorage
   function updateCartCount() {
     let cart = JSON.parse(localStorage.getItem("cart")) || [];
-    const totalItems = cart.reduce((total, product) => total + product.quantity, 0);
-    const cartCountElement = document.getElementById('cart-count');
-    
+    const totalItems = cart.reduce(
+      (total, product) => total + product.quantity,
+      0
+    );
+    const cartCountElement = document.getElementById("cart-count");
+
     if (totalItems > 0) {
       cartCountElement.classList.add("visible");
       cartCountElement.querySelector("label").innerText = totalItems;
@@ -175,10 +181,10 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
-function updateWishlistCount() {
+  function updateWishlistCount() {
     let wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
     const wishlistCountElement = document.getElementById("wishlist-count");
-    
+
     if (wishlist.length > 0) {
       wishlistCountElement.classList.add("visible");
       wishlistCountElement.querySelector("label").innerText = wishlist.length;
@@ -189,8 +195,7 @@ function updateWishlistCount() {
       // Save the count as 0 to localStorage when wishlist is empty
       localStorage.setItem("wishlistCount", 0);
     }
-}
-
+  }
 
   // Function to add a product to the cart
   function addToCart(product) {
@@ -277,7 +282,6 @@ function updateWishlistCount() {
   updateWishlistCount();
 });
 
-
 /* thay doi chu dang nhap thanh ten user */
 window.onload = function () {
   const loggedInUser = localStorage.getItem("loggedInUser");
@@ -291,5 +295,4 @@ window.onload = function () {
       loginLink.href = "./user.html";
     }
   }
-  
 };

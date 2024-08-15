@@ -19,79 +19,73 @@
   </head>
   <body>
     <!-- header -->
-    <div id="header"></div>
+    <div
+      style="position: fixed; top: 0; left: 0; width: 100%; z-index: 1"
+      id="header"
+    ></div>
     <!-- phần sale -->
-    <div class="sale">
-      <a href=""><img src="../images/sale.jpeg" /></a>
-    </div>
-
-    <!-- phần Danh mục -->
-    <div class="popular-content">
-      <h1>Danh Mục Nổi Bật</h1>
-      <div class="main-popular">
-        <a href="#"><img src="../images/popular car.png" /></a>
-        <p>Xe Mô Hình</p>
-      </div>
-      <div class="sub-popular">
-        <div class="sub">
-          <div class="sub-img-wrapper">
-            <a href="#"><img src="../images/popular lego.png" /></a>
-          </div>
-          <p>Đồ Chơi Lắp Ghép</p>
-        </div>
-        <div class="sub">
-          <div class="sub-img-wrapper">
-            <a href="#"><img src="../images/popular color.png" /></a>
-          </div>
-          <p>Bút Màu</p>
-        </div>
-      </div>
-    </div>
-
-    <!-- Thương hiệu nổi bật -->
-    <div class="brand-container">
-      <h2>Thương Hiệu Nổi Bật</h2>
-
-      <div class="brands">
-        <div class="brand">
-          <a href="#"><img src="../images/duka.png" alt="Clever Hippo" /></a>
-        </div>
-        <div class="brand">
-          <a href="#"><img src="../images/popmart.png" alt="Peek A Boo" /></a>
-        </div>
-        <div class="brand">
-          <a href="#"><img src="../images/munchkin.png" alt="Vecto" /></a>
-        </div>
-        <div class="brand">
-          <a href="#"><img src="../images/hotwheels.png" alt="Barbie" /></a>
-        </div>
-        <div class="brand">
-          <a href="#"><img src="../images/lego.png" alt="Hot Wheels" /></a>
-        </div>
-        <div class="brand">
-          <a href="#"><img src="../images/monopoly.png" alt="Beyblade" /></a>
-        </div>
-        <div class="brand">
-          <a href="#"><img src="../images/bakugan.png" alt="Rastar" /></a>
-        </div>
-        <div class="brand">
-          <a href="#"><img src="../images/polesie.png" alt="CoolKids" /></a>
-        </div>
-        <div class="brand">
-          <a href="#"><img src="../images/beyblade.png" alt="CoolKids" /></a>
-        </div>
-        <div class="brand">
-          <a href="#"><img src="../images/Nerf_logo.png" alt="CoolKids" /></a>
-        </div>
-        <div class="brand">
-          <a href="#"><img src="../images/play-doh.png" alt="CoolKids" /></a>
-        </div>
-        <div class="brand">
-          <a href="#"><img src="../images/haspro.png" alt="CoolKids" /></a>
+    <div class="sale-container">
+      <button class="prev-btn">
+        <i class="fa-solid fa-circle-chevron-left"></i>
+      </button>
+      <img id="main-image" />
+      <button class="next-btn">
+        <i class="fa-solid fa-circle-chevron-right"></i>
+      </button>
+      <div class="thumbnail-section">
+        <div class="thumbnails">
+          <img
+            src="../images/sale.jpeg"
+            alt="Thumbnail 1"
+            onclick="changeImage(this)"
+          />
+          <img
+            src="../images/sale2.jpg"
+            alt="Thumbnail 2"
+            onclick="changeImage(this)"
+          />
+          <img
+            src="../images/sale3.jpg"
+            alt="Thumbnail 3"
+            onclick="changeImage(this)"
+          />
+          <img
+            src="../images/sale4.jpg"
+            alt="Thumbnail 4"
+            onclick="changeImage(this)"
+          />
         </div>
       </div>
     </div>
+    <script>
+      let currentImageIndex = 0;
+      const thumbnails = document.querySelectorAll(".thumbnails img");
+      const mainImage = document.getElementById("main-image");
 
+      function updateMainImage() {
+        mainImage.src = thumbnails[currentImageIndex].src;
+        thumbnails.forEach((thumbnail) => thumbnail.classList.remove("active"));
+        thumbnails[currentImageIndex].classList.add("active");
+      }
+
+      function changeImage(element) {
+        currentImageIndex = Array.from(thumbnails).indexOf(element);
+        updateMainImage();
+      }
+      document.querySelector(".prev-btn").addEventListener("click", () => {
+        currentImageIndex =
+          currentImageIndex > 0 ? currentImageIndex - 1 : thumbnails.length - 1;
+        updateMainImage();
+      });
+      document.querySelector(".next-btn").addEventListener("click", () => {
+        currentImageIndex =
+          currentImageIndex < thumbnails.length - 1 ? currentImageIndex + 1 : 0;
+        updateMainImage();
+      });
+      document.addEventListener("DOMContentLoaded", () => {
+        updateMainImage();
+      });
+    </script>
     <!-- Sản phẩm -->
     <div class="container-product">
       <h2>Top Những Sản Phẩm Bán Chạy</h2>
@@ -180,6 +174,72 @@
               <span class="heart-icon">&#x2764;</span>
             </div>
           </div>
+        </div>
+      </div>
+    </div>
+    <!-- phần Danh mục -->
+    <div class="popular-content">
+      <h1>Danh Mục Nổi Bật</h1>
+      <div class="main-popular">
+        <a href="#"><img src="../images/popular car.png" /></a>
+        <p>Xe Mô Hình</p>
+      </div>
+      <div class="sub-popular">
+        <div class="sub">
+          <div class="sub-img-wrapper">
+            <a href="#"><img src="../images/popular lego.png" /></a>
+          </div>
+          <p>Đồ Chơi Lắp Ghép</p>
+        </div>
+        <div class="sub">
+          <div class="sub-img-wrapper">
+            <a href="#"><img src="../images/popular color.png" /></a>
+          </div>
+          <p>Bút Màu</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Thương hiệu nổi bật -->
+    <div class="brand-container">
+      <h2>Thương Hiệu Nổi Bật</h2>
+
+      <div class="brands">
+        <div class="brand">
+          <a href="#"><img src="../images/duka.png" alt="Clever Hippo" /></a>
+        </div>
+        <div class="brand">
+          <a href="#"><img src="../images/popmart.png" alt="Peek A Boo" /></a>
+        </div>
+        <div class="brand">
+          <a href="#"><img src="../images/munchkin.png" alt="Vecto" /></a>
+        </div>
+        <div class="brand">
+          <a href="#"><img src="../images/hotwheels.png" alt="Barbie" /></a>
+        </div>
+        <div class="brand">
+          <a href="#"><img src="../images/lego.png" alt="Hot Wheels" /></a>
+        </div>
+        <div class="brand">
+          <a href="#"><img src="../images/monopoly.png" alt="Beyblade" /></a>
+        </div>
+        <div class="brand">
+          <a href="#"><img src="../images/bakugan.png" alt="Rastar" /></a>
+        </div>
+        <div class="brand">
+          <a href="#"><img src="../images/polesie.png" alt="CoolKids" /></a>
+        </div>
+        <div class="brand">
+          <a href="#"><img src="../images/beyblade.png" alt="CoolKids" /></a>
+        </div>
+        <div class="brand">
+          <a href="#"><img src="../images/Nerf_logo.png" alt="CoolKids" /></a>
+        </div>
+        <div class="brand">
+          <a href="#"><img src="../images/play-doh.png" alt="CoolKids" /></a>
+        </div>
+        <div class="brand">
+          <a href="#"><img src="../images/haspro.png" alt="CoolKids" /></a>
         </div>
       </div>
     </div>
