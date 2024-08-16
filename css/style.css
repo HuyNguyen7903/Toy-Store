@@ -6,26 +6,33 @@ body {
 
 /* sale */
 .sale-container {
-  margin-top: 200px;
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 20px;
-  border-right: 1px solid #e0e0e0;
   text-align: center;
+  margin: 0 auto;
+  margin-top: 200px;
+}
+
+.image-and-dots {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 90%;
 }
 
 #main-image {
-  width: 80%;
+  width: 85%;
   height: 550px;
-  max-width: 1420px;
-  object-fit: fill;
-  border: 1px solid #e0e0e0;
   border-radius: 10px;
 }
+
 #main-image:hover {
   transform: scale(1.01);
 }
+
 .thumbnail-section {
   display: none;
 }
@@ -36,10 +43,12 @@ body {
   border: none;
   cursor: pointer;
 }
+
 .prev-btn i,
 .next-btn i {
   font-size: 40px;
 }
+
 .prev-btn {
   margin-right: 10px;
 }
@@ -59,6 +68,43 @@ body {
 .fa-circle-chevron-right:hover {
   transform: scale(1.1);
 }
+
+.dots {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+.dot {
+  width: 10px;
+  height: 10px;
+  background-color: #ccc;
+  border-radius: 50%;
+  margin: 0 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.dot.active {
+  background-color: #cf102d;
+}
+@media (max-width: 1200px) {
+  .sale-container {
+    align-items: center;
+    padding: 10px;
+  }
+
+  #main-image {
+    width: 100%;
+    height: 250px;
+  }
+
+  .prev-btn i,
+  .next-btn i {
+    font-size: 30px;
+  }
+}
+
 /* Danh mục nổi bật */
 .popular-content {
   text-align: center;

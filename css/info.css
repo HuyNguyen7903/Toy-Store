@@ -10,30 +10,30 @@ body {
   margin-bottom: 40px;
   text-align: center;
 }
+.info-nav {
+  position: sticky;
+  top: -0;
+}
 .info-nav ul {
   display: flex;
-  flex-direction: column;
   justify-content: center;
   list-style-type: none;
-  border-radius: 8px;
   padding: 0;
-  background-color: #46b7da;
-
-  position: fixed;
-  margin-top: 0.1px;
-  left: 90px;
-  top: 338px;
+  background-color: #6ef08a;
+  margin-top: 0px;
+  font-size: larger;
 }
 
 .info-nav a {
   display: block;
-  color: rgb(255, 255, 255);
+  color: #1f01a3;
   padding: 14px 20px;
   text-decoration: none;
+  font-weight: bold;
 }
 
 .info-nav a:hover {
-  background-color: #111;
+  background-color: #ffffff;
 }
 h2 {
   font-size: 2rem;
@@ -59,13 +59,99 @@ section {
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   margin-bottom: 20px;
 }
+
 #sanpham,
 #chucnang,
 #lienhe {
   font-size: 1.5rem;
   line-height: 2;
 }
-.info-map iframe{
+/* Container cho phần thông tin cửa hàng */
+.store-info-container {
+  display: flex;
+  flex-direction: column;
+  gap: 30px; /* Khoảng cách giữa các mục */
+  padding: 20px; /* Padding cho toàn bộ container */
+}
+
+/* Các mục thông tin cửa hàng */
+.store-info-item {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* Tiêu đề của mỗi mục */
+.store-info-item h3 {
+  margin: 0;
+  font-size: 1.5em; /* Kích thước chữ tiêu đề */
+  color: #333; /* Màu sắc tiêu đề */
+  text-align: center;
+}
+
+/* Container cho từng thông tin cửa hàng */
+.store-info {
+  display: flex;
+  align-items: center;
+  gap: 10px; /* Khoảng cách giữa hình ảnh và danh sách */
+}
+
+/* Hình ảnh của thông tin cửa hàng */
+.store-info img {
+  width: 100%;
+  max-width: 400px; /* Kích thước tối đa của hình ảnh */
+  height: auto; /* Giữ tỷ lệ khung hình của hình ảnh */
+  border-radius: 8px; /* Bo tròn góc hình ảnh */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Thêm bóng cho hình ảnh */
+}
+
+/* Danh sách các điểm trong phần thông tin cửa hàng */
+.store-info ul {
+  padding: 0;
+  margin: 0;
+  list-style-type: none; /* Xóa dấu chấm của danh sách */
+  font-size: 1em; /* Kích thước chữ của danh sách */
+}
+
+/* Các mục trong danh sách */
+.store-info ul li {
+  margin-bottom: 10px; /* Khoảng cách giữa các mục trong danh sách */
+}
+
+/* Các thông tin căn lề trái */
+.info1,
+.info3 {
+  justify-content: flex-start; /* Căn lề trái */
+}
+
+/* Các thông tin căn lề phải */
+.info2 {
+  justify-content: flex-start;
+  direction: rtl; /* Đẩy phần tử này sang lề phải */
+}
+
+/* Các thông tin trong cột */
+.info4,
+.info5 {
+  flex-direction: column;
+  margin: 30px 50px;
+}
+
+/* Điều chỉnh các container cột */
+.col {
+  display: flex;
+  justify-content: space-between; /* Căn chỉnh các phần tử theo chiều ngang */
+  gap: 20px; /* Khoảng cách giữa các cột */
+}
+
+/* Tiêu đề của các cột */
+.col-name {
+  margin: 20px 0;
+  font-size: 1.5em;
+  text-align: center;
+  color: #333;
+}
+.info-map iframe {
   width: 600px;
   height: 400px;
   border: 0;

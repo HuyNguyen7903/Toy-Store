@@ -28,7 +28,11 @@
       <button class="prev-btn">
         <i class="fa-solid fa-circle-chevron-left"></i>
       </button>
-      <img id="main-image" />
+      <div class="image-and-dots">
+        <img id="main-image" />
+        <div class="dots"></div>
+        <!-- Dấu chấm cho hình ảnh -->
+      </div>
       <button class="next-btn">
         <i class="fa-solid fa-circle-chevron-right"></i>
       </button>
@@ -61,28 +65,45 @@
       let currentImageIndex = 0;
       const thumbnails = document.querySelectorAll(".thumbnails img");
       const mainImage = document.getElementById("main-image");
+      const dotsContainer = document.querySelector(".dots");
+
+      function createDots() {
+        dotsContainer.innerHTML = "";
+        thumbnails.forEach((_, index) => {
+          const dot = document.createElement("span");
+          dot.classList.add("dot");
+          dot.addEventListener("click", () => {
+            currentImageIndex = index;
+            updateMainImage();
+          });
+          dotsContainer.appendChild(dot);
+        });
+      }
 
       function updateMainImage() {
         mainImage.src = thumbnails[currentImageIndex].src;
         thumbnails.forEach((thumbnail) => thumbnail.classList.remove("active"));
         thumbnails[currentImageIndex].classList.add("active");
+
+        const dots = document.querySelectorAll(".dot");
+        dots.forEach((dot) => dot.classList.remove("active"));
+        dots[currentImageIndex].classList.add("active");
       }
 
-      function changeImage(element) {
-        currentImageIndex = Array.from(thumbnails).indexOf(element);
-        updateMainImage();
-      }
       document.querySelector(".prev-btn").addEventListener("click", () => {
         currentImageIndex =
           currentImageIndex > 0 ? currentImageIndex - 1 : thumbnails.length - 1;
         updateMainImage();
       });
+
       document.querySelector(".next-btn").addEventListener("click", () => {
         currentImageIndex =
           currentImageIndex < thumbnails.length - 1 ? currentImageIndex + 1 : 0;
         updateMainImage();
       });
+
       document.addEventListener("DOMContentLoaded", () => {
+        createDots();
         updateMainImage();
       });
     </script>
