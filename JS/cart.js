@@ -114,13 +114,33 @@ document.addEventListener('DOMContentLoaded', () => {
             hidePopup();
             const cart = JSON.parse(localStorage.getItem('cart')) || [];
             if (cart.length === 0) {
-                alert("Giỏ hàng của bạn đang trống.");
+                showPopupMessage("cart")
             } else {
                 window.location.href = "order.html";
             }
         }
     });
+
+    function showPopupMessage() {
+        const popupContainer = document.getElementById("popup-cart-null");
+        const CartMessage = document.querySelector(".alert-cart-null")
+        // Hide all messages
+        CartMessage.style.display = "block";
+      
+        // Display the popup
+        popupContainer.style.display = "block";
+      
+        // Hide the popup after 3 seconds
+        setTimeout(() => {
+          popupContainer.style.display = "none";
+        }, 5000);
+      }
+      document.getElementById("close-popup-cart").addEventListener("click", () => {
+        document.getElementById("popup-cart-null").style.display = "none";
+      });
+
     closePopupBtn.addEventListener("click", hidePopup);
+
 
     loadCart();
 });

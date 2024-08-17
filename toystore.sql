@@ -68,10 +68,7 @@ CREATE TABLE cart (
     FOREIGN KEY (product_id) REFERENCES products(product_id)
 );
 
-CREATE TABLE admins (
-    admin_id INT AUTO_INCREMENT PRIMARY KEY,
-    user_id INT,
-    role VARCHAR(50) DEFAULT 'Admin',
-    FOREIGN KEY (user_id) REFERENCES users(user_id)
-);
+INSERT INTO `users` (`user_id`, `email`, `username`, `password`, `is_admin`, `status`) VALUES
+(1, 'admin@gmail.com', 'admin', 'admin', 1, 1);
+COMMIT;
 

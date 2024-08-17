@@ -212,7 +212,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     localStorage.setItem("cart", JSON.stringify(cart));
-    alert("Sản phẩm đã được thêm vào giỏ hàng!");
+    showPopupMessage("cart");
     updateCartCount();
   }
 
@@ -226,10 +226,10 @@ document.addEventListener("DOMContentLoaded", () => {
     if (existingProductIndex === -1) {
       wishlist.push(product);
       localStorage.setItem("wishlist", JSON.stringify(wishlist));
-      alert("Sản phẩm đã được thêm vào danh sách yêu thích!");
+      showPopupMessage("wishlist");
       updateWishlistCount();
     } else {
-      alert("Sản phẩm đã có trong danh sách yêu thích!");
+      showPopupMessage("wishlist-error");
     }
   }
 
@@ -282,6 +282,40 @@ document.addEventListener("DOMContentLoaded", () => {
   updateWishlistCount();
 });
 
+/* POPUP */
+// Function to show the popup with specific content
+function showPopupMessage(type) {
+  const popupContainer = document.getElementById("popup-container");
+  const addToCartMessage = document.querySelector("#add-to-cart");
+  const addToWishlistMessage = document.querySelector("#wishlist");
+  const errorAddToWishlistMessage = document.querySelector("#erorr-wishlist");
+
+  // Hide all messages
+  addToCartMessage.style.display = "none";
+  addToWishlistMessage.style.display = "none";
+  errorAddToWishlistMessage.style.display = "none";
+
+  // Show the relevant message based on the type
+  if (type === "cart") {
+    addToCartMessage.style.display = "block";
+  } else if (type === "wishlist") {
+    addToWishlistMessage.style.display = "block";
+  } else if (type === "wishlist-error") {
+    errorAddToWishlistMessage.style.display = "block";
+  }
+
+  // Display the popup
+  popupContainer.style.display = "block";
+
+  // Hide the popup after 3 seconds
+  setTimeout(() => {
+    popupContainer.style.display = "none";
+  }, 5000);
+}
+
+document.getElementById("close-popup").addEventListener("click", () => {
+  document.getElementById("popup-container").style.display = "none";
+});
 /* thay doi chu dang nhap thanh ten user */
 window.onload = function () {
   const loggedInUser = localStorage.getItem("loggedInUser");
@@ -290,8 +324,8 @@ window.onload = function () {
       '.navigation-top a[href="./user.html"]'
     );
     if (loginLink) {
-      const username = loggedInUser.split("@")[0]; // Lấy phần trước dấu @
-      loginLink.textContent = `Xin chào, ${username}`;
+      const loggedInUserName = localStorage.getItem("loggedInUserName");
+      loginLink.textContent = `Xin chào, ${loggedInUserName}`;
       loginLink.href = "./user.html";
     }
   }
