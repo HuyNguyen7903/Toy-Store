@@ -196,6 +196,8 @@
             </div>
           </div>
         </div>
+        <!-- thêm sp từ db -->
+        <?php include '../html/fetch_product.php'; ?>
       </div>
     </div>
     <!-- phần Danh mục -->
@@ -269,19 +271,19 @@
     <div id="footer"></div>
 
     <!--popup-->
-    <div id="popup-container" class="popup-container"> 
+    <div id="popup-container" class="popup-container">
       <div class="popup-content">
         <span id="close-popup" class="close-popup">&times;</span>
         <div id="add-to-cart">
-          <img src="../images/checked.png">
-          <h3 >Sản phẩm đã được thêm vào giỏ hàng</h3>
+          <img src="../images/checked.png" />
+          <h3>Sản phẩm đã được thêm vào giỏ hàng</h3>
         </div>
         <div id="wishlist">
-          <img src="../images/checked.png">
+          <img src="../images/checked.png" />
           <h3 id="wishlist">Sản phẩm đã được thêm vào danh sách yêu thích</h3>
         </div>
         <div id="erorr-wishlist">
-          <img src="../images/checked.png">
+          <img src="../images/checked.png" />
           <h3 id="erorr-wishlist">Sản phẩm đã có trong danh sách yêu thích</h3>
         </div>
       </div>
