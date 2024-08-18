@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th8 17, 2024 lúc 10:56 AM
+-- Thời gian đã tạo: Th8 18, 2024 lúc 07:56 AM
 -- Phiên bản máy phục vụ: 10.4.32-MariaDB
 -- Phiên bản PHP: 8.2.12
 
@@ -110,19 +110,26 @@ CREATE TABLE `toy_products` (
   `quantity` int(11) NOT NULL,
   `image_url` varchar(255) DEFAULT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
-  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `detailed_description` text DEFAULT NULL,
+  `theme` varchar(255) DEFAULT NULL,
+  `origin` varchar(255) DEFAULT NULL,
+  `code` varchar(50) DEFAULT NULL,
+  `age` varchar(50) DEFAULT NULL,
+  `brand_origin` varchar(255) DEFAULT NULL,
+  `sub_images` text DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Đang đổ dữ liệu cho bảng `toy_products`
 --
 
-INSERT INTO `toy_products` (`id`, `name`, `description`, `brand`, `original_price`, `discounted_price`, `discount_percentage`, `quantity`, `image_url`, `created_at`, `updated_at`) VALUES
-(13, 'HOT WHEELS HKX42', 'Đồ Chơi Siêu Xe Khủng Long T-Rex Hot Whells', 'Hot Wheels', 1359000.00, 1087000.00, 20, 1, '../images/HW-TRex.png', '2024-08-17 08:42:07', '2024-08-17 08:42:07'),
-(14, 'PAW PATROL 6060759', 'Đồ chơi xe cảnh sát biến hình Paw Patrol The Movie - Chase PAW PATROL 6060759', 'PAW Patrol', 1299000.00, 1039000.00, 20, 1, '../images/paw patroy.png', '2024-08-17 08:42:07', '2024-08-17 08:42:07'),
-(15, 'RASTAR R92900/WHITE', 'Đồ Chơi Xe Điều Khiển 1:24 - BMW 3.0 CSL - Màu Trắng', 'Rastar', 479000.00, 479000.00, 0, 1, '../images/rastar.png', '2024-08-17 08:42:07', '2024-08-17 08:42:07'),
-(16, 'Bảng vẽ đa năng PAB034 Xanh', 'Đồ chơi trẻ em: Bảng vẽ đa năng PAB034 Xanh', 'Pabo', 469000.00, 375000.00, 20, 1, '../images/pab0.png', '2024-08-17 08:42:07', '2024-08-17 08:42:07'),
-(17, 'HOT WHEELS GJM77', 'Bộ đường đua Hot Wheels vòng xoay thần tốc', 'Hot Wheels', 1389000.00, 972000.00, 30, 0, '../images/HW-action.png', '2024-08-17 08:42:07', '2024-08-17 08:42:07');
+INSERT INTO `toy_products` (`id`, `name`, `description`, `brand`, `original_price`, `discounted_price`, `discount_percentage`, `quantity`, `image_url`, `created_at`, `updated_at`, `detailed_description`, `theme`, `origin`, `code`, `age`, `brand_origin`, `sub_images`) VALUES
+(19, 'PAW PATROL 6060759', 'Đồ chơi xe cảnh sát biến hình Paw Patrol The Movie - Chase PAW PATROL 6060759', 'PAW Patrol', 1299000.00, 1039000.00, 20, 1, '../images/paw patroy.png', '2024-08-18 04:31:47', '2024-08-18 04:31:47', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(20, 'RASTAR R92900/WHITE', 'Đồ Chơi Xe Điều Khiển 1:24 - BMW 3.0 CSL - Màu Trắng', 'Rastar', 479000.00, 479000.00, 0, 1, '../images/rastar.png', '2024-08-18 04:31:47', '2024-08-18 04:31:47', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(21, 'Bảng vẽ đa năng PAB034 Xanh', 'Đồ chơi trẻ em: Bảng vẽ đa năng PAB034 Xanh', 'Pabo', 469000.00, 375000.00, 20, 1, '../images/pab0.png', '2024-08-18 04:31:47', '2024-08-18 04:31:47', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(28, 'HOT WHEELS GJM77', 'Bộ đường đua Hot Wheels vòng xoay thần tốc', 'Hot Wheels', 1389000.00, 972000.00, 30, 0, '../images/HW-action.png', '2024-08-18 04:49:20', '2024-08-18 04:49:20', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(36, 'HOT WHEELS HKX42', 'Đồ Chơi Siêu Xe Khủng Long T-Rex Hot Wheels', 'Hot Wheels', 1359000.00, 1087000.00, 20, 1, '../images/HW-TRex.png', '2024-08-18 05:54:13', '2024-08-18 05:54:13', '<p>Tham gia cuộc phiêu lưu cùng Bộ đồ chơi Hot Wheels™ City T-Rex Chomp-Down™ và trở thành người hùng giải cứu thế giới! Với tính năng trượt tốc độ và vòng quay mạnh mẽ, bạn sẽ phóng xe Hot Wheels® để hạ gục khủng long khổng lồ. Khi bị đánh bại, đôi mắt giận dữ của quái vật sẽ chuyển từ màu vàng rực rỡ sang biểu tượng X bất tỉnh</p><p>Bộ đồ chơi đi kèm với một chiếc xe Hot Wheels® và có thể kết nối với các bộ khác để tạo ra những cuộc phiêu lưu bất tận. Dành cho trẻ em từ 4 tuổi trở lên. Màu sắc và họa tiết có thể thay đổi, mang lại sự bất ngờ và thích thú cho mọi cuộc chơi.</p>', 'HOT WHEELS CITY', 'TRUNG QUỐC', 'HKX42', '4 tuổi trở lên', 'Mỹ', '[\"..\\/images\\/HW-TRex.png\",\"..\\/images\\/HW-TRex2.png\",\"..\\/images\\/HW-TRex3.png\",\"..\\/images\\/HW-TRex4.png\"]');
 
 -- --------------------------------------------------------
 
@@ -255,7 +262,7 @@ ALTER TABLE `products`
 -- AUTO_INCREMENT cho bảng `toy_products`
 --
 ALTER TABLE `toy_products`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
 
 --
 -- AUTO_INCREMENT cho bảng `users`
