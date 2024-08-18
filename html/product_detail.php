@@ -122,7 +122,7 @@ if ($stmt->rowCount() > 0) {
         <h3><?php echo htmlspecialchars($product['name']); ?></h3>
         <p><?php echo nl2br(htmlspecialchars($product['description'])); ?></p>
         <h2>Chi tiết sản phẩm</h2>
-        <p><?php echo nl2br(htmlspecialchars($product['detailed_description'])); ?></p>
+        <div><?php echo $product['detailed_description']; ?></div>
     </div>
     <div id="footer"></div>
     <script src="../JS/product.js"></script>
