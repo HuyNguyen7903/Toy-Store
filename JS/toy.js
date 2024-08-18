@@ -1,82 +1,56 @@
-// Hàm kiểm tra thông tin đăng nhập cho trang login.html
-function loginCheck() {
+// Handle login form submission
+document.getElementById('loginForm').addEventListener('submit', function (e) {
+  e.preventDefault();
+
   const email = document.getElementById("email").value;
   const password = document.getElementById("password").value;
 
-  const users = [
-    { email: "admin@example.com", password: "admin123" },
-    {
-      email: "tinh@gmail.com",
-      password: "tinh123",
-      name: "Tinh",
-      gender: "Nam",
-    },
-    { email: "huy@gmail.com", password: "huy123", name: "Huy", gender: "Nam" },
-  ];
+  $.ajax({
+      type: "POST",
+      url: "login.php",
+      data: { email: email, password: password },
+      dataType: "json",
+      success: function(response) {
+          if (response.error) {
+              alert(response.error);
+          } else {
+              // Store user data in sessionStorage
+              sessionStorage.setItem("loggedInUser", response.email);
+              sessionStorage.setItem("loggedInUserName", response.name);
+              sessionStorage.setItem("loggedInUserPhone", response.phone);
+              sessionStorage.setItem("loggedInUserGender", response.gender);
 
-  const user = users.find(
-    (user) => user.email === email && user.password === password
-  );
+              // Redirect to the user page
+              window.location.href = "user.html";
+          }
+      },
+      error: function() {
+          alert('An error occurred while processing your request.');
+      }
+  });
+});
 
-  if (user) {
-    // Lưu thông tin người dùng vào localStorage
-    localStorage.setItem("loggedInUser", user.email);
-    localStorage.setItem("loggedInUserName", user.name);
-    localStorage.setItem("loggedInUserPhone", user.phone);
-    localStorage.setItem("loggedInUserGender", user.gender);
-    // Chuyển hướng tới trang user.html
-    window.location.href = "user.html";
-  } else {
-    // Thông báo lỗi
-    alert("Email hoặc mật khẩu không đúng!");
-  }
-}
 /* hien thi thong tin khach hang*/
 function displayLoggedInUserInfo() {
   document.addEventListener("DOMContentLoaded", function () {
-    const loggedInUserEmail = localStorage.getItem("loggedInUser");
-    const loggedInUserName = localStorage.getItem("loggedInUserName");
-    const loggedInUserPhone = localStorage.getItem("loggedInUserPhone");
-    const loggedInUserGender = localStorage.getItem("loggedInUserGender");
+      const loggedInUserEmail = sessionStorage.getItem("loggedInUser");
+      const loggedInUserName = sessionStorage.getItem("loggedInUserName");
+      const loggedInUserPhone = sessionStorage.getItem("loggedInUserPhone");
+      const loggedInUserGender = sessionStorage.getItem("loggedInUserGender");
 
-    if (loggedInUserEmail) {
-      /*check thong tin email*/
-      const emailElement = document.querySelector(".email-user");
-      if (emailElement) {
-        emailElement.textContent = `Email: ${loggedInUserEmail}`;
+      if (loggedInUserEmail) {
+          // Display user info in the UI
+          document.querySelector(".email-user").textContent = `Email: ${loggedInUserEmail}`;
+          document.querySelector(".user-name").textContent = `Họ và tên: ${loggedInUserName}`;
+          document.querySelector(".user-phone").textContent = `Điện thoại: ${loggedInUserPhone}`;
+          document.querySelector(".gender").textContent = `Giới tính: ${loggedInUserGender}`;
       } else {
-        console.error("Email element not found.");
+          // alert("Vui lòng đăng nhập tài khoản");
+          // window.location.href = "login.html";
       }
-
-      /*check thong tin ten*/
-      const nameElement = document.querySelector(".user-name");
-      if (nameElement) {
-        nameElement.textContent = `Họ và tên: ${loggedInUserName}`;
-      } else {
-        console.error("Name element not found.");
-      }
-
-      /*check thong tin dien thoai*/
-      const phoneElement = document.querySelector(".user-phone");
-      if (phoneElement) {
-        phoneElement.textContent = `Điện thoại: ${loggedInUserPhone}`;
-      } else {
-        console.error("Phone element not found.");
-      }
-
-      /*check thong tin gioi tinh*/
-      const genderElement = document.querySelector(".gender");
-      if (genderElement) {
-        genderElement.textContent = `Giới tính: ${loggedInUserGender}`;
-      } else {
-        console.error("Gender element not found.");
-      }
-    } else {
-      // alert("Vui lòng đăng nhập tài khoản");
-      // window.location.href = "login.html";
-    }
   });
 }
+
 
 /* dang xuat logout.js*/
 

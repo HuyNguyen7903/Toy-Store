@@ -6,8 +6,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Check if the user is logged in
     if (!loggedInUser) {
-        if (!window.location.href.includes('login.html')) {
-            window.location.href = 'login.html';
+        if (!window.location.href.includes('login.php')) {
+            window.location.href = 'login.php';
         }
     }
 

@@ -21,9 +21,10 @@ label {
   color: darkblue;
 }
 /* chỉnh các trường input */
-form input[type="email"] {
+.username-container input[type="text"] {
+  width: calc(100% - 40px);
   width: 100%;
-  padding: 15px;
+  padding: 12px;
   margin: 8px 0;
   display: inline-block;
   border: 1px solid #ccc;
@@ -96,7 +97,7 @@ form a:hover {
 .password-container button {
   position: absolute;
   right: 10%;
-  top: 0;
+  top: 5%;
   height: 100%;
   font-size: 20px;
   background: none;
