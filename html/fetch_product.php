@@ -13,7 +13,8 @@ if ($result->rowCount() > 0) {
         if ($row['discount_percentage'] > 0) {
             echo '<div class="discount">-' . htmlspecialchars($row['discount_percentage']) . '%</div>';
         }
-        echo '<a href="../html/' . htmlspecialchars($row['name']) . '.html">';
+        // Tạo liên kết đến trang chi tiết sản phẩm
+        echo '<a href="product_detail.php?id=' . htmlspecialchars($row['id']) . '">';
         echo '<img src="' . htmlspecialchars($row['image_url']) . '" alt="' . htmlspecialchars($row['name']) . '" />';
         echo '</a>';
         echo '<div class="product-info">';

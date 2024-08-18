@@ -11,9 +11,22 @@ $products = [
         'discounted_price' => 1087000,
         'discount_percentage' => 20,
         'quantity' => 1,
-        'description' => 'Đồ Chơi Siêu Xe Khủng Long T-Rex Hot Whells',
-        'image_url' => '../images/HW-TRex.png'
+        'description' => 'Đồ Chơi Siêu Xe Khủng Long T-Rex Hot Wheels',
+        'detailed_description' => '<p>Tham gia cuộc phiêu lưu cùng Bộ đồ chơi Hot Wheels™ City T-Rex Chomp-Down™ và trở thành người hùng giải cứu thế giới! Với tính năng trượt tốc độ và vòng quay mạnh mẽ, bạn sẽ phóng xe Hot Wheels® để hạ gục khủng long khổng lồ. Khi bị đánh bại, đôi mắt giận dữ của quái vật sẽ chuyển từ màu vàng rực rỡ sang biểu tượng X bất tỉnh</p>.<p>Bộ đồ chơi đi kèm với một chiếc xe Hot Wheels® và có thể kết nối với các bộ khác để tạo ra những cuộc phiêu lưu bất tận. Dành cho trẻ em từ 4 tuổi trở lên. Màu sắc và họa tiết có thể thay đổi, mang lại sự bất ngờ và thích thú cho mọi cuộc chơi.</p>',
+        'image_url' => '../images/HW-TRex.png',
+        'theme' => 'HOT WHEELS CITY',
+        'origin' => 'TRUNG QUỐC',
+        'code' => 'HKX42',
+        'age' => '4 tuổi trở lên',
+        'brand_origin' => 'Mỹ',
+        'sub_images' => json_encode([
+            '../images/HW-TRex.png',
+            '../images/HW-TRex2.png',
+            '../images/HW-TRex3.png',
+            '../images/HW-TRex4.png'
+        ])
     ],
+
     [
         'name' => 'PAW PATROL 6060759',
         'brand' => 'PAW Patrol',
@@ -68,7 +81,10 @@ try {
         
         if ($stmt_check->fetchColumn() == 0) {
             // Nếu sản phẩm chưa tồn tại, thực hiện chèn
-            $sql_insert = "INSERT INTO toy_products (name, brand, original_price, discounted_price, discount_percentage, quantity, description, image_url) VALUES (:name, :brand, :original_price, :discounted_price, :discount_percentage, :quantity, :description, :image_url)";
+            $sql_insert = "INSERT INTO toy_products 
+            (name, brand, original_price, discounted_price, discount_percentage, quantity, description, detailed_description, image_url, theme, origin, code, age, brand_origin, sub_images) 
+            VALUES 
+            (:name, :brand, :original_price, :discounted_price, :discount_percentage, :quantity, :description, :detailed_description, :image_url, :theme, :origin, :code, :age, :brand_origin, :sub_images)";
             $stmt_insert = $conn->prepare($sql_insert);
 
             $stmt_insert->bindParam(':name', $product['name']);
@@ -78,7 +94,14 @@ try {
             $stmt_insert->bindParam(':discount_percentage', $product['discount_percentage']);
             $stmt_insert->bindParam(':quantity', $product['quantity']);
             $stmt_insert->bindParam(':description', $product['description']);
+            $stmt_insert->bindParam(':detailed_description', $product['detailed_description']);
             $stmt_insert->bindParam(':image_url', $product['image_url']);
+            $stmt_insert->bindParam(':theme', $product['theme']);
+            $stmt_insert->bindParam(':origin', $product['origin']);
+            $stmt_insert->bindParam(':code', $product['code']);
+            $stmt_insert->bindParam(':age', $product['age']);
+            $stmt_insert->bindParam(':brand_origin', $product['brand_origin']);
+            $stmt_insert->bindParam(':sub_images', $product['sub_images']);
             
             $stmt_insert->execute();
         }

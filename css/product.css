@@ -113,6 +113,7 @@ body {
 /* phần thông tin */
 .product-info-section {
   padding: 20px;
+  flex-basis: 30%;
 }
 .product-name {
   display: flex;
