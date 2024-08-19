@@ -200,7 +200,11 @@
   margin: 0 5px;
   border-radius: 50px;
 }
-
+.quantity button:hover {
+  border: 1px solid #cc0000;
+  background-color: red;
+  color: white;
+}
 .quantity-value {
   font-size: 16px;
 }
@@ -214,7 +218,9 @@
   font-size: 14px;
   text-decoration: underline;
 }
-
+.remove-product:hover {
+  color: #cc0000;
+}
 .price {
   font-size: 18px;
   color: #ff0000;
@@ -260,11 +266,6 @@
   cursor: pointer;
 }
 
-.blur-background {
-  filter: blur(5px);
-  pointer-events: none;
-  user-select: none;
-}
 
 .close-popup:hover,
 .close-popup:focus {
