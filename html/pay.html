@@ -79,7 +79,7 @@
         <div class="giamgia">Giảm giá</div>
         <div class="vanchuyen">Vận chuyển</div>
         <div class="tongtien">Tổng cộng</div>
-        <button id="order-button" type="submit">Hoàn thành</button>
+        <button id="confirm-button">Hoàn thành</button>
         <div class="checkbox-group">
           <input type="checkbox" id="terms" name="terms" required />
           <label for="terms">Tôi đã đọc và đồng ý với <a href="#">Điều khoản sử dụng</a> và
@@ -87,6 +87,19 @@
           </div>
       </div>
     </div>
+    <div id="popup-confirm" class="popup-confirm"> 
+        <div class="popup-content-confirm">
+            <div class="alert-confirm">
+                <img src="../images/warning.png" alt="">
+                <h3>Hãy xác nhận bạn đã chọn đúng thông tin thanh toán và thanh toán thành công</h3>
+                <div class="button-group">
+                    <button id="huydathang">Hủy</button>
+                    <button id="xacnhandathang">Xác nhận</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
     <div id="footer"></div>
 </body>
 </html>

@@ -7,7 +7,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }).format(price);
   }
 
-  // Function to display cart items in the pay.html page
+  // Function to display cart items in the order.html page
   function displayCartItems() {
     let cart = JSON.parse(localStorage.getItem("cart")) || [];
     const productContainer = document.querySelector(".product");
@@ -28,9 +28,8 @@ document.addEventListener("DOMContentLoaded", () => {
         <div class="img-product">
           <img src="${item.imgSrc}" alt="${item.name}" />
           <p class="product-name">${item.name}</p>
-          </div>
+        </div>
         <div class="product-info">
-          
           <p class="product-quantity">Số lượng: ${item.quantity}</p>
           <p class="product-price">Giá: ${formatPrice(item.price)}</p>
           <p class="product-total">Tổng: ${formatPrice(itemTotal)}</p>
@@ -44,24 +43,50 @@ document.addEventListener("DOMContentLoaded", () => {
     document.querySelector(".tienhang").innerText = `Tiền Hàng hóa: ${formatPrice(totalAmount)}`;
 
     // Handle discount (assuming a discount can be applied)
-    const ship=30000;
+    const ship = 30000;
     const discount = 0; // Change this value based on the discount logic
     const finalAmount = totalAmount - discount + ship;
 
     document.querySelector(".giamgia").innerText = `Giảm giá: ${formatPrice(discount)}`;
-    document.querySelector(".vanchuyen").innerText=`Vận chuyển: ${formatPrice(ship)}`;
+    document.querySelector(".vanchuyen").innerText = `Vận chuyển: ${formatPrice(ship)}`;
     document.querySelector(".tongtien").innerText = `Tổng cộng: ${formatPrice(finalAmount)}`;
   }
-  document.getElementById("order-button").addEventListener("click", () => {
-    let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
-    if (cart.length === 0) {
-      alert("Giỏ hàng của bạn đang trống.");
-    } else {
-      // Redirect to the order.html page
-      window.location.href = "pay.html";
+  // Function to validate form fields
+  function validateForm() {
+    const firstName = document.getElementById("first-name").value.trim();
+    const lastName = document.getElementById("last-name").value.trim();
+    const phoneNum = document.getElementById("phone-num").value.trim();
+    const city = document.getElementById("city").value.trim();
+    const district = document.getElementById("district").value.trim();
+    const ward = document.getElementById("ward").value.trim();
+
+    if (!firstName || !lastName || !phoneNum || !city || !district|| !ward) {
+      document.getElementById("popup-address").style.display = "block";
+      return false;
+    }
+    return true;
+  }
+
+  // Show the confirmation popup when the order button is clicked
+  document.getElementById("order-button").addEventListener("click", () => {
+    if (validateForm()) {
+      let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+      if (cart.length === 0) {
+        alert("Giỏ hàng của bạn đang trống.");
+      } else {
+        // Show the confirmation popup
+        window.location.href = "pay.html";
+      }
     }
   });
+
+  // Hide popup when the "Nhập lại địa chỉ" button is clicked
+  document.getElementById("chonlai").addEventListener("click", () => {
+    document.getElementById("popup-address").style.display = "none";
+  });
+
   // Call the displayCartItems function when the page is loaded
   displayCartItems();
 });

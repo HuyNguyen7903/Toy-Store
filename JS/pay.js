@@ -1,18 +1,80 @@
+document.addEventListener("DOMContentLoaded", () => {
+    // Function to format the price with currency
+    function formatPrice(price) {
+      return new Intl.NumberFormat('vi-VN', {
+        style: 'currency',
+        currency: 'VND',
+      }).format(price);
+    }
+  
+    // Function to display cart items in the pay.html page
+    function displayCartItems() {
+      let cart = JSON.parse(localStorage.getItem("cart")) || [];
+      const productContainer = document.querySelector(".product");
+  
+      if (cart.length === 0) {
+        productContainer.innerHTML = "<p>Giỏ hàng của bạn đang trống.</p>";
+        return;
+      }
+  
+      let totalAmount = 0;
+      cart.forEach((item) => {
+        const itemTotal = item.quantity * item.price;
+        totalAmount += itemTotal;
+  
+        const productDiv = document.createElement("div");
+        productDiv.classList.add("product-item");
+        productDiv.innerHTML = `
+          <div class="img-product">
+            <img src="${item.imgSrc}" alt="${item.name}" />
+            <p class="product-name">${item.name}</p>
+            </div>
+          <div class="product-info">
+            
+            <p class="product-quantity">Số lượng: ${item.quantity}</p>
+            <p class="product-price">Giá: ${formatPrice(item.price)}</p>
+            <p class="product-total">Tổng: ${formatPrice(itemTotal)}</p>
+          </div>
+        `;
+  
+        productContainer.appendChild(productDiv);
+      });
+  
+      // Display total amount
+      document.querySelector(".tienhang").innerText = `Tiền Hàng hóa: ${formatPrice(totalAmount)}`;
+  
+      // Handle discount (assuming a discount can be applied)
+      const ship=30000;
+      const discount = 0; // Change this value based on the discount logic
+      const finalAmount = totalAmount - discount + ship;
+  
+      document.querySelector(".giamgia").innerText = `Giảm giá: ${formatPrice(discount)}`;
+      document.querySelector(".vanchuyen").innerText=`Vận chuyển: ${formatPrice(ship)}`;
+      document.querySelector(".tongtien").innerText = `Tổng cộng: ${formatPrice(finalAmount)}`;
+    }
+    document.getElementById("confirm-button").addEventListener("click", () => {
+      let cart = JSON.parse(localStorage.getItem("cart")) || [];
+    });
+    // Call the displayCartItems function when the page is loaded
+    displayCartItems();
+  });
+  
 $(document).ready(function () {
+    // Payment method selection handling
     $('input[name="payment-method"]').change(function() {
-        // Ẩn tất cả QR code và các input của thẻ
+        // Hide all QR codes and credit card inputs
         $('.qr-code').addClass('hidden');
         $('.credit-card-inputs').addClass('hidden');
-        // Kiểm tra giá trị của radio button đã chọn
+        
+        // Show the corresponding QR code or credit card inputs based on the selected payment method
         if (this.value === 'VNPAY' || this.value === 'Banking') {
-            // Hiện QR code tương ứng
             $(this).siblings('.qr-code').removeClass('hidden');
         } else if (this.value === 'credit-card') {
-            // Hiện input của thẻ nội địa
             $(this).siblings('.credit-card-inputs').removeClass('hidden');
         }
     });
 
+    // Expiration date input handling
     $('input[name="ngayhethan"]').on('input', function (e) {
         let value = $(this).val();
     
@@ -32,6 +94,27 @@ $(document).ready(function () {
             }
         }
     });
+
     
-    
+});
+document.addEventListener('DOMContentLoaded', () => {
+    const popup = document.getElementById("popup-confirm");
+
+    function showPopup(contentUrl) {
+        popup.style.display = 'block';
+    }
+
+    function hidePopup() {
+        popup.style.display = 'none';
+    }
+    document.getElementById("confirm-button").addEventListener("click", showPopup);
+
+    // Hide popup when the close button is clicked
+    $('#huydathang').click(function () {
+        $('#popup-confirm').hide();
+    });
+    $('#xacnhandathang').click(function () {
+        window.location.href = "order-status.html";
+    });
+
 });

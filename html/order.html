@@ -38,7 +38,7 @@
                       </select>
                 </div>
                 <div class="form-address">
-                    <label for="contry">Quốc gia</label>
+                    <label for="contry">Quốc gia <span class="required-fields">*</span></label>
                     <select name="contry" id="contry">
                         <option value="vietnam">Việt Nam</option>
                     </select>
@@ -46,11 +46,11 @@
                 <div class="form-address">
                     <div class="form-address flex-container">
                         <div class="form-info-user">
-                            <label for="first-name">Họ</label>
+                            <label for="first-name">Họ <span class="required-fields">*</span></label>
                             <input type="text" id="first-name" name="first-name" placeholder="Nguyễn" required />
                         </div>
                         <div class="form-info-user">
-                            <label for="last-name">Tên</label>
+                            <label for="last-name">Tên <span class="required-fields">*</span></label>
                             <input type="text" id="last-name" name="last-name" placeholder="An" required />
                         </div>
                     </div>
@@ -60,38 +60,28 @@
                     <input type="text" id="street" name="street">
                 </div>
                 <div class="form-address">
-                    <div class="form-address flex-container">
-                        <div class="province">
-                            <label for="province">Tỉnh/Thành phố</label>
-                            <input type="text" id="province" name="province">
-                        </div>
-                        <div class="zip-code">
-                            <label for="zip-code">Mã bưu chính (không bắt buộc)</label>
-                            <input type="text" name="zip-code" id="zip-code">
-                        </div>
-                    </div>
-                </div>
-                <div class="form-address">
-                    <label for="phone-num">Số điện thoại</label>
+                    <label for="phone-num">Số điện thoại <span class="required-fields">*</span></label>
                     <input type="text" name="phone-num" id="phone-num" placeholder="Số điện thoại">
                 </div>
                 <div class="form-address">
-                    <h3>Địa chỉ tại Việt Nam</h3>
+                    <label>Vui lòng chọn địa chỉ <span class="required-fields">*</span></label>
                     <div>
                         <select id="city">
                         <option value="" selected>Chọn tỉnh thành</option>           
-                        </select>
-                                  
+                        </select>    
+                    </div>
+                    <div>
                         <select id="district">
                         <option value="" selected>Chọn quận huyện</option>
-                        </select>
-                        
+                        </select> 
+                    </div> 
+                    <div>
                         <select id="ward">
                         <option value="" selected>Chọn phường xã</option>
                         </select>
-                        <script src="../js/address.js"></script>
-                         </div> 
-                </div>
+                    </div>
+                    <script src="../js/address.js"></script>
+                    </div> 
                 <div class="form-address">
                     <div class="form-address flex-container">
                         <a href="./cart.html">Quay lại trang giỏ hàng</a>
@@ -120,6 +110,15 @@
             <a href="#">Chính sách Thành viên thân thiết My Points</a>.</label>
           </div>
       </div>
+</div>
+<div id="popup-address" class="popup-address"> 
+    <div class="popup-content-address">
+        <div class="alert-address">
+            <img src="../images/warning.png" alt="">
+            <h3>Hãy nhập đầy đủ thông tin</h3>
+            <button id="chonlai">Nhập lại</button>
+        </div>
+    </div>
 </div>
     <div id="footer"></div>
 </body>
