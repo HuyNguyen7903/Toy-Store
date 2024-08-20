@@ -6,7 +6,7 @@
     <link rel="shortcut icon" href="../images/android-icon-48x48.png" />
     <link rel="stylesheet" href="../css/order-status.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="../JS/pay.js"></script>
+    <script src="../JS/order-status.js"></script>
     <script src="../JS/toy.js"></script>
     <title>Danh sách yêu thích</title>
     <script>
@@ -24,18 +24,41 @@
             <a href="./user.html">Tài Khoản</a>
             <a href="#">Lịch sử mua hàng</a>
             <a href="./wishlist.html">Danh sách yêu thích</a>
-            <a href="#">Địa chỉ giao hàng</a>
+            <a href="../html/order-status.html">Đơn hàng của bạn</a>
             <a onclick="logout()">Đăng xuất</a>
           </div>
           <div class="list-container">
             <div class="list-product">
-              <h1>Danh sách yêu thích</h1>
-              <div id="white-list-items">
+              <h1>Đơn hàng đã đặt</h1>
+              <div id="list-order">
                 
               </div>
             </div>
           </div>     
     </div>
+    <div id="popup-confirm" class="popup-confirm"> 
+      <div class="popup-content-confirm">
+          <div class="alert-confirm">
+              <img src="../images/warning.png" alt="">
+              <h3>Bạn muốn hủy đơn hàng</h3>
+              <div class="button-group">
+                  <button id="huy">Hủy</button>
+                  <button id="xacnhan">Xác nhận</button>
+              </div>
+          </div>
+      </div>
+      <div id="popup-success" class="popup-success">
+        <div class="popup-content-success">
+            <div class="alert-success">
+                <img src="../images/checked.png" alt="">
+                <h3>Bạn đã hủy đặt hàng thành công</h3>
+                <div class="button-group">
+                    <button id="trove">Về trang chủ</button>
+                </div>
+            </div>
+        </div>
+    </div>
+  </div>
     <div id="footer"></div>
 </body>
 </html>

@@ -99,9 +99,9 @@ $(document).ready(function () {
 });
 document.addEventListener('DOMContentLoaded', () => {
     const popup = document.getElementById("popup-confirm");
-
+    const popupsuccess=document.getElementById("popup-success")
     function showPopup(contentUrl) {
-        popup.style.display = 'block';
+        popup.style.display = 'block'; 
     }
 
     function hidePopup() {
@@ -114,7 +114,24 @@ document.addEventListener('DOMContentLoaded', () => {
         $('#popup-confirm').hide();
     });
     $('#xacnhandathang').click(function () {
-        window.location.href = "order-status.html";
-    });
+        popupsuccess.style.display='block';
 
+        let order = {
+          id: Date.now(), // Unique ID based on timestamp
+          status: "Chờ xác nhận", // Pending confirmation status
+          products: JSON.parse(localStorage.getItem("cart")) || [] // Get products from cart
+      };
+
+      // Save the order to localStorage
+      let orders = JSON.parse(localStorage.getItem("orders")) || [];
+      orders.push(order);
+      localStorage.setItem("orders", JSON.stringify(orders));
+
+      // Clear the cart after placing the order
+      localStorage.removeItem("cart");
+    });
+    $('#trove').click(function() {
+      window.location.href = 'toy.php';});
+    $('#xemdonhang').click(function() {
+      window.location.href = 'order-status.html';});
 });

@@ -248,7 +248,7 @@
     margin-bottom: 5px;
 }
 
-.popup-confirm {
+.popup-confirm,.popup-success {
     display: none; 
     position: fixed;
     z-index: 1000;
@@ -260,7 +260,7 @@
     background-color: rgba(0, 0, 0, 0.5);
   }
   
-  .popup-content-confirm {
+  .popup-content-confirm,.popup-content-success {
     position: relative;
     margin: 10% auto;
     padding: 20px;
@@ -272,17 +272,17 @@
     align-items: center;
   }
   
-  .popup-content-confirm img {
+  .popup-content-confirm img,.popup-content-success img {
     width: 20%;
     padding-left: 37%;
     
   }
   
-  .popup-content-confirm h3 {
+  .popup-content-confirm h3,.popup-content-success h3 {
     text-align: center;
     margin: 0;
   }
-  .popup-content-confirm button {
+  .popup-content-confirm button,.popup-content-success button {
     width: 48%; /* Adjust the width to fit two buttons in a row */
     padding: 15px;
     border: none;
@@ -304,5 +304,20 @@
     background-color: #ff0000;
 }
 .popup-content-confirm button#xacnhandathang:hover {
+    background-color: #cc0000;
+}
+
+.popup-content-success button#trove {
+    background-color: grey;
+    color: #fff;
+}
+.popup-content-success button#trove:hover {
+    background-color: #333;
+}
+.popup-content-success button#xemdonhang {
+    color: #fff;
+    background-color: #ff0000;
+}
+.popup-content-success button#xemdonhang:hover {
     background-color: #cc0000;
 }

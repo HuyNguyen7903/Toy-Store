@@ -1,75 +1,93 @@
 document.addEventListener("DOMContentLoaded", () => {
-    // Function to render wishlist items
-    function renderWishlist() {
-      const wishlistItemsContainer = document.getElementById("white-list-items");
-      let wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
-  
-      wishlistItemsContainer.innerHTML = ""; // Clear the container
-  
-      if (wishlist.length > 0) {
-        wishlist.forEach((product) => {
-          const productItem = document.createElement("div");
-          productItem.className = "wishlist-product";
-  
-          productItem.innerHTML = `
-            <img src="${product.imgSrc}" alt="${product.name}" />
-            <div class="product-info">
-              <h3>${product.name}</h3>
-              <p>${product.price.toLocaleString('vi-VN')} Đ</p>
-            </div>
-            <button class="add-cart">Thêm vào giỏ hàng</button>
-            <button class="remove-wishlist-item" data-id="${product.id}">Hủy đơn</button>
-          `;
-  
-          wishlistItemsContainer.appendChild(productItem);
-        });
-  
-        // Attach event listeners to remove buttons
-        const removeButtons = document.querySelectorAll(".remove-wishlist-item");
-        removeButtons.forEach((button) => {
-          button.addEventListener("click", (e) => {
-            const productId = e.target.getAttribute("data-id");
-            removeWishlistItem(productId);
+  // Function to render orders
+  function renderOrders() {
+      const orderListContainer = document.getElementById("list-order");
+      let orders = JSON.parse(localStorage.getItem("orders")) || [];
+
+      orderListContainer.innerHTML = ""; // Clear the container
+
+      if (orders.length > 0) {
+          orders.forEach((order) => {
+              const orderItem = document.createElement("div");
+              orderItem.className = "order-item";
+
+              let productListHTML = order.products.map(product => `
+                  <div class="order-product">
+                      <img src="${product.imgSrc}" alt="${product.name}" />
+                      <div class="product-info">
+                          <h3>${product.name}</h3>
+                          <p>${product.price.toLocaleString('vi-VN')} Đ</p>
+                      </div>
+                  </div>
+              `).join('');
+
+              orderItem.innerHTML = `
+                  <h2>Đơn hàng #${order.id}</h2>
+                  <p>Trạng thái: <span id="status">${order.status}</span></p>
+                  <div class="order-products">
+                      ${productListHTML}
+                  </div>
+                  <button class="remove-order" data-id="${order.id}">Hủy đơn hàng</button>
+              `;
+
+              orderListContainer.appendChild(orderItem);
           });
-        });
+
+          // Attach event listeners to the "Hủy đơn hàng" buttons
+          const removeButtons = document.querySelectorAll(".remove-order");
+          removeButtons.forEach((button) => {
+              button.addEventListener("click", (e) => {
+                  const orderId = e.target.getAttribute("data-id");
+                  showPopup(orderId);
+              });
+          });
       } else {
-        wishlistItemsContainer.innerHTML = "<p>Danh sách yêu thích trống!</p>";
+          orderListContainer.innerHTML = "<p>Không có đơn hàng nào!</p>";
       }
-    }
-    // Function to handle adding product to cart from the wishlist
-    function handleAddToCartFromWishlist(event) {
-        const productElement = event.target.closest(".wishlist-product");
-        const product = {
-        id: productElement.querySelector("img").alt, // using alt text as a unique id
-        name: productElement.querySelector("h3").innerText,
-        price: parseFloat(
-            productElement
-            .querySelector("p")
-            .innerText.replace(" Đ", "")
-            .replace(/\./g, "") // remove dots
-            .replace(",", ".")
-        ),
-        imgSrc: productElement.querySelector("img").src,
-        };
-        addToCart(product); // Call the existing addToCart function from toy.js
   }
-  
-  // Attach event listeners to the "Add to Cart" buttons in the wishlist
-    const addCartButtons = document.querySelectorAll(".add-cart");
-    addCartButtons.forEach((button) => {
-    button.addEventListener("click", handleAddToCartFromWishlist);
-  });
-  
-  
-    // Function to remove item from wishlist
-    function removeWishlistItem(productId) {
-      let wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
-      wishlist = wishlist.filter((item) => item.id !== productId);
-      localStorage.setItem("wishlist", JSON.stringify(wishlist));
-      renderWishlist(); // Re-render the wishlist
-    }
-  
-    // Render wishlist when the page loads
-    renderWishlist();
-  });
-  
+
+  // Function to cancel an order
+  function huyDonHang(orderId) {
+      let orders = JSON.parse(localStorage.getItem("orders")) || [];
+      orders = orders.filter((order) => order.id !== parseInt(orderId));
+      localStorage.setItem("orders", JSON.stringify(orders));
+      renderOrders(); // Re-render the order list
+  }
+
+  // Function to show the confirmation popup
+  function showPopup(orderId) {
+      const popup = document.getElementById("popup-confirm");
+      popup.style.display = 'block';
+
+      // Confirm button event
+      document.getElementById("xacnhan").onclick = () => {
+          huyDonHang(orderId);
+          showSuccessPopup();
+      };
+
+      // Cancel button event
+      document.getElementById("huy").onclick = () => {
+          hidePopup();
+      };
+  }
+
+  // Function to hide the confirmation popup
+  function hidePopup() {
+      const popup = document.getElementById("popup-confirm");
+      popup.style.display = 'none';
+  }
+
+  // Function to show the success popup
+  function showSuccessPopup() {
+      const popupSuccess = document.getElementById("popup-success");
+      popupSuccess.style.display = 'block';
+
+      // Redirect to appropriate pages
+      document.getElementById("trove").onclick = () => {
+          window.location.href = 'toy.php';
+      };
+  }
+
+  // Render orders when the page loads
+  renderOrders();
+});
