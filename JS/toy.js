@@ -4,20 +4,20 @@ function loginCheck() {
   const password = document.getElementById("password").value;
 
   const users = [
-    { email: "admin@example.com", password: "admin123", role: "admin" },
+    { email: "admin@example.com", password: "admin123", role: 1 },
     {
       email: "tinh@gmail.com",
       password: "tinh123",
       name: "Tinh",
       gender: "Nam",
-      role: "user",
+      role: 0,
     },
     {
       email: "huy@gmail.com",
       password: "huy123",
       name: "Huy",
       gender: "Nam",
-      role: "admin",
+      role: 1,
     },
   ];
 
@@ -33,7 +33,8 @@ function loginCheck() {
     localStorage.setItem("loggedInUserGender", user.gender);
     localStorage.setItem("userRole", user.role);
 
-    if (user.role === "admin") {
+
+    if (user.role ==1) {
       window.location.href = "../admin/index.php";
     } else {
       window.location.href = "../html/user.html";
@@ -94,7 +95,7 @@ function displayLoggedInUserInfo() {
 
 function logout() {
   localStorage.clear();
-  window.location.href = "login.html";
+  window.location.href = "../html/login.html";
 }
 
 // Attach the logout function to the button click event.
@@ -331,14 +332,24 @@ document.getElementById("close-popup").addEventListener("click", () => {
 /* thay doi chu dang nhap thanh ten user */
 window.onload = function () {
   const loggedInUser = localStorage.getItem("loggedInUser");
+  const userRole = localStorage.getItem("userRole");
+
   if (loggedInUser) {
-    const loginLink = document.querySelector(
-      '.navigation-top a[href="./user.html"]'
-    );
+    const loginLink = document.getElementById("linkdangnhap");
+    const loggedInUserName = localStorage.getItem("loggedInUserName");
+
     if (loginLink) {
-      const loggedInUserName = localStorage.getItem("loggedInUserName");
       loginLink.textContent = `Xin chào, ${loggedInUserName}`;
-      loginLink.href = "./user.html";
+
+      // Đổi URL dựa trên role của người dùng khi click vào link
+      loginLink.addEventListener("click", function (event) {
+        event.preventDefault(); // Ngăn không cho liên kết hoạt động ngay
+        loginLink.href = userRole == 1 ? "../admin/index.php" : "./user.html";
+        window.location.href = loginLink.href; // Chuyển hướng khi click
+      });
     }
+  } else { document.getElementById("linkdangnhap").addEventListener("click", () => {
+    window.location.href="../html/login.html";
+  });
   }
 };

@@ -10,7 +10,6 @@ document.addEventListener('DOMContentLoaded', () => {
             window.location.href = 'login.html';
         }
     }
-
     // Handle login form submission
     const loginForm = document.getElementById('loginForm');
     if (loginForm) {
