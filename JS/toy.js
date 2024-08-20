@@ -4,14 +4,21 @@ function loginCheck() {
   const password = document.getElementById("password").value;
 
   const users = [
-    { email: "admin@example.com", password: "admin123" },
+    { email: "admin@example.com", password: "admin123", role: "admin" },
     {
       email: "tinh@gmail.com",
       password: "tinh123",
       name: "Tinh",
       gender: "Nam",
+      role: "user",
     },
-    { email: "huy@gmail.com", password: "huy123", name: "Huy", gender: "Nam" },
+    {
+      email: "huy@gmail.com",
+      password: "huy123",
+      name: "Huy",
+      gender: "Nam",
+      role: "admin",
+    },
   ];
 
   const user = users.find(
@@ -24,8 +31,13 @@ function loginCheck() {
     localStorage.setItem("loggedInUserName", user.name);
     localStorage.setItem("loggedInUserPhone", user.phone);
     localStorage.setItem("loggedInUserGender", user.gender);
-    // Chuyển hướng tới trang user.html
-    window.location.href = "user.html";
+    localStorage.setItem("userRole", user.role);
+
+    if (user.role === "admin") {
+      window.location.href = "../admin/index.php";
+    } else {
+      window.location.href = "../html/user.html";
+    }
   } else {
     // Thông báo lỗi
     alert("Email hoặc mật khẩu không đúng!");

@@ -24,38 +24,38 @@ if ($stmt->rowCount() > 0) {
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
-      integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
-      crossorigin="anonymous"
-      referrerpolicy="no-referrer"
-    />
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+        integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+        crossorigin="anonymous"
+        referrerpolicy="no-referrer" />
     <link rel="shortcut icon" href="../images/android-icon-48x48.png" />
     <link rel="stylesheet" href="../css/product.css" />
     <script src="../JS/toy.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
-      $(document).ready(function () {
-        $("#header").load("header.html");
-        $("#footer").load("footer.html");
-      });
+        $(document).ready(function() {
+            $("#header").load("header.html");
+            $("#footer").load("footer.html");
+        });
     </script>
 
     <title><?php echo htmlspecialchars($product['name']); ?></title>
 </head>
+
 <body>
     <div id="header"></div>
     <div class="product-container">
         <div class="product-image-section">
             <img
-              id="main-image"
-              src="<?php echo htmlspecialchars($product['image_url']); ?>"
-              alt="<?php echo htmlspecialchars($product['name']); ?>"
-            />
+                id="main-image"
+                src="<?php echo htmlspecialchars($product['image_url']); ?>"
+                alt="<?php echo htmlspecialchars($product['name']); ?>" />
             <div class="thumbnail-section">
                 <button class="prev-btn">
                     <i class="fa-solid fa-circle-chevron-left"></i>
@@ -120,13 +120,12 @@ if ($stmt->rowCount() > 0) {
     <div class="product-description-section">
         <h2>Mô tả sản phẩm</h2>
         <h3><?php echo htmlspecialchars($product['name']); ?></h3>
-        <p><?php echo nl2br(htmlspecialchars($product['description'])); ?></p>
-        <h2>Chi tiết sản phẩm</h2>
         <div><?php echo $product['detailed_description']; ?></div>
     </div>
     <div id="footer"></div>
     <script src="../JS/product.js"></script>
 </body>
+
 </html>
 
 <?php
