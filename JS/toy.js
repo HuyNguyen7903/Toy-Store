@@ -333,10 +333,9 @@ document.getElementById("close-popup").addEventListener("click", () => {
 window.onload = function () {
   const loggedInUser = localStorage.getItem("loggedInUser");
   const userRole = localStorage.getItem("userRole");
-
+  const loggedInUserName = localStorage.getItem("loggedInUserName");
   if (loggedInUser) {
     const loginLink = document.getElementById("linkdangnhap");
-    const loggedInUserName = localStorage.getItem("loggedInUserName");
 
     if (loginLink) {
       loginLink.textContent = `Xin chào, ${loggedInUserName}`;

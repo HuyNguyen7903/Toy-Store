@@ -196,3 +196,10 @@ body {
 .popup-content-success button#trove:hover {
   background-color: #333;
 }
+.popup-content-success button#tatpopup {
+  color: #fff;
+  background-color: #ff0000;
+}
+.popup-content-success button#tatpopup:hover {
+  background-color: #cc0000;
+}

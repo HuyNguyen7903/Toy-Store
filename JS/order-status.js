@@ -86,6 +86,10 @@ document.addEventListener("DOMContentLoaded", () => {
       document.getElementById("trove").onclick = () => {
           window.location.href = 'toy.php';
       };
+      document.getElementById("tatpopup").onclick = () => {
+        hidePopup();
+        popupSuccess.style.display = 'none';
+    };
   }
 
   // Render orders when the page loads
