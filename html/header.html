@@ -36,14 +36,15 @@
             <img src="../images/logo_1.png" alt="Logo" />
           </a>
         </div>
-        <form class="search-box">
+        <form class="search-box" action="timkiem.php" method="GET">
           <input
             class="search-text"
             type="text"
+            name="tukhoa"
             placeholder="Nhập từ khóa để tìm kiếm"
             required
           />
-          <button id="search-btn">
+          <button id="search-btn" type="submit">
             <i class="fa-solid fa-magnifying-glass"></i>
           </button>
         </form>
