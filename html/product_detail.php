@@ -1,6 +1,6 @@
 <?php
 // Kết nối với cơ sở dữ liệu
-include 'connectdb.php';
+require '../admin/database/connectdb.php';
 
 // Lấy ID sản phẩm từ URL
 $id = isset($_GET['id']) ? intval($_GET['id']) : 0;

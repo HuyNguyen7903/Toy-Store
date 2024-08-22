@@ -1,6 +1,6 @@
 <?php
 // Kết nối với cơ sở dữ liệu
-include 'connectdb.php';
+require '../admin/database/connectdb.php';
 
 // Truy vấn dữ liệu sản phẩm
 $sql = "SELECT * FROM toy_products";
@@ -39,4 +39,3 @@ if ($result->rowCount() > 0) {
 
 // Đóng kết nối
 $conn = null;
-?>

@@ -1,14 +1,17 @@
 <?php
 // Connect to the database
-include 'connectdb.php';
+require '../admin/database/connectdb.php';
 
 $tukhoa = trim(strip_tags($_GET['tukhoa']));
-$page_size = 5;
+$page_size = 12;
 $page_num = 1;
-if (isset($_GET['page_num'])) $page_num = $_GET['page_num'] + 0;
-if ($page_num <= 0) $page_num = 1;
+if (isset($_GET['page_num'])) {
+    $page_num = (int)$_GET['page_num'];
+    if ($page_num <= 0) $page_num = 1;
+}
 
-function layKetQuaTim($tukhoa, $page_num, $page_size) {
+function layKetQuaTim($tukhoa, $page_num, $page_size)
+{
     global $conn;
     $offset = ($page_num - 1) * $page_size;
     $sql = "SELECT * FROM toy_products WHERE name LIKE :tukhoa OR description LIKE :tukhoa LIMIT :offset, :page_size";
@@ -20,7 +23,8 @@ function layKetQuaTim($tukhoa, $page_num, $page_size) {
     return $stmt->fetchAll(PDO::FETCH_ASSOC);
 }
 
-function demSoTin($tukhoa) {
+function demSoTin($tukhoa)
+{
     global $conn;
     $sql = "SELECT COUNT(*) FROM toy_products WHERE name LIKE :tukhoa OR description LIKE :tukhoa";
     $stmt = $conn->prepare($sql);
@@ -29,75 +33,82 @@ function demSoTin($tukhoa) {
     return $stmt->fetchColumn();
 }
 
-function taoLinkPhanTrang($base_url, $total_rows, $page_num, $page_size) {
+function taoLinkPhanTrang($base_url, $total_rows, $page_num, $page_size)
+{
     $total_pages = ceil($total_rows / $page_size);
     $pagination = '';
     for ($i = 1; $i <= $total_pages; $i++) {
-        $pagination .= '<a href="' . $base_url . '&page_num=' . $i . '">' . $i . '</a> ';
+        $active_class = ($i == $page_num) ? 'active' : '';
+        $pagination .= '<a href="' . $base_url . '&page_num=' . $i . '" class="' . $active_class . '">' . $i . '</a> ';
     }
     return $pagination;
 }
-
 if ($tukhoa != "") $listTin = layKetQuaTim($tukhoa, $page_num, $page_size);
 else $listTin = NULL;
-$count = 0;
+
+$total_rows = demSoTin($tukhoa);
+$base_url = "timkiem.php?tukhoa=" . urlencode($tukhoa);
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/search.css">
     <script src="../js/toy.js"></script>
     <title>Kết quả tìm kiếm</title>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
-      $(document).ready(function () {
-        $("#header").load("header.html");
-        $("#footer").load("footer.html");
-      });
+        $(document).ready(function() {
+            $("#header").load("header.html");
+            $("#footer").load("footer.html");
+        });
     </script>
 </head>
+
 <body>
     <div id="header"></div>
     <div class="container-product">
         <h2>Kết quả tìm kiếm cho: "<?php echo htmlspecialchars($tukhoa); ?>"</h2>
         <div class="product-list">
-            <?php if ($listTin) { 
+            <?php if ($listTin) {
                 foreach ($listTin as $tin) {
-                    $count++;
+                    $discount_percentage = $tin['discount_percentage'] > 0 ? '-' . htmlspecialchars($tin['discount_percentage']) . '%' : '';
             ?>
-                <div class="product">
-                    <div class="product-img">
-                        <a href="product.php?id=<?= $tin['id'] ?>">
-                            <img src="<?= htmlspecialchars($tin['image_url']) ?>" alt="<?= htmlspecialchars($tin['name']) ?>">
+                    <div class="product">
+                        <?php if ($discount_percentage) { ?>
+                            <div class="discount"><?= $discount_percentage ?></div>
+                        <?php } ?>
+                        <a href="product_detail.php?id=<?= htmlspecialchars($tin['id']) ?>">
+                            <img src="<?= htmlspecialchars($tin['image_url']) ?>" alt="<?= htmlspecialchars($tin['name']) ?>" />
                         </a>
-                    </div>
-                    <div class="product-info">
-                        <h3><a href="product.php?id=<?= $tin['id'] ?>"><?= htmlspecialchars($tin['name']) ?></a></h3>
-                        <p><?= htmlspecialchars($tin['description']) ?></p>
-                        <div class="price">
-                            <span class="old-price"><?= number_format($tin['original_price'], 0, ',', '.') ?> Đ</span>
-                            <span><?= number_format($tin['discounted_price'], 0, ',', '.') ?> Đ</span>
+                        <div class="product-info">
+                            <h3><?= htmlspecialchars($tin['name']) ?></h3>
+                            <p><?= htmlspecialchars($tin['description']) ?></p>
+                            <p class="price">
+                                <?php if ($tin['discounted_price'] < $tin['original_price']) { ?>
+                                    <span class="old-price"><?= number_format($tin['original_price'], 0, ',', '.') ?> Đ</span>
+                                <?php } ?>
+                                <?= number_format($tin['discounted_price'], 0, ',', '.') ?> Đ
+                            </p>
+                            <div class="add-to-cart">
+                                <a href="#">Thêm Vào Giỏ Hàng</a>
+                                <span class="heart-icon">&#x2764;</span>
+                            </div>
                         </div>
-                        <div class="add-to-cart">
-                            <a href="add_to_cart.php?id=<?= $tin['id'] ?>" class="add-to-cart-btn">Thêm Vào Giỏ Hàng</a>
-                            <span class="heart-icon">&#10084;</span>
-                        </div>
                     </div>
-                </div>
-            <?php } 
+                <?php }
             } else { ?>
                 <p>Không tìm thấy kết quả nào phù hợp với từ khóa "<?php echo htmlspecialchars($tukhoa); ?>"</p>
             <?php } ?>
         </div>
+        <div class="pagination">
+            <?php echo taoLinkPhanTrang($base_url, $total_rows, $page_num, $page_size); ?>
+        </div>
     </div>
     <div id="footer"></div>
 </body>
+
 </html>
-<?php
-$total_rows = demSoTin($tukhoa);
-$base_url = "index.php?page=search&tukhoa=" . urlencode($tukhoa);
-echo taoLinkPhanTrang($base_url, $total_rows, $page_num, $page_size);
-?>
