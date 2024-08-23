@@ -33,8 +33,7 @@ function loginCheck() {
     localStorage.setItem("loggedInUserGender", user.gender);
     localStorage.setItem("userRole", user.role);
 
-
-    if (user.role ==1) {
+    if (user.role == 1) {
       window.location.href = "../admin/index.php";
     } else {
       window.location.href = "../html/user.html";
@@ -347,8 +346,9 @@ window.onload = function () {
         window.location.href = loginLink.href; // Chuyển hướng khi click
       });
     }
-  } else { document.getElementById("linkdangnhap").addEventListener("click", () => {
-    window.location.href="../html/login.html";
-  });
+  } else {
+    document.getElementById("linkdangnhap").addEventListener("click", () => {
+      window.location.href = "../html/login.html";
+    });
   }
 };

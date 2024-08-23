@@ -195,7 +195,7 @@
 
 
       <!-- thêm sp từ db -->
-      <?php include '../html/fetch_product.php'; ?>
+      <?php include '../php/fetch_product.php'; ?>
     </div>
   </div>
   <!-- phần Danh mục -->

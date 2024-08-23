@@ -3,12 +3,12 @@
 require '../admin/database/connectdb.php';
 
 // Lấy ID sản phẩm từ URL
-$id = isset($_GET['id']) ? intval($_GET['id']) : 0;
+$id = isset($_GET['product_id']) ? intval($_GET['product_id']) : 0;
 
 // Truy vấn chi tiết sản phẩm dựa trên ID
-$sql = "SELECT * FROM toy_products WHERE id = :id";
+$sql = "SELECT * FROM toy_products WHERE product_id = :product_id";
 $stmt = $conn->prepare($sql);
-$stmt->bindParam(':id', $id, PDO::PARAM_INT);
+$stmt->bindParam(':product_id', $id, PDO::PARAM_INT);
 $stmt->execute();
 
 // Kiểm tra kết quả truy vấn
@@ -40,8 +40,9 @@ if ($stmt->rowCount() > 0) {
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
         $(document).ready(function() {
-            $("#header").load("header.html");
-            $("#footer").load("footer.html");
+            $("#header").load("../html/header.html");
+            $("#footer").load("../html/footer.html");
+            loadProducts();
         });
     </script>
 

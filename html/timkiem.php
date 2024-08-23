@@ -47,7 +47,7 @@ if ($tukhoa != "") $listTin = layKetQuaTim($tukhoa, $page_num, $page_size);
 else $listTin = NULL;
 
 $total_rows = demSoTin($tukhoa);
-$base_url = "timkiem.php?tukhoa=" . urlencode($tukhoa);
+$base_url = "../html/timkiem.php?tukhoa=" . urlencode($tukhoa);
 ?>
 
 <!DOCTYPE html>
@@ -81,7 +81,7 @@ $base_url = "timkiem.php?tukhoa=" . urlencode($tukhoa);
                         <?php if ($discount_percentage) { ?>
                             <div class="discount"><?= $discount_percentage ?></div>
                         <?php } ?>
-                        <a href="product_detail.php?id=<?= htmlspecialchars($tin['id']) ?>">
+                        <a href="product_detail.php?product_id=<?= htmlspecialchars($tin['product_id']) ?>">
                             <img src="<?= htmlspecialchars($tin['image_url']) ?>" alt="<?= htmlspecialchars($tin['name']) ?>" />
                         </a>
                         <div class="product-info">
@@ -110,22 +110,22 @@ $base_url = "timkiem.php?tukhoa=" . urlencode($tukhoa);
     </div>
     <div id="footer"></div>
     <div id="popup-container" class="popup-container">
-    <div class="popup-content">
-      <span id="close-popup" class="close-popup">&times;</span>
-      <div id="add-to-cart">
-        <img src="../images/checked.png" />
-        <h3>Sản phẩm đã được thêm vào giỏ hàng</h3>
-      </div>
-      <div id="wishlist">
-        <img src="../images/checked.png" />
-        <h3 id="wishlist">Sản phẩm đã được thêm vào danh sách yêu thích</h3>
-      </div>
-      <div id="erorr-wishlist">
-        <img src="../images/checked.png" />
-        <h3 id="erorr-wishlist">Sản phẩm đã có trong danh sách yêu thích</h3>
-      </div>
+        <div class="popup-content">
+            <span id="close-popup" class="close-popup">&times;</span>
+            <div id="add-to-cart">
+                <img src="../images/checked.png" />
+                <h3>Sản phẩm đã được thêm vào giỏ hàng</h3>
+            </div>
+            <div id="wishlist">
+                <img src="../images/checked.png" />
+                <h3 id="wishlist">Sản phẩm đã được thêm vào danh sách yêu thích</h3>
+            </div>
+            <div id="erorr-wishlist">
+                <img src="../images/checked.png" />
+                <h3 id="erorr-wishlist">Sản phẩm đã có trong danh sách yêu thích</h3>
+            </div>
+        </div>
     </div>
-  </div>
 </body>
 
 </html>
