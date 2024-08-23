@@ -68,6 +68,20 @@ if (!$product) {
                     });
                 }
             });
+
+            function calculateDiscountedPrice() {
+                var originalPrice = parseFloat($("#original_price").val());
+                var discountPercentage = parseFloat($("#discount_percentage").val());
+
+                if (!isNaN(originalPrice) && !isNaN(discountPercentage)) {
+                    var discountedPrice = originalPrice * (1 - (discountPercentage / 100));
+                    $("#discounted_price").val(Math.round(discountedPrice)); // Round to nearest integer
+                } else {
+                    $("#discounted_price").val('');
+                }
+            }
+
+            $("#original_price, #discount_percentage").on("input", calculateDiscountedPrice);
         });
     </script>
     <title>Chỉnh Sửa Sản Phẩm</title>
@@ -92,31 +106,31 @@ if (!$product) {
                         <form id="edit-product-form" method="post">
                             <input type="hidden" id="product_id" name="product_id" value="<?php echo htmlspecialchars($product['product_id']); ?>">
 
-                            <label for="name">Tên Sản Phẩm:</label>
+                            <label for="name">Tên Sản Phẩm: <span class="required">*</span></label>
                             <input type="text" id="name" name="name" value="<?php echo htmlspecialchars($product['name']); ?>" required>
 
-                            <label for="brand">Thương Hiệu:</label>
+                            <label for="brand">Thương Hiệu: <span class="required">*</span></label>
                             <input type="text" id="brand" name="brand" value="<?php echo htmlspecialchars($product['brand']); ?>" required>
 
-                            <label for="original_price">Giá Gốc:</label>
+                            <label for="original_price">Giá Gốc: <span class="required">*</span></label>
                             <input type="number" id="original_price" name="original_price" value="<?php echo htmlspecialchars($product['original_price']); ?>" required>
 
-                            <label for="discounted_price">Giá Giảm:</label>
-                            <input type="number" id="discounted_price" name="discounted_price" value="<?php echo htmlspecialchars($product['discounted_price']); ?>" required>
-
-                            <label for="discount_percentage">Phần Trăm Giảm:</label>
+                            <label for="discount_percentage">Phần Trăm Giảm: <span class="required">*</span></label>
                             <input type="number" id="discount_percentage" name="discount_percentage" value="<?php echo htmlspecialchars($product['discount_percentage']); ?>" required>
 
-                            <label for="quantity">Số Lượng:</label>
+                            <label for="discounted_price">Giá Giảm: <span class="required">*</span></label>
+                            <input type="number" id="discounted_price" name="discounted_price" value="<?php echo htmlspecialchars($product['discounted_price']); ?>" required>
+
+                            <label for="quantity">Số Lượng: <span class="required">*</span></label>
                             <input type="number" id="quantity" name="quantity" value="<?php echo htmlspecialchars($product['quantity']); ?>" required>
 
-                            <label for="description">Mô Tả:</label>
+                            <label for="description">Mô Tả: <span class="required">*</span></label>
                             <textarea id="description" name="description" required><?php echo htmlspecialchars($product['description']); ?></textarea>
 
                             <label for="detailed_description">Mô Tả Chi Tiết:</label>
                             <textarea id="detailed_description" name="detailed_description"><?php echo htmlspecialchars($product['detailed_description']); ?></textarea>
 
-                            <label for="image_url">URL Hình Ảnh:</label>
+                            <label for="image_url">URL Hình Ảnh: <span class="required">*</span></label>
                             <textarea id="image_url" name="image_url" rows="3" required><?php echo htmlspecialchars($product['image_url']); ?></textarea>
 
                             <label for="sub_images">Hình Ảnh Phụ (cách nhau bằng dấu phẩy):</label>
