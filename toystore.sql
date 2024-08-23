@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th8 22, 2024 lúc 04:44 PM
+-- Thời gian đã tạo: Th8 23, 2024 lúc 03:03 PM
 -- Phiên bản máy phục vụ: 10.4.32-MariaDB
 -- Phiên bản PHP: 8.2.12
 
@@ -78,29 +78,11 @@ CREATE TABLE `order_items` (
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `products`
---
-
-CREATE TABLE `products` (
-  `product_id` int(11) NOT NULL,
-  `name` varchar(255) NOT NULL,
-  `description` text DEFAULT NULL,
-  `price` decimal(10,2) NOT NULL,
-  `stock_quantity` int(11) DEFAULT 0,
-  `category` varchar(255) DEFAULT NULL,
-  `image_url` varchar(255) DEFAULT NULL,
-  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
-  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
--- --------------------------------------------------------
-
---
 -- Cấu trúc bảng cho bảng `toy_products`
 --
 
 CREATE TABLE `toy_products` (
-  `id` int(11) NOT NULL,
+  `product_id` int(11) NOT NULL,
   `name` varchar(255) NOT NULL,
   `description` text DEFAULT NULL,
   `brand` varchar(255) DEFAULT NULL,
@@ -124,9 +106,9 @@ CREATE TABLE `toy_products` (
 -- Đang đổ dữ liệu cho bảng `toy_products`
 --
 
-INSERT INTO `toy_products` (`id`, `name`, `description`, `brand`, `original_price`, `discounted_price`, `discount_percentage`, `quantity`, `image_url`, `created_at`, `updated_at`, `detailed_description`, `theme`, `origin`, `code`, `age`, `brand_origin`, `sub_images`) VALUES
-(37, 'HOT WHEELS HKX42', 'Đồ Chơi Siêu Xe Khủng Long T-Rex Hot Wheels', 'Hot Wheels', 1359000.00, 1087000.00, 20, 1, '../images/HW-TRex.png', '2024-08-20 08:34:34', '2024-08-20 08:34:34', '<p>Tham gia cuộc phiêu lưu cùng Bộ đồ chơi Hot Wheels™ City T-Rex Chomp-Down™ và trở thành người hùng giải cứu thế giới! Với tính năng trượt tốc độ và vòng quay mạnh mẽ, bạn sẽ phóng xe Hot Wheels® để hạ gục khủng long khổng lồ. Khi bị đánh bại, đôi mắt giận dữ của quái vật sẽ chuyển từ màu vàng rực rỡ sang biểu tượng X bất tỉnh</p><p>Bộ đồ chơi đi kèm với một chiếc xe Hot Wheels® và có thể kết nối với các bộ khác để tạo ra những cuộc phiêu lưu bất tận. Dành cho trẻ em từ 4 tuổi trở lên. Màu sắc và họa tiết có thể thay đổi, mang lại sự bất ngờ và thích thú cho mọi cuộc chơi.</p>', 'HOT WHEELS CITY', 'TRUNG QUỐC', 'HKX42', '4 tuổi trở lên', 'Mỹ', '[\"..\\/images\\/HW-TRex.png\",\"..\\/images\\/HW-TRex2.png\",\"..\\/images\\/HW-TRex3.png\",\"..\\/images\\/HW-TRex4.png\"]'),
-(38, 'PAW PATROL 6060759', 'Đồ chơi xe cảnh sát biến hình Paw Patrol The Movie - Chase PAW PATROL 6060759', 'PAW Patrol', 1299000.00, 1039000.00, 20, 1, '../images/paw patroy.png', '2024-08-20 08:34:34', '2024-08-20 08:34:34', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+INSERT INTO `toy_products` (`product_id`, `name`, `description`, `brand`, `original_price`, `discounted_price`, `discount_percentage`, `quantity`, `image_url`, `created_at`, `updated_at`, `detailed_description`, `theme`, `origin`, `code`, `age`, `brand_origin`, `sub_images`) VALUES
+(37, 'HOT WHEELS HKX42', 'Đồ Chơi Siêu Xe Khủng Long T-Rex Hot Wheels', 'Hot Wheels', 1359000.00, 1087000.00, 19, 0, '../images/HW-TRex.png', '2024-08-20 08:34:34', '2024-08-23 12:54:29', 'Tham gia cuộc phiêu lưu cùng Bộ đồ chơi Hot Wheels™ City T-Rex Chomp-Down™ và trở thành người hùng giải cứu thế giới! Với tính năng trượt tốc độ và vòng quay mạnh mẽ, bạn sẽ phóng xe Hot Wheels® để hạ gục khủng long khổng lồ. Khi bị đánh bại, đôi mắt giận dữ của quái vật sẽ chuyển từ màu vàng rực rỡ sang biểu tượng X bất tỉnh\r\nBộ đồ chơi đi kèm với một chiếc xe Hot Wheels® và có thể kết nối với các bộ khác để tạo ra những cuộc phiêu lưu bất tận. Dành cho trẻ em từ 4 tuổi trở lên. Màu sắc và họa tiết có thể thay đổi, mang lại sự bất ngờ và thích thú cho mọi cuộc chơi.', 'HOT WHEELS CITY', 'TRUNG QUỐC', 'HKX42', '4 tuổi trở lên', 'Mỹ', '[\"..\\/images\\/HW-TRex.png\",\"..\\/images\\/HW-TRex2.png\",\"..\\/images\\/HW-TRex3.png\",\"..\\/images\\/HW-TRex4.png\"]'),
+(38, 'PAW PATROL 6060759', 'Đồ chơi xe cảnh sát biến hình Paw Patrol The Movie - Chase PAW PATROL 6060759', 'PAW Patrol', 1299000.00, 1039000.00, 20, 0, '../images/paw patroy.png', '2024-08-20 08:34:34', '2024-08-23 11:55:13', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (39, 'RASTAR R92900/WHITE', 'Đồ Chơi Xe Điều Khiển 1:24 - BMW 3.0 CSL - Màu Trắng', 'Rastar', 479000.00, 479000.00, 0, 1, '../images/rastar.png', '2024-08-20 08:34:34', '2024-08-20 08:34:34', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (40, 'Bảng vẽ đa năng PAB034 Xanh', 'Đồ chơi trẻ em: Bảng vẽ đa năng PAB034 Xanh', 'Pabo', 469000.00, 375000.00, 20, 1, '../images/pab0.png', '2024-08-20 08:34:34', '2024-08-20 08:34:34', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (41, 'HOT WHEELS GJM77', 'Bộ đường đua Hot Wheels vòng xoay thần tốc', 'Hot Wheels', 1389000.00, 972000.00, 30, 0, '../images/HW-action.png', '2024-08-20 08:34:34', '2024-08-20 08:34:34', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
@@ -139,8 +121,7 @@ INSERT INTO `toy_products` (`id`, `name`, `description`, `brand`, `original_pric
 (61, 'Hot Wheels Drift King', 'Xe Drift King Hot Wheels với khả năng drift mượt mà', 'Hot Wheels', 1599000.00, 1249000.00, 22, 11, '../images/hot_wheels_drift_king.png', '2024-08-18 03:30:00', '2024-08-18 03:30:00', '<p>Trải nghiệm drift mượt mà với xe Drift King Hot Wheels. Xe có thiết kế đặc biệt để thực hiện các màn drift ấn tượng.</p>', 'HOT WHEELS', 'TRUNG QUỐC', 'HW-DRIFT', '4 tuổi trở lên', 'Trung Quốc', '[\"../images/hot_wheels_drift_king.png\",\"../images/hot_wheels_drift_king2.png\",\"../images/hot_wheels_drift_king3.png\"]'),
 (62, 'Hot Wheels Fire Truck', 'Xe cứu hỏa Hot Wheels với chức năng phun nước', 'Hot Wheels', 1699000.00, 1399000.00, 18, 8, '../images/hot_wheels_fire_truck.png', '2024-08-18 03:45:00', '2024-08-18 03:45:00', '<p>Xe cứu hỏa Hot Wheels với chức năng phun nước và thiết kế chi tiết. Phù hợp cho các trò chơi cứu hỏa và cứu hộ.</p>', 'HOT WHEELS', 'TRUNG QUỐC', 'HW-FIRE', '4 tuổi trở lên', 'Trung Quốc', '[\"../images/hot_wheels_fire_truck.png\",\"../images/hot_wheels_fire_truck2.png\",\"../images/hot_wheels_fire_truck3.png\"]'),
 (63, 'Hot Wheels Speed Series', 'Bộ xe đua Speed Series Hot Wheels với các mẫu xe tốc độ cao', 'Hot Wheels', 1799000.00, 1499000.00, 17, 16, '../images/hot_wheels_speed_series.png', '2024-08-18 04:00:00', '2024-08-18 04:00:00', '<p>Bộ xe đua Speed Series Hot Wheels bao gồm nhiều mẫu xe tốc độ cao. Sản phẩm lý tưởng cho những cuộc đua tốc độ và các cuộc thi.</p>', 'HOT WHEELS', 'TRUNG QUỐC', 'HW-SPEED', '5 tuổi trở lên', 'Trung Quốc', '[\"../images/hot_wheels_speed_series.png\",\"../images/hot_wheels_speed_series2.png\",\"../images/hot_wheels_speed_series3.png\"]'),
-(64, 'Hot Wheels City Chase', 'Xe đua Hot Wheels City Chase với thiết kế hiện đại', 'Hot Wheels', 1499000.00, 1199000.00, 20, 9, '../images/hot_wheels_city_chase.png', '2024-08-18 04:15:00', '2024-08-18 04:15:00', '<p>Khám phá thành phố với xe đua Hot Wheels City Chase. Xe có thiết kế hiện đại và hiệu suất cao, phù hợp cho các cuộc đua thành phố.</p>', 'HOT WHEELS', 'TRUNG QUỐC', 'HW-CITY', '4 tuổi trở lên', 'Trung Quốc', '[\"../images/hot_wheels_city_chase.png\",\"../images/hot_wheels_city_chase2.png\",\"../images/hot_wheels_city_chase3.png\"]'),
-(65, 'Hot Wheels Night Racer', 'Xe đua Hot Wheels Night Racer với đèn LED phát sáng', 'Hot Wheels', 1699000.00, 1399000.00, 18, 13, '../images/hot_wheels_night_racer.png', '2024-08-18 04:30:00', '2024-08-18 04:30:00', '<p>Đua xe vào ban đêm với Hot Wheels Night Racer. Xe được trang bị đèn LED phát sáng giúp bạn dễ dàng điều khiển trong điều kiện ánh sáng thấp.</p>', 'HOT WHEELS', 'TRUNG QUỐC', 'HW-NIGHT', '4 tuổi trở lên', 'Trung Quốc', '[\"../images/hot_wheels_night_racer.png\",\"../images/hot_wheels_night_racer2.png\",\"../images/hot_wheels_night_racer3.png\"]');
+(64, 'Hot Wheels City Chase', 'Xe đua Hot Wheels City Chase với thiết kế hiện đại', 'Hot Wheels', 1499000.00, 1199000.00, 20, 9, '../images/hot_wheels_city_chase.png', '2024-08-18 04:15:00', '2024-08-18 04:15:00', '<p>Khám phá thành phố với xe đua Hot Wheels City Chase. Xe có thiết kế hiện đại và hiệu suất cao, phù hợp cho các cuộc đua thành phố.</p>', 'HOT WHEELS', 'TRUNG QUỐC', 'HW-CITY', '4 tuổi trở lên', 'Trung Quốc', '[\"../images/hot_wheels_city_chase.png\",\"../images/hot_wheels_city_chase2.png\",\"../images/hot_wheels_city_chase3.png\"]');
 
 -- --------------------------------------------------------
 
@@ -183,7 +164,7 @@ CREATE TABLE `wishlist` (
 ALTER TABLE `cart`
   ADD PRIMARY KEY (`cart_id`),
   ADD KEY `user_id` (`user_id`),
-  ADD KEY `product_id` (`product_id`);
+  ADD KEY `cart_product` (`product_id`);
 
 --
 -- Chỉ mục cho bảng `categories`
@@ -205,19 +186,13 @@ ALTER TABLE `orders`
 ALTER TABLE `order_items`
   ADD PRIMARY KEY (`order_item_id`),
   ADD KEY `order_id` (`order_id`),
-  ADD KEY `product_id` (`product_id`);
-
---
--- Chỉ mục cho bảng `products`
---
-ALTER TABLE `products`
-  ADD PRIMARY KEY (`product_id`);
+  ADD KEY `order_product` (`product_id`);
 
 --
 -- Chỉ mục cho bảng `toy_products`
 --
 ALTER TABLE `toy_products`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`product_id`);
 
 --
 -- Chỉ mục cho bảng `users`
@@ -233,7 +208,7 @@ ALTER TABLE `users`
 ALTER TABLE `wishlist`
   ADD PRIMARY KEY (`wishlist_id`),
   ADD KEY `user_id` (`user_id`),
-  ADD KEY `product_id` (`product_id`);
+  ADD KEY `wishlist_product` (`product_id`);
 
 --
 -- AUTO_INCREMENT cho các bảng đã đổ
@@ -264,16 +239,10 @@ ALTER TABLE `order_items`
   MODIFY `order_item_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT cho bảng `products`
---
-ALTER TABLE `products`
-  MODIFY `product_id` int(11) NOT NULL AUTO_INCREMENT;
-
---
 -- AUTO_INCREMENT cho bảng `toy_products`
 --
 ALTER TABLE `toy_products`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=421;
+  MODIFY `product_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=425;
 
 --
 -- AUTO_INCREMENT cho bảng `users`
@@ -296,7 +265,8 @@ ALTER TABLE `wishlist`
 --
 ALTER TABLE `cart`
   ADD CONSTRAINT `cart_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`user_id`),
-  ADD CONSTRAINT `cart_ibfk_2` FOREIGN KEY (`product_id`) REFERENCES `products` (`product_id`);
+  ADD CONSTRAINT `cart_ibfk_2` FOREIGN KEY (`product_id`) REFERENCES `products` (`product_id`),
+  ADD CONSTRAINT `cart_product` FOREIGN KEY (`product_id`) REFERENCES `toy_products` (`product_id`);
 
 --
 -- Các ràng buộc cho bảng `orders`
@@ -309,14 +279,16 @@ ALTER TABLE `orders`
 --
 ALTER TABLE `order_items`
   ADD CONSTRAINT `order_items_ibfk_1` FOREIGN KEY (`order_id`) REFERENCES `orders` (`order_id`),
-  ADD CONSTRAINT `order_items_ibfk_2` FOREIGN KEY (`product_id`) REFERENCES `products` (`product_id`);
+  ADD CONSTRAINT `order_items_ibfk_2` FOREIGN KEY (`product_id`) REFERENCES `products` (`product_id`),
+  ADD CONSTRAINT `order_product` FOREIGN KEY (`product_id`) REFERENCES `toy_products` (`product_id`);
 
 --
 -- Các ràng buộc cho bảng `wishlist`
 --
 ALTER TABLE `wishlist`
   ADD CONSTRAINT `wishlist_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`user_id`),
-  ADD CONSTRAINT `wishlist_ibfk_2` FOREIGN KEY (`product_id`) REFERENCES `products` (`product_id`);
+  ADD CONSTRAINT `wishlist_ibfk_2` FOREIGN KEY (`product_id`) REFERENCES `products` (`product_id`),
+  ADD CONSTRAINT `wishlist_product` FOREIGN KEY (`product_id`) REFERENCES `toy_products` (`product_id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
