@@ -97,6 +97,7 @@ function saveInfo() {
   const selectedCity = citis.options[citis.selectedIndex].value;
   const selectedDistrict = districts.options[districts.selectedIndex].value;
   const selectedWard = wards.options[wards.selectedIndex].value;
+  const inputStreet=document.getElementById('street').value;
   const newPhone = document.getElementById('phone-num').value;
   const firstName =document.getElementById('first-name').value;
   const lastName =document.getElementById('last-name').value;
@@ -105,7 +106,8 @@ function saveInfo() {
   const address = {
     city: selectedCity,
     district: selectedDistrict,
-    ward: selectedWard
+    ward: selectedWard,
+    street:inputStreet,
   };
   localStorage.setItem("loggedInUserPhone", newPhone);
   localStorage.setItem('userAddress', JSON.stringify(address));
