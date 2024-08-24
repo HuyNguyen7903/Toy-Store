@@ -16,20 +16,37 @@
             $("#footer").load("../html/footer.html");
 
             $("#add-product-form").on("submit", function(event) {
-                event.preventDefault();
+                // Validate that the 'Mã' field is not empty
+                var code = $("#code").val().trim();
+                if (code === "") {
+                    alert("Mã không được để trống.");
+                    return false; // Prevent form submission
+                }
 
+                // Validate that at least one category checkbox is selected
+                var categoryChecked = $("input[name='category[]']:checked").length > 0;
+                if (!categoryChecked) {
+                    alert("Vui lòng chọn ít nhất một loại sản phẩm.");
+                    return false; // Prevent form submission
+                }
+
+                // Perform AJAX request
                 $.ajax({
                     url: 'add_product.php',
                     type: 'POST',
                     data: $(this).serialize(),
                     success: function(response) {
                         alert(response);
-                        loadProducts();
+                        // Optionally reset the form or redirect
+                        $("#add-product-form")[0].reset();
                     },
                     error: function() {
                         alert("Có lỗi xảy ra trong quá trình gửi dữ liệu.");
                     }
                 });
+
+                // Prevent form submission to allow AJAX to handle it
+                event.preventDefault();
             });
 
             function calculateDiscountedPrice() {
@@ -60,7 +77,7 @@
                 <h2>Chức Năng</h2>
                 <a href="../admin/product_list.php">Danh Sách Sản Phẩm</a>
                 <a href="../admin/index.php">Trang Quản Trị</a>
-                <a style=" cursor: pointer;" onclick="logout()">Đăng xuất</a>
+                <a style="cursor: pointer;" onclick="logout()">Đăng xuất</a>
             </div>
             <div class="info">
                 <div class="info-container">
@@ -69,6 +86,14 @@
                         <form id="add-product-form" method="post" action="add_product.php">
                             <label for="name">Tên Sản Phẩm:<span class="required">*</span></label>
                             <input type="text" id="name" name="name" required>
+                            <label for="category">Loại Sản Phẩm: <span class="required">*</span></label>
+                            <div class="category-options">
+                                <label><input type="checkbox" name="category[]" value="HÀNG MỚI"> HÀNG MỚI</label>
+                                <label><input type="checkbox" name="category[]" value="FLASH SALE"> FLASH SALE</label>
+                                <label><input type="checkbox" name="category[]" value="ĐỒ CHƠI PHƯƠNG TIỆN"> ĐỒ CHƠI PHƯƠNG TIỆN</label>
+                                <label><input type="checkbox" name="category[]" value="ĐỒ CHƠI SÁNG TẠO"> ĐỒ CHƠI SÁNG TẠO</label>
+                                <!-- Add more options as needed -->
+                            </div>
                             <label for="brand">Thương Hiệu:<span class="required">*</span></label>
                             <input type="text" id="brand" name="brand" required>
                             <label for="original_price">Giá Gốc:<span class="required">*</span></label>
@@ -91,14 +116,17 @@
                             <input type="text" id="theme" name="theme">
                             <label for="origin">Xuất Xứ:</label>
                             <input type="text" id="origin" name="origin">
-                            <label for="code">Mã:</label>
-                            <input type="text" id="code" name="code">
+                            <label for="code">Mã: <span class="required">*</span></label>
+                            <input type="text" id="code" name="code" required>
                             <label for="age">Độ Tuổi:</label>
                             <input type="text" id="age" name="age">
                             <label for="brand_origin">Nguồn Gốc Thương Hiệu:</label>
                             <input type="text" id="brand_origin" name="brand_origin">
 
-                            <button type="submit">Thêm Sản Phẩm</button>
+                            <div class="btn">
+                                <button type="submit">Thêm Sản Phẩm</button>
+                                <button type="reset">Làm Mới</button>
+                            </div>
                         </form>
                     </div>
                 </div>

@@ -3,7 +3,6 @@ require '../admin/database/connectdb.php';
 
 // Get product_id from query parameter
 $product_id = isset($_GET['product_id']) ? intval($_GET['product_id']) : 0;
-
 // Fetch product details from database
 $sql = "SELECT * FROM toy_products WHERE product_id = :product_id";
 $stmt = $conn->prepare($sql);
@@ -15,6 +14,10 @@ $product = $stmt->fetch(PDO::FETCH_ASSOC);
 if (!$product) {
     die("Sản phẩm không tồn tại.");
 }
+
+// Fetch available categories and product categories
+$allCategories = ['HÀNG MỚI', 'FLASH SALE', 'ĐỒ CHƠI PHƯƠNG TIỆN', 'ĐỒ CHƠI SÁNG TẠO']; // Define available categories here
+$categoriesArray = explode(',', $product['category']); // Assuming categories are stored as a comma-separated list
 ?>
 
 <!DOCTYPE html>
@@ -27,7 +30,6 @@ if (!$product) {
     <link rel="stylesheet" href="../css/admin_pro_mag.css" />
     <link rel="shortcut icon" href="../images/android-icon-48x48.png" />
     <script src="../JS/toy.js"></script>
-    <!-- jQuery for AJAX requests -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
         $(document).ready(function() {
@@ -35,6 +37,13 @@ if (!$product) {
             $("#footer").load("../html/footer.html");
 
             $("#edit-product-form").on("submit", function(event) {
+                // Validate that at least one category checkbox is selected
+                var categoryChecked = $("input[name='category[]']:checked").length > 0;
+                if (!categoryChecked) {
+                    alert("Vui lòng chọn ít nhất một loại sản phẩm.");
+                    return false; // Prevent form submission
+                }
+
                 event.preventDefault();
 
                 $.ajax({
@@ -60,7 +69,7 @@ if (!$product) {
                         },
                         success: function(response) {
                             alert(response);
-                            window.location.href = '../admin/product_list.php'; // Redirect to the product list page
+                            window.location.href = '../admin/product_list.php';
                         },
                         error: function() {
                             alert("Có lỗi xảy ra trong quá trình xóa sản phẩm.");
@@ -75,7 +84,7 @@ if (!$product) {
 
                 if (!isNaN(originalPrice) && !isNaN(discountPercentage)) {
                     var discountedPrice = originalPrice * (1 - (discountPercentage / 100));
-                    $("#discounted_price").val(Math.round(discountedPrice)); // Round to nearest integer
+                    $("#discounted_price").val(Math.round(discountedPrice));
                 } else {
                     $("#discounted_price").val('');
                 }
@@ -108,6 +117,16 @@ if (!$product) {
 
                             <label for="name">Tên Sản Phẩm: <span class="required">*</span></label>
                             <input type="text" id="name" name="name" value="<?php echo htmlspecialchars($product['name']); ?>" required>
+
+                            <label for="category">Loại Sản Phẩm: <span class="required">*</span></label>
+                            <div class="category-options">
+                                <?php foreach ($allCategories as $categoryOption): ?>
+                                    <label>
+                                        <input type="checkbox" name="category[]" value="<?php echo htmlspecialchars($categoryOption); ?>" <?php echo in_array($categoryOption, $categoriesArray) ? 'checked' : ''; ?>>
+                                        <?php echo htmlspecialchars($categoryOption); ?>
+                                    </label>
+                                <?php endforeach; ?>
+                            </div>
 
                             <label for="brand">Thương Hiệu: <span class="required">*</span></label>
                             <input type="text" id="brand" name="brand" value="<?php echo htmlspecialchars($product['brand']); ?>" required>
@@ -142,8 +161,8 @@ if (!$product) {
                             <label for="origin">Xuất Xứ:</label>
                             <input type="text" id="origin" name="origin" value="<?php echo htmlspecialchars($product['origin']); ?>">
 
-                            <label for="code">Mã:</label>
-                            <input type="text" id="code" name="code" value="<?php echo htmlspecialchars($product['code']); ?>">
+                            <label for="code">Mã: <span class="required">*</span></label>
+                            <input type="text" id="code" name="code" value="<?php echo htmlspecialchars($product['code']); ?>" required>
 
                             <label for="age">Độ Tuổi:</label>
                             <input type="text" id="age" name="age" value="<?php echo htmlspecialchars($product['age']); ?>">

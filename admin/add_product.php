@@ -6,6 +6,7 @@ require '../admin/database/connectdb.php';
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Lấy dữ liệu từ form
     $name = $_POST['name'];
+    $categories = isset($_POST['category']) ? $_POST['category'] : [];  // Fetch categories array
     $brand = $_POST['brand'];
     $original_price = $_POST['original_price'];
     $discounted_price = $_POST['discounted_price'];
@@ -21,6 +22,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $brand_origin = $_POST['brand_origin'];
     $sub_images = json_encode(explode(',', $_POST['sub_images']));
 
+    // Convert categories array to a comma-separated string
+    $category_string = implode(', ', $categories);
+
     // Câu lệnh SQL kiểm tra sản phẩm theo mã sản phẩm
     $sql_check = "SELECT COUNT(*) FROM toy_products WHERE code = :code";
 
@@ -32,12 +36,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         if ($stmt_check->fetchColumn() == 0) {
             // Nếu sản phẩm chưa tồn tại, thực hiện chèn
             $sql_insert = "INSERT INTO toy_products 
-            (name, brand, original_price, discounted_price, discount_percentage, quantity, description, detailed_description, image_url, theme, origin, code, age, brand_origin, sub_images) 
+            (name, category, brand, original_price, discounted_price, discount_percentage, quantity, description, detailed_description, image_url, theme, origin, code, age, brand_origin, sub_images) 
             VALUES 
-            (:name, :brand, :original_price, :discounted_price, :discount_percentage, :quantity, :description, :detailed_description, :image_url, :theme, :origin, :code, :age, :brand_origin, :sub_images)";
+            (:name, :category, :brand, :original_price, :discounted_price, :discount_percentage, :quantity, :description, :detailed_description, :image_url, :theme, :origin, :code, :age, :brand_origin, :sub_images)";
             $stmt_insert = $conn->prepare($sql_insert);
 
             $stmt_insert->bindParam(':name', $name);
+            $stmt_insert->bindParam(':category', $category_string);  // Bind the comma-separated categories string
             $stmt_insert->bindParam(':brand', $brand);
             $stmt_insert->bindParam(':original_price', $original_price);
             $stmt_insert->bindParam(':discounted_price', $discounted_price);

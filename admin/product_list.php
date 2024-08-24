@@ -1,7 +1,8 @@
 <?php
 require '../admin/database/connectdb.php';
 
-$sql = "SELECT product_id, name, brand, original_price, discounted_price, discount_percentage, quantity, image_url FROM toy_products";
+// Update SQL query to include the code field
+$sql = "SELECT product_id, name, code, brand, original_price, discounted_price, discount_percentage, quantity, image_url, category FROM toy_products";
 $products = $conn->query($sql);
 ?>
 
@@ -36,8 +37,6 @@ $products = $conn->query($sql);
             <div class="sidebar">
                 <h2>Chức Năng</h2>
                 <a href="../admin/product-management.php">Thêm sản phẩm</a>
-                <!-- <a href="../admin/product_edit.php">Chỉnh Sửa Sản Phẩm</a>
-                <a href="../admin/product-management.php">Xóa Sản Phẩm</a> -->
                 <a href="../admin/index.php">Trang Quản Trị</a>
                 <a style="cursor: pointer;" onclick="logout()">Đăng xuất</a>
             </div>
@@ -48,6 +47,8 @@ $products = $conn->query($sql);
                             <tr>
                                 <th>Hình Ảnh</th>
                                 <th>Tên Sản Phẩm</th>
+                                <th>Mã Sản Phẩm</th> <!-- New column for product code -->
+                                <th>Loại Sản Phẩm</th>
                                 <th>Giá Gốc</th>
                                 <th>Giá Giảm</th>
                                 <th>Số Lượng</th>
@@ -64,6 +65,8 @@ $products = $conn->query($sql);
                                             </a>
                                         </td>
                                         <td><?php echo htmlspecialchars($product['name']); ?></td>
+                                        <td><?php echo htmlspecialchars($product['code']); ?></td>
+                                        <td class="category"><?php echo htmlspecialchars($product['category']); ?></td>
                                         <td><?php echo number_format($product['original_price'], 0, ',', '.'); ?> VND</td>
                                         <td>
                                             <?php echo number_format($product['discounted_price'], 0, ',', '.'); ?> VND
@@ -79,7 +82,7 @@ $products = $conn->query($sql);
                                 <?php endforeach; ?>
                             <?php else: ?>
                                 <tr>
-                                    <td colspan="6">Không có sản phẩm nào trong cơ sở dữ liệu.</td>
+                                    <td colspan="8">Không có sản phẩm nào trong cơ sở dữ liệu.</td>
                                 </tr>
                             <?php endif; ?>
                         </tbody>
