@@ -63,7 +63,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (userName) userNameElement.textContent = userName;
     if (userPhone) userPhoneElement.textContent = userPhone;
     if (userAddress) {
-        const fullAddress = `${userAddress.street}, ${userAddress.ward}, ${userAddress.district}, ${userAddress.city}`;
+        const fullAddress = `${userAddress.street} ${userAddress.ward}, ${userAddress.district}, ${userAddress.city}`;
         addressElement.innerHTML = `<span class="text-deco"></span> ${fullAddress}`;
     }
 }

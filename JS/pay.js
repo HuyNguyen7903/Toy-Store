@@ -142,7 +142,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
       if (userAddress) {
           // Construct the full address
-          const fullAddress = `${userAddress.street}, ${userAddress.ward}, ${userAddress.district}, ${userAddress.city}`;
+          const fullAddress = `${userAddress.street} ${userAddress.ward}, ${userAddress.district}, ${userAddress.city}`;
 
           // Display the address in the user-address section
           const addressElement = document.querySelector('.user-address');
