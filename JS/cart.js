@@ -106,8 +106,30 @@ document.addEventListener('DOMContentLoaded', () => {
         if (loggedInUser === null) {
             showPopup('login.html');
             $(document).on('click', '#dangnhap', function () {
-                loginCheck();
-                document.getElementById("loginForm").submit();
+                function loginCheck() {
+                    const email = document.getElementById("email").value;
+                    const password = document.getElementById("password").value;
+                    const users = [
+                      { email: "admin@example.com", password: "admin123", role: 1 },
+                      {email: "tinh@gmail.com",password: "tinh123",name: "Tinh",gender: "Nam",role: 0,},
+                      {email: "huy@gmail.com",password: "huy123",name: "Huy",gender: "Nam",role: 1,},
+                    ];
+                    const user = users.find((user) => user.email === email && user.password === password);
+                    if (user) {
+                      localStorage.setItem("loggedInUser", user.email);
+                      localStorage.setItem("loggedInUserName", user.name);
+                      localStorage.setItem("loggedInUserPhone", user.phone);
+                      localStorage.setItem("loggedInUserGender", user.gender);
+                      localStorage.setItem("userRole", user.role);
+                    }
+                  }
+                    const loginForm = document.getElementById('loginForm');
+                    if (loginForm) {
+                        loginForm.addEventListener('submit', (event) => {
+                            event.preventDefault();
+                            loginCheck();
+                        });
+                    }
                 hidePopup();
                 window.location.reload();
             });
@@ -120,7 +142,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     
                     // Show the login popup again after registration
                     setTimeout(() => {
-                        handleLoginClick();
+                        showPopup('login.html');
                     }, 500);  // Delay to ensure registration process completes
                 });
             });
