@@ -14,8 +14,10 @@ $stmt->execute();
 // Kiểm tra kết quả truy vấn
 if ($stmt->rowCount() > 0) {
     $product = $stmt->fetch(PDO::FETCH_ASSOC);
-    // Giả sử `sub_images` lưu trữ nhiều URL hình ảnh dưới dạng JSON
-    $sub_images = json_decode($product['sub_images'], true);
+
+    // Xử lý sub_images từ chuỗi phân cách bởi dấu phẩy
+    $sub_images_string = $product['sub_images'];
+    $sub_images = array_filter(array_map('trim', explode(',', $sub_images_string))); // Chia tách chuỗi và loại bỏ khoảng trắng
 } else {
     echo 'Sản phẩm không tồn tại.';
     exit;
@@ -64,7 +66,9 @@ if ($stmt->rowCount() > 0) {
                 <div class="thumbnails">
                     <?php
                     foreach ($sub_images as $image) {
-                        echo '<img src="' . htmlspecialchars($image) . '" onclick="changeImage(this)" />';
+                        if (!empty($image)) {
+                            echo '<img src="' . htmlspecialchars($image) . '" onclick="changeImage(this)" />';
+                        }
                     }
                     ?>
                 </div>

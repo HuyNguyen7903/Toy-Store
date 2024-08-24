@@ -90,6 +90,7 @@
                             <div class="category-options">
                                 <label><input type="checkbox" name="category[]" value="HÀNG MỚI"> HÀNG MỚI</label>
                                 <label><input type="checkbox" name="category[]" value="FLASH SALE"> FLASH SALE</label>
+                                <label><input type="checkbox" name="category[]" value="FLASH SALE"> BÁN CHẠY</label>
                                 <label><input type="checkbox" name="category[]" value="ĐỒ CHƠI PHƯƠNG TIỆN"> ĐỒ CHƠI PHƯƠNG TIỆN</label>
                                 <label><input type="checkbox" name="category[]" value="ĐỒ CHƠI SÁNG TẠO"> ĐỒ CHƠI SÁNG TẠO</label>
                                 <!-- Add more options as needed -->

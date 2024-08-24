@@ -1,5 +1,4 @@
 <?php
-
 require '../admin/database/connectdb.php';
 
 // Kiểm tra xem form có được submit không
@@ -20,9 +19,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $code = $_POST['code'];
     $age = $_POST['age'];
     $brand_origin = $_POST['brand_origin'];
-    $sub_images = json_encode(explode(',', $_POST['sub_images']));
 
-    // Convert categories array to a comma-separated string
+    // Xử lý hình ảnh phụ
+    $sub_images_input = isset($_POST['sub_images']) ? $_POST['sub_images'] : '';
+    $sub_images_array = array_map('trim', explode(',', $sub_images_input)); // Chia tách chuỗi và loại bỏ khoảng trắng
+    $sub_images_string = implode(', ', $sub_images_array); // Chuyển đổi thành chuỗi phân cách bởi dấu phẩy
+
+    // Chuyển đổi mảng categories thành chuỗi phân cách bởi dấu phẩy
     $category_string = implode(', ', $categories);
 
     // Câu lệnh SQL kiểm tra sản phẩm theo mã sản phẩm
@@ -56,10 +59,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $stmt_insert->bindParam(':code', $code);
             $stmt_insert->bindParam(':age', $age);
             $stmt_insert->bindParam(':brand_origin', $brand_origin);
-            $stmt_insert->bindParam(':sub_images', $sub_images);
+            $stmt_insert->bindParam(':sub_images', $sub_images_string); // Bind the comma-separated sub_images
 
-            $stmt_insert->execute();
-            echo "Sản phẩm đã được thêm vào cơ sở dữ liệu thành công!";
+            if ($stmt_insert->execute()) {
+                echo "Sản phẩm đã được thêm vào cơ sở dữ liệu thành công!";
+            } else {
+                echo "Có lỗi xảy ra khi thêm sản phẩm.";
+            }
         } else {
             echo "Sản phẩm này đã tồn tại trong cơ sở dữ liệu.";
         }

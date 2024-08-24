@@ -14,12 +14,16 @@ if (isset($_POST['product_id'])) {
     $description = $_POST['description'];
     $detailed_description = $_POST['detailed_description'];
     $image_url = $_POST['image_url'];
-    $sub_images = $_POST['sub_images'];
     $theme = $_POST['theme'];
     $origin = $_POST['origin'];
     $code = $_POST['code'];
     $age = $_POST['age'];
     $brand_origin = $_POST['brand_origin'];
+
+    // Process sub_images
+    $sub_images = isset($_POST['sub_images']) ? $_POST['sub_images'] : '';
+    $sub_images_array = array_map('trim', explode(',', $sub_images)); // Split by comma and trim spaces
+    $sub_images_string = implode(',', $sub_images_array); // Convert back to a comma-separated string
 
     // Check if the code already exists for a different product
     $sql_check = "SELECT COUNT(*) FROM toy_products WHERE code = :code AND product_id != :product_id";
@@ -62,7 +66,7 @@ if (isset($_POST['product_id'])) {
             $stmt->bindParam(':description', $description);
             $stmt->bindParam(':detailed_description', $detailed_description);
             $stmt->bindParam(':image_url', $image_url);
-            $stmt->bindParam(':sub_images', $sub_images);
+            $stmt->bindParam(':sub_images', $sub_images_string); // Bind the comma-separated sub_images
             $stmt->bindParam(':theme', $theme);
             $stmt->bindParam(':origin', $origin);
             $stmt->bindParam(':code', $code);

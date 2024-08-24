@@ -16,7 +16,7 @@ if (!$product) {
 }
 
 // Fetch available categories and product categories
-$allCategories = ['HÀNG MỚI', 'FLASH SALE', 'ĐỒ CHƠI PHƯƠNG TIỆN', 'ĐỒ CHƠI SÁNG TẠO']; // Define available categories here
+$allCategories = ['HÀNG MỚI', 'FLASH SALE', 'BÁN CHẠY', 'ĐỒ CHƠI PHƯƠNG TIỆN', 'ĐỒ CHƠI SÁNG TẠO']; // Define available categories here
 $categoriesArray = explode(',', $product['category']); // Assuming categories are stored as a comma-separated list
 ?>
 

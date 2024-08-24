@@ -2,8 +2,8 @@
 // Kết nối với cơ sở dữ liệu
 require '../admin/database/connectdb.php';
 
-// Truy vấn dữ liệu sản phẩm
-$sql = "SELECT * FROM toy_products";
+// Truy vấn dữ liệu sản phẩm với category chứa "BÁN CHẠY"
+$sql = "SELECT * FROM toy_products WHERE category LIKE '%BÁN CHẠY%'";
 $result = $conn->query($sql);
 
 // Kiểm tra kết quả truy vấn
