@@ -105,10 +105,24 @@ document.addEventListener('DOMContentLoaded', () => {
         const loggedInUser = localStorage.getItem("loggedInUser");
         if (loggedInUser === null) {
             showPopup('login.html');
-            loginContent.addEventListener('click', (e) => {
-                if (e.target.classList.contains('register-acc')) {
-                    handleRegisterClick();
-                }
+            $(document).on('click', '#dangnhap', function () {
+                loginCheck();
+                document.getElementById("loginForm").submit();
+                hidePopup();
+                window.location.reload();
+            });
+            $(document).on('click', '#register-acc', function () {
+                handleRegisterClick();
+                
+                $(document).on('click', '#submitButton', function (event) {
+                    event.preventDefault();  // Prevent the default form submission
+                    document.getElementById("registerForm").submit();
+                    
+                    // Show the login popup again after registration
+                    setTimeout(() => {
+                        handleLoginClick();
+                    }, 500);  // Delay to ensure registration process completes
+                });
             });
         } else {
             hidePopup();

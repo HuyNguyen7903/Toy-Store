@@ -151,7 +151,7 @@ function showPopupMessage(type) {
   // Hide the popup after 3 seconds
   setTimeout(() => {
     popupContainer.style.display = "none";
-  }, 5000);
+  }, 3000);
 }
 
 document.getElementById("close-popup").addEventListener("click", () => {

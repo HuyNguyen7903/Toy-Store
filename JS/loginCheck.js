@@ -5,11 +5,11 @@ document.addEventListener('DOMContentLoaded', () => {
     const registerContent = document.getElementById("register-content");
 
     // Check if the user is logged in
-    if (!loggedInUser) {
-        if (!window.location.href.includes('login.html')) {
-            window.location.href = 'login.html';
-        }
-    }
+    // if (!loggedInUser) {
+    //     if (!window.location.href.includes('login.html')) {
+    //         window.location.href = 'login.html';
+    //     }
+    // }
 
     function loginCheck() {
         const email = document.getElementById("email").value;

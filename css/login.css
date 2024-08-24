@@ -107,7 +107,7 @@ form p a {
   color: #cc0000;
   text-decoration: none;
 }
-form .register-acc {
+form #register-acc {
   font-size: x-large;
 }
 form p a:hover {

@@ -70,7 +70,7 @@ label {
   color: red;
   font-size: small;
 }
-.submitButton {
+#submitButton {
   width: 40%;
   padding: 10px;
   border: none;
@@ -83,7 +83,7 @@ label {
   display: block;
   margin: 20px auto;
 }
-.submitButton:hover {
+#submitButton:hover {
   background-color: #cc0000;
 }
 
