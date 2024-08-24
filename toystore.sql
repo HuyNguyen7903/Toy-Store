@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th8 24, 2024 lúc 05:20 PM
+-- Thời gian đã tạo: Th8 24, 2024 lúc 05:49 PM
 -- Phiên bản máy phục vụ: 10.4.32-MariaDB
 -- Phiên bản PHP: 8.2.12
 
@@ -112,7 +112,7 @@ INSERT INTO `toy_products` (`product_id`, `name`, `category`, `description`, `br
 (38, 'PAW PATROL 6060759', '', 'Đồ chơi xe cảnh sát biến hình Paw Patrol The Movie - Chase PAW PATROL 6060759', 'PAW Patrol', 1299000.00, 1039000.00, 20, 0, '../images/paw patroy.png', '2024-08-20 08:34:34', '2024-08-24 13:50:50', '', '', '', 'h', '', '', ''),
 (39, 'RASTAR R92900/WHITE', 'FLASH SALE,BÁN CHẠY', 'Đồ Chơi Xe Điều Khiển 1:24 - BMW 3.0 CSL - Màu Trắng', 'Rastar', 479000.00, 479000.00, 0, 1, '../images/rastar.png', '2024-08-20 08:34:34', '2024-08-24 15:15:53', '', '', '', 'd', '', '', ''),
 (40, 'Bảng vẽ đa năng PAB034 Xanh', '', 'Đồ chơi trẻ em: Bảng vẽ đa năng PAB034 Xanh', 'Pabo', 469000.00, 375000.00, 20, 1, '../images/pab0.png', '2024-08-20 08:34:34', '2024-08-20 08:34:34', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(41, 'HOT WHEELS GJM77', '', 'Bộ đường đua Hot Wheels vòng xoay thần tốc', 'Hot Wheels', 1389000.00, 972000.00, 30, 0, '../images/HW-action.png', '2024-08-20 08:34:34', '2024-08-20 08:34:34', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(41, 'HOT WHEELS GJM77 đâs', 'BÁN CHẠY', 'Bộ đường đua Hot Wheels vòng xoay thần tốc', 'Hot Wheels', 1389000.00, 972000.00, 30, 0, '../images/HW-action.png', '2024-08-20 08:34:34', '2024-08-24 15:23:23', '', '', '', 's', '', '', ''),
 (55, 'Hot Wheels Turbo Racer', 'BÁN CHẠY', 'Xe Hot Wheels Turbo Racer với khả năng tăng tốc cao', 'Hot Wheels', 1399000.00, 1099000.00, 21, 15, '../images/hot_wheels_turbo_racer.png', '2024-08-18 02:00:00', '2024-08-24 15:17:09', '<p>Trải nghiệm tốc độ cực đại với xe Hot Wheels Turbo Racer. Xe có khả năng tăng tốc nhanh chóng và thiết kế thể thao tuyệt đẹp.</p>', 'HOT WHEELS', 'TRUNG QUỐC', 'HW-TURBO', '4 tuổi trở lên', 'Trung Quốc', '[\"../images/hot_wheels_turbo_racer.png\",\"../images/hot_wheels_turbo_racer2.png\",\"../images/hot_wheels_turbo_racer3.png\"]'),
 (56, 'Hot Wheels Track Builder', '', 'Bộ xây dựng đường đua Hot Wheels với các phụ kiện đa dạng', 'Hot Wheels', 1899000.00, 1499000.00, 21, 20, '../images/hot_wheels_track_builder.png', '2024-08-18 02:15:00', '2024-08-18 02:15:00', '<p>Tạo ra các đường đua độc đáo với bộ xây dựng Hot Wheels Track Builder. Bộ sản phẩm bao gồm nhiều phụ kiện để bạn tùy chỉnh theo ý muốn.</p>', 'HOT WHEELS', 'TRUNG QUỐC', 'HW-TRACK', '5 tuổi trở lên', 'Trung Quốc', '[\"../images/hot_wheels_track_builder.png\",\"../images/hot_wheels_track_builder2.png\",\"../images/hot_wheels_track_builder3.png\"]'),
 (57, 'Hot Wheels Monster Trucks', '', 'Xe tải khủng long Hot Wheels Monster Trucks với tính năng phá hủy', 'Hot Wheels', 1599000.00, 1299000.00, 19, 12, '../images/hot_wheels_monster_trucks.png', '2024-08-18 02:30:00', '2024-08-18 02:30:00', '<p>Khám phá thế giới khủng long với xe tải Hot Wheels Monster Trucks. Xe có thiết kế mạnh mẽ và khả năng phá hủy mạnh mẽ.</p>', 'HOT WHEELS', 'TRUNG QUỐC', 'HW-MONSTER', '4 tuổi trở lên', 'Trung Quốc', '[\"../images/hot_wheels_monster_trucks.png\",\"../images/hot_wheels_monster_trucks2.png\",\"../images/hot_wheels_monster_trucks3.png\"]'),
@@ -267,7 +267,6 @@ ALTER TABLE `wishlist`
 --
 ALTER TABLE `cart`
   ADD CONSTRAINT `cart_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`user_id`),
-  ADD CONSTRAINT `cart_ibfk_2` FOREIGN KEY (`product_id`) REFERENCES `products` (`product_id`),
   ADD CONSTRAINT `cart_product` FOREIGN KEY (`product_id`) REFERENCES `toy_products` (`product_id`);
 
 --
@@ -281,7 +280,6 @@ ALTER TABLE `orders`
 --
 ALTER TABLE `order_items`
   ADD CONSTRAINT `order_items_ibfk_1` FOREIGN KEY (`order_id`) REFERENCES `orders` (`order_id`),
-  ADD CONSTRAINT `order_items_ibfk_2` FOREIGN KEY (`product_id`) REFERENCES `products` (`product_id`),
   ADD CONSTRAINT `order_product` FOREIGN KEY (`product_id`) REFERENCES `toy_products` (`product_id`);
 
 --
@@ -289,7 +287,6 @@ ALTER TABLE `order_items`
 --
 ALTER TABLE `wishlist`
   ADD CONSTRAINT `wishlist_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`user_id`),
-  ADD CONSTRAINT `wishlist_ibfk_2` FOREIGN KEY (`product_id`) REFERENCES `products` (`product_id`),
   ADD CONSTRAINT `wishlist_product` FOREIGN KEY (`product_id`) REFERENCES `toy_products` (`product_id`);
 COMMIT;
 
