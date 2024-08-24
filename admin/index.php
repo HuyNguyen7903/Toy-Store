@@ -8,6 +8,8 @@
     <link rel="stylesheet" href="../css/admin_index.css" />
     <link rel="shortcut icon" href="../images/android-icon-48x48.png" />
     <script src="../JS/toy.js"></script>
+    <script src="../JS/userinfo.js"></script>
+    <script src="../JS/logout.js"></script>
     <!-- liên kết header và footer -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>

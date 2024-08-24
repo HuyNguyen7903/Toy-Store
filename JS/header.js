@@ -5,17 +5,19 @@ window.onload = function () {
     const loggedInUserName = localStorage.getItem("loggedInUserName");
     if (loggedInUser) {
       const loginLink = document.getElementById("linkdangnhap");
-  
-      if (loginLink) {
-        loginLink.textContent = `Xin chào, ${loggedInUserName}`;
-  
+      loginLink.innerText = `Xin chào, ${loggedInUserName}`;
+        
         // Đổi URL dựa trên role của người dùng khi click vào link
         loginLink.addEventListener("click", function (event) {
           event.preventDefault(); // Ngăn không cho liên kết hoạt động ngay
-          loginLink.href = userRole == 1 ? "../admin/index.php" : "./user.html";
-          window.location.href = loginLink.href; // Chuyển hướng khi click
+          if (userRole==1) {
+            loginLink.href ="../admin/index.php";
+            }else {
+                loginLink.href ="../html/user.html";
+              
+            }
+            window.location.href = loginLink.href; 
         });
-      }
       updateCartCount();
       updateWishlistCount();
     } else { $('#linkdangnhap').click(function () {
