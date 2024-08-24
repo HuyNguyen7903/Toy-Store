@@ -61,9 +61,9 @@ document.addEventListener("DOMContentLoaded", () => {
     const district = document.getElementById("district").value.trim();
     const ward = document.getElementById("ward").value.trim();
 
-    if (!firstName || !lastName || !phoneNum || !city || !district|| !ward) {
-      document.getElementById("popup-address").style.display = "block";
-      return false;
+    if (!firstName || !lastName || !phoneNum || !city || !district|| !ward || phoneNum.length != 10 || /\D/.test(phoneNum)) {
+        document.getElementById("popup-address").style.display = "block";
+        return false;
     }
     return true;
   }
@@ -77,6 +77,7 @@ document.addEventListener("DOMContentLoaded", () => {
         alert("Giỏ hàng của bạn đang trống.");
       } else {
         // Show the confirmation popup
+        saveInfo();
         window.location.href = "pay.html";
       }
     }
@@ -90,3 +91,24 @@ document.addEventListener("DOMContentLoaded", () => {
   // Call the displayCartItems function when the page is loaded
   displayCartItems();
 });
+
+// Save selected address function
+function saveInfo() {
+  const selectedCity = citis.options[citis.selectedIndex].value;
+  const selectedDistrict = districts.options[districts.selectedIndex].value;
+  const selectedWard = wards.options[wards.selectedIndex].value;
+  const newPhone = document.getElementById('phone-num').value;
+  const firstName =document.getElementById('first-name').value;
+  const lastName =document.getElementById('last-name').value;
+
+  const updateName =`${firstName} ${lastName}`;
+  const address = {
+    city: selectedCity,
+    district: selectedDistrict,
+    ward: selectedWard
+  };
+  localStorage.setItem("loggedInUserPhone", newPhone);
+  localStorage.setItem('userAddress', JSON.stringify(address));
+  localStorage.setItem("loggedInUserName",updateName);
+}
+

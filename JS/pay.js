@@ -135,3 +135,26 @@ document.addEventListener('DOMContentLoaded', () => {
     $('#xemdonhang').click(function() {
       window.location.href = 'order-status.html';});
 });
+/* hien thi lai dia chi khi nhap dia chi */
+document.addEventListener('DOMContentLoaded', () => {
+  function loadAndDisplayAddress() {
+      const userAddress = JSON.parse(localStorage.getItem('userAddress'));
+
+      if (userAddress) {
+          // Construct the full address
+          const fullAddress = `${userAddress.ward}, ${userAddress.district}, ${userAddress.city}`;
+
+          // Display the address in the user-address section
+          const addressElement = document.querySelector('.user-address');
+          addressElement.innerHTML = `<span class="text-deco">Địa chỉ:</span> ${fullAddress}`;
+      } else {
+          console.log('No saved address found in localStorage.');
+          const addressElement = document.querySelector('.user-address');
+          addressElement.innerHTML = `<span class="text-deco">Địa chỉ:</span> Chưa có địa chỉ nào được lưu`;
+      }
+  }
+
+  // Call the function when the page loads
+  loadAndDisplayAddress();
+});
+
