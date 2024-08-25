@@ -1,6 +1,6 @@
 /* Container styling */
 .container-product {
-  max-width: 75%;
+  max-width: 65%;
   margin: auto;
   padding: 20px;
   overflow: hidden;
@@ -18,7 +18,7 @@
 .product-list {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 30px; /* Space between products */
+  gap: 10px; /* Space between products */
   grid-row-gap: 40px;
   margin-bottom: 20px;
   padding-bottom: 20px;
@@ -34,6 +34,7 @@
   flex-direction: column;
   align-items: center;
   overflow: hidden;
+  max-width: 400px;
 }
 
 .product img {

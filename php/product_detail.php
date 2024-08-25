@@ -92,7 +92,7 @@ $conn = null;
                     <span class="discounted-price"><?php echo number_format($product['discounted_price'], 0, ',', '.'); ?> Đ</span>
                     <span class="discount">-<?php echo htmlspecialchars($product['discount_percentage']); ?>%</span>
                 <?php else: ?>
-                    <span class="discounted_price"><?php echo number_format($product['discounted_price'], 0, ',', '.'); ?> Đ</span>
+                    <span class="discounted-price"><?php echo number_format($product['discounted_price'], 0, ',', '.'); ?> Đ</span>
                 <?php endif; ?>
             </div>
             <button class="exclusive-offer">

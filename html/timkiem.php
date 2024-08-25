@@ -43,6 +43,7 @@ function taoLinkPhanTrang($base_url, $total_rows, $page_num, $page_size)
     }
     return $pagination;
 }
+
 if ($tukhoa != "") $listTin = layKetQuaTim($tukhoa, $page_num, $page_size);
 else $listTin = NULL;
 
@@ -76,12 +77,13 @@ $base_url = "../html/timkiem.php?tukhoa=" . urlencode($tukhoa);
             <?php if ($listTin) {
                 foreach ($listTin as $tin) {
                     $discount_percentage = $tin['discount_percentage'] > 0 ? '-' . htmlspecialchars($tin['discount_percentage']) . '%' : '';
+                    $out_of_stock = $tin['quantity'] == 0;
             ?>
                     <div class="product">
                         <?php if ($discount_percentage) { ?>
                             <div class="discount"><?= $discount_percentage ?></div>
                         <?php } ?>
-                        <a href="product_detail.php?product_id=<?= htmlspecialchars($tin['product_id']) ?>">
+                        <a href="../php/product_detail.php?product_id=<?= htmlspecialchars($tin['product_id']) ?>">
                             <img src="<?= htmlspecialchars($tin['image_url']) ?>" alt="<?= htmlspecialchars($tin['name']) ?>" />
                         </a>
                         <div class="product-info">
@@ -93,10 +95,17 @@ $base_url = "../html/timkiem.php?tukhoa=" . urlencode($tukhoa);
                                 <?php } ?>
                                 <?= number_format($tin['discounted_price'], 0, ',', '.') ?> Đ
                             </p>
-                            <div class="add-to-cart">
-                                <a href="#">Thêm Vào Giỏ Hàng</a>
-                                <span class="heart-icon">&#x2764;</span>
-                            </div>
+                            <?php if ($out_of_stock) { ?>
+                                <div class="out-of-stock">
+                                    <a>Hết Hàng</a>
+                                    <span class="heart-icon">&#x2764;</span>
+                                </div>
+                            <?php } else { ?>
+                                <div class="add-to-cart">
+                                    <a href="#">Thêm Vào Giỏ Hàng</a>
+                                    <span class="heart-icon">&#x2764;</span>
+                                </div>
+                            <?php } ?>
                         </div>
                     </div>
                 <?php }
