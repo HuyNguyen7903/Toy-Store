@@ -16,7 +16,6 @@
       $(document).ready(function () {
         $("#header").load("header.html");
         $("#footer").load("footer.html");
-        $("#register-content").load("register.html")
       });
     </script>
 <body>
@@ -42,13 +41,18 @@
         <p>Chưa có tài khoản? <a id="register-acc" >Đăng ký tài khoản</a></p>
       </form>
     </div>
-    <div id="popup" class="popup">
+     <!-- popup -->
+     <div id="popup" class="popup"> 
       <div class="popup-content">
-        <span id="close-popup" class="close-popup">&times;</span>
-        <div id="register-content"></div>
+          <div class="alert">
+              <img src="../images/warning.png" alt="">
+              <h3>Email và mật khẩu không đúng</h3>
+              <div class="button-group">
+                  <button id="xacnhan">Nhập lại</button>
+              </div>
+          </div>
       </div>
-    </div>
    <!-- footer -->
-    <div id="footer"></div>
+    <!-- <div id="footer"></div> -->
 </body>
 </html>

@@ -138,3 +138,58 @@ form p a {
   color: red;
   font-size: 20px;
 }
+
+/*popup*/
+.popup-confirm{
+  display: none; 
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.popup-content-confirm{
+  position: relative;
+  margin: 10% auto;
+  padding: 20px;
+  background-color: white;
+  width: 300px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
+}
+
+.popup-content-confirm img{
+  width: 20%;
+  padding-left: 37%;
+  
+}
+
+.popup-content-confirm h3 {
+  text-align: center;
+  margin: 0;
+}
+.popup-content-confirm button {
+  margin-left: 25%;
+  margin-top: 10px;
+  width: 48%; /* Adjust the width to fit two buttons in a row */
+  padding: 15px;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  cursor: pointer;
+  margin-top: 5px; /* Remove the margin-top */
+}
+
+.popup-content-confirm button#xacnhan {
+  color: #fff;
+  background-color: #ff0000;
+}
+.popup-content-confirm button#xacnhan:hover {
+  background-color: #cc0000;
+}

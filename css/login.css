@@ -286,9 +286,8 @@ form p a:hover {
   color: #666;
 }
 
-/*popup dang nhap*/
-/* Popup container */
-.popup {
+/*popup*/
+.popup{
   display: none; 
   position: fixed;
   z-index: 1000;
@@ -296,29 +295,48 @@ form p a:hover {
   top: 0;
   width: 100%;
   height: 100%;
+  overflow: auto;
   background-color: rgba(0, 0, 0, 0.5);
+}
+
+.popup-content{
+  position: relative;
+  margin: 10% auto;
+  padding: 20px;
+  background-color: white;
+  width: 300px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
+}
+
+.popup-content img{
+  width: 20%;
+  padding-left: 37%;
   
 }
 
-
-.popup-content {
-  position: relative;
-  margin: 5% auto;
-  padding: 20px;
-  background-color: white;
-  max-width: 50%;
-  border-radius: 20px;
-  max-height: 80vh;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  overflow-x: auto;
+.popup-content h3 {
+  text-align: center;
+  margin: 0;
+}
+.popup-content button {
+  margin-left: 25%;
+  margin-top: 10px;
+  width: 48%; /* Adjust the width to fit two buttons in a row */
+  padding: 15px;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  cursor: pointer;
+  margin-top: 5px; /* Remove the margin-top */
 }
 
-
-.close-popup {
-  position: absolute;
-  display: inline-block;
-  top: 10px;
-  right: 15px;
-  font-size: 30px;
-  cursor: pointer;
+.popup-content button#xacnhan {
+  color: #fff;
+  background-color: #ff0000;
+}
+.popup-content button#xacnhan:hover {
+  background-color: #cc0000;
 }

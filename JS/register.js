@@ -3,6 +3,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const form = document.querySelector("form");
     const password = document.getElementById("password");
     const confirmPassword = document.getElementById("confirm-password");
+    const popup = document.getElementById("popup-confirm");
   
     form.addEventListener("submit", function (event) {
       event.preventDefault();
@@ -15,9 +16,12 @@ document.addEventListener("DOMContentLoaded", function () {
           email: form["email"].value,
           password: password.value,
         };
-        localStorage.setItem("userDetails", JSON.stringify(userDetails));
-        alert("Đăng ký thành công!");
-        window.location.href = "./login.html";
+        saveUser();
+        popup.style.display = 'block';
+        document.getElementById("xacnhan").onclick = () => {
+          popup.style.display = 'none';
+          window.location.href = '../html/login.html';
+      };
       }
     });
   
@@ -48,3 +52,30 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   });
   
+  function saveUser() {
+    const firstName =document.getElementById('first-name').value;
+    const lastName =document.getElementById('last-name').value;
+    const phone = document.getElementById('telephone').value;
+    const selectgender = gender.options[gender.selectedIndex].value;
+    const email = document.getElementById('email').value;
+    const pass=document.getElementById('password').value;
+    const userRole=0;
+
+    const updateName =`${firstName} ${lastName}`;
+    localStorage.setItem("NewUserPhone", phone);
+    localStorage.setItem("NewUserName", updateName);
+    localStorage.setItem("NewUserGender", selectgender);
+    localStorage.setItem("NewUserEmail", email);
+    localStorage.setItem("NewUserPassword",pass);
+    localStorage.setItem("NewUserRole",userRole);
+
+    console.log('New User Data:', {
+      email,
+      pass,
+      updateName,
+      selectgender,
+      phone,
+      userRole
+  });
+  }
+
