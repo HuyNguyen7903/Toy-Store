@@ -107,57 +107,7 @@
   <div class="container-product">
     <h2>Top Những Sản Phẩm Bán Chạy</h2>
     <div class="product-list">
-      <div class="product">
-        <div class="discount">-20%</div>
-        <a href="../html/hw-trex.html">
-          <img src="../images/HW-TRex.png" alt="Hot Wheels T-Rex" />
-        </a>
-        <div class="product-info">
-          <h3>HOT WHEELS HKX42</h3>
-          <p>Đồ Chơi Siêu Xe Khủng Long T-Rex Hot Whells</p>
-          <p class="price">
-            <span class="old-price">1.359.000 Đ</span> 1.087.000 Đ
-          </p>
-          <div class="add-to-cart">
-            <a href="#">Thêm Vào Giỏ Hàng</a>
-            <span class="heart-icon">&#x2764;</span>
-          </div>
-        </div>
-      </div>
-      <div class="product">
-        <div class="discount">-20%</div>
-        <a href="../html/pawpatrol.html">
-          <img src="../images/paw patroy.png" alt="Paw Patroy" />
-        </a>
-        <div class="product-info">
-          <h3>PAW PATROL 6060759</h3>
-          <p>
-            Đồ chơi xe cảnh sát biến hình Paw Patrol The Movie - Chase PAW
-            PATROL 6060759
-          </p>
-          <p class="price">
-            <span class="old-price">1.299.000 Đ</span> 1.039.000 Đ
-          </p>
-          <div class="add-to-cart">
-            <a href="#">Thêm Vào Giỏ Hàng</a>
-            <span class="heart-icon">&#x2764;</span>
-          </div>
-        </div>
-      </div>
-      <div class="product">
-        <a href="../html/rastar.html">
-          <img src="../images/rastar.png" alt="Rastar RC" />
-        </a>
-        <div class="product-info">
-          <h3>RASTAR R92900/WHITE</h3>
-          <p>Đồ Chơi Xe Điều Khiển 1:24 - BMW 3.0 CSL - Màu Trắng</p>
-          <p class="price">479.000 Đ</p>
-          <div class="add-to-cart">
-            <a href="#">Thêm Vào Giỏ Hàng</a>
-            <span class="heart-icon">&#x2764;</span>
-          </div>
-        </div>
-      </div>
+
       <div class="product">
         <div class="discount">-20%</div>
         <a href="../html/pab034.html">
@@ -175,24 +125,6 @@
           </div>
         </div>
       </div>
-      <div class="product">
-        <div class="discount">-30%</div>
-        <a href="../html/hw-action.html">
-          <img src="../images/HW-action.png" alt="Hot Wheels Action" />
-        </a>
-        <div class="product-info">
-          <h3>HOT WHEELS GJM77</h3>
-          <p>Bộ đường đua Hot Wheels vòng xoay thần tốc</p>
-          <p class="price">
-            <span class="old-price">1.389.000 Đ</span> 972.000 Đ
-          </p>
-          <div class="out-of-stock">
-            <a>Hết Hàng</a>
-            <span class="heart-icon">&#x2764;</span>
-          </div>
-        </div>
-      </div>
-
 
       <!-- thêm sp từ db -->
       <?php include '../php/fetch_product.php'; ?>

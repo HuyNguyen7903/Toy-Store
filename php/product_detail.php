@@ -22,6 +22,9 @@ if ($stmt->rowCount() > 0) {
     echo 'Sản phẩm không tồn tại.';
     exit;
 }
+
+// Đóng kết nối
+$conn = null;
 ?>
 
 <!DOCTYPE html>
@@ -79,15 +82,17 @@ if ($stmt->rowCount() > 0) {
         </div>
         <div class="product-info-section">
             <div class="product-name">
-                <h2><?php echo htmlspecialchars($product['name']); ?></h2>
+                <h2><?php echo htmlspecialchars($product['description']); ?></h2>
                 <span class="heart-icon">&#x2764;</span>
             </div>
             <p class="brand-text">Thương hiệu: <a href="#"><?php echo htmlspecialchars($product['brand']); ?></a></p>
             <div class="price-section">
-                <span class="original-price"><?php echo number_format($product['original_price'], 0, ',', '.'); ?> Đ</span>
-                <span class="discounted-price"><?php echo number_format($product['discounted_price'], 0, ',', '.'); ?> Đ</span>
-                <?php if ($product['discount_percentage'] > 0): ?>
+                <?php if ($product['discounted_price'] > 0 && $product['discount_percentage'] > 0): ?>
+                    <span class="original-price"><?php echo number_format($product['original_price'], 0, ',', '.'); ?> Đ</span>
+                    <span class="discounted-price"><?php echo number_format($product['discounted_price'], 0, ',', '.'); ?> Đ</span>
                     <span class="discount">-<?php echo htmlspecialchars($product['discount_percentage']); ?>%</span>
+                <?php else: ?>
+                    <span class="discounted_price"><?php echo number_format($product['discounted_price'], 0, ',', '.'); ?> Đ</span>
                 <?php endif; ?>
             </div>
             <button class="exclusive-offer">
@@ -102,11 +107,15 @@ if ($stmt->rowCount() > 0) {
             <div class="quantity-section">
                 <label for="quantity"></label>
                 <div class="quantity-input">
-                    <button class="decrease-btn">-</button>
-                    <input type="number" id="quantity" value="1" min="1" />
-                    <button class="increase-btn">+</button>
+                    <button class="decrease-btn" <?php echo $product['quantity'] == 0 ? 'disabled' : ''; ?>>-</button>
+                    <input type="number" id="quantity" value="1" min="1" <?php echo $product['quantity'] == 0 ? 'disabled' : ''; ?> />
+                    <button class="increase-btn" <?php echo $product['quantity'] == 0 ? 'disabled' : ''; ?>>+</button>
                 </div>
-                <button class="add-to-cart">Thêm Vào Giỏ Hàng</button>
+                <?php if ($product['quantity'] == 0): ?>
+                    <button class="out-of-stock">Đã Bán Hết</button>
+                <?php else: ?>
+                    <button class="add-to-cart">Thêm Vào Giỏ Hàng</button>
+                <?php endif; ?>
             </div>
 
             <div class="product-details">
@@ -124,7 +133,7 @@ if ($stmt->rowCount() > 0) {
     </div>
     <div class="product-description-section">
         <h2>Mô tả sản phẩm</h2>
-        <h3><?php echo htmlspecialchars($product['name']); ?></h3>
+        <h3><?php echo htmlspecialchars($product['description']); ?></h3>
         <div><?php echo $product['detailed_description']; ?></div>
     </div>
     <div id="footer"></div>
@@ -132,8 +141,3 @@ if ($stmt->rowCount() > 0) {
 </body>
 
 </html>
-
-<?php
-// Đóng kết nối
-$conn = null;
-?>

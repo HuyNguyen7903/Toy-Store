@@ -88,21 +88,26 @@
                             <input type="text" id="name" name="name" required>
                             <label for="category">Loại Sản Phẩm: <span class="required">*</span></label>
                             <div class="category-options">
-                                <label><input type="checkbox" name="category[]" value="HÀNG MỚI"> HÀNG MỚI</label>
-                                <label><input type="checkbox" name="category[]" value="FLASH SALE"> FLASH SALE</label>
-                                <label><input type="checkbox" name="category[]" value="FLASH SALE"> BÁN CHẠY</label>
+                                <label><input type="checkbox" name="category[]" value="BÁN CHẠY"> BÁN CHẠY</label>
                                 <label><input type="checkbox" name="category[]" value="ĐỒ CHƠI PHƯƠNG TIỆN"> ĐỒ CHƠI PHƯƠNG TIỆN</label>
+                                <label><input type="checkbox" name="category[]" value="XE ĐIỀU KHIỂN"> XE ĐIỀU KHIỂN</label>
+                                <label><input type="checkbox" name="category[]" value="XE MÔ HÌNH"> XE MÔ HÌNH</label>
+                                <label><input type="checkbox" name="category[]" value="XE LẮP RÁP"> XE LẮP RÁP</label>
+                                <label><input type="checkbox" name="category[]" value="XE SƯU TẬP"> XE SƯU TẬP</label>
                                 <label><input type="checkbox" name="category[]" value="ĐỒ CHƠI SÁNG TẠO"> ĐỒ CHƠI SÁNG TẠO</label>
+                                <label><input type="checkbox" name="category[]" value="BỘT NẶN"> BỘT NẶN</label>
+                                <label><input type="checkbox" name="category[]" value="BÚT MÀU VÀ BẢNG VẼ"> BÚT MÀU VÀ BẢNG VẼ</label>
+                                <label><input type="checkbox" name="category[]" value="ĐỒ CHƠI LẮP GHÉP"> ĐỒ CHƠI LẮP GHÉP</label>
                                 <!-- Add more options as needed -->
                             </div>
                             <label for="brand">Thương Hiệu:<span class="required">*</span></label>
                             <input type="text" id="brand" name="brand" required>
                             <label for="original_price">Giá Gốc:<span class="required">*</span></label>
                             <input type="number" id="original_price" name="original_price" required>
-                            <label for="discount_percentage">Phần Trăm Giảm:<span class="required">*</span></label>
-                            <input type="number" id="discount_percentage" name="discount_percentage" required>
+                            <label for="discount_percentage">Phần Trăm Giảm:</label>
+                            <input type="number" id="discount_percentage" name="discount_percentage">
                             <label for="discounted_price">Giá Giảm:</label>
-                            <input type="number" id="discounted_price" name="discounted_price" required readonly>
+                            <input type="number" id="discounted_price" name="discounted_price">
                             <label for="quantity">Số Lượng:<span class="required">*</span></label>
                             <input type="number" id="quantity" name="quantity" required>
                             <label for="description">Mô Tả:<span class="required">*</span></label>
