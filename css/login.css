@@ -21,7 +21,7 @@ label {
   color: darkblue;
 }
 /* chỉnh các trường input */
-form input[type="email"] {
+#loginForm input[type="email"] {
   width: 100%;
   padding: 15px;
   margin: 8px 0;
@@ -33,7 +33,7 @@ form input[type="email"] {
 }
 
 /* chỉnh nút "Đăng nhập" */
-form button[type="submit"] {
+#loginForm button[type="submit"] {
   width: 40%;
   background-color: #ff0000;
   color: white;
@@ -46,23 +46,23 @@ form button[type="submit"] {
   display: block;
   margin: 20px auto;
 }
-form .forgot-password {
+#loginForm .forgot-password {
   text-align: center;
   display: block;
   width: 100%;
 }
-form button[type="submit"]:hover {
+#loginForm button[type="submit"]:hover {
   background-color: #cc0000;
 }
 
-form a {
+#loginForm a {
   color: #0000ff;
   display: inline-block;
   margin-top: 10px;
   font-size: x-large;
 }
 
-form a:hover {
+#loginForm a:hover {
   text-decoration: underline;
 }
 
@@ -103,14 +103,14 @@ form a:hover {
   border: none;
   cursor: pointer;
 }
-form p a {
+#loginForm p a {
   color: #cc0000;
   text-decoration: none;
 }
-form #register-acc {
+#loginForm #register-acc {
   font-size: x-large;
 }
-form p a:hover {
+#loginForm p a:hover {
   text-decoration: underline;
 }
 .required-fields {
@@ -121,7 +121,7 @@ form p a:hover {
 
 /*popup*/
 .popup-alert{
-  display: none; 
+  display: none;
   position: fixed;
   z-index: 1000;
   left: 0;
@@ -147,7 +147,7 @@ form p a:hover {
 .popup-content-alert img{
   width: 20%;
   padding-left: 37%;
-  
+
 }
 
 .popup-content-alert h3 {
