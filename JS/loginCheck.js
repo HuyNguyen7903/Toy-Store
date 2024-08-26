@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
-  const popup = document.getElementById("popup");
+  const popup = document.getElementById("popup-alert");
   function loginCheck() {
     const email = document.getElementById("email").value;
     const password = document.getElementById("password").value;
