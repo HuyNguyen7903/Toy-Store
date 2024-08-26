@@ -33,7 +33,7 @@
                 <script>displayLoggedInUserInfo()</script>
                 <div class="delivery-options">
                     <label>
-                        <input type="radio" name="delivery" value="Giao tận nơi" required>Giao tận nơi
+                        <input type="radio" name="delivery" value="Giao tận nơi" checked>Giao tận nơi
                     </label>
                     <label>
                         <input type="radio" name="delivery" value="Nhận tại cửa hàng" required>Nhận tại cửa hàng gần nhất
@@ -47,21 +47,21 @@
             <h3>Phương thức thanh toán</h3>
             <div class="payment-methods">
                 <label>
-                    <input type="radio" name="payment-method" value="VNPAY">
+                    <input id="payment-method-vnpay" type="radio" name="payment-method" value="VNPAY">
                     <img class="payment-icon" src="../images/vnpay.png" alt="VNPAY"> Thanh toán online qua cổng VNPAY <br>
                     <img src="../images/qrcode-vnpay.png" alt="QR-code" class="qr-code hidden">
                 </label>
                 <label>
-                    <input type="radio" name="payment-method" value="COD">
+                    <input id="payment-method-cod" type="radio" name="payment-method" value="COD">
                     <img class="payment-icon" src="../images/cod.png" alt="COD"> Thanh toán khi giao hàng (COD)
                 </label>
                 <label>
-                    <input type="radio" name="payment-method" value="Banking">
+                    <input id="payment-method-banking" type="radio" name="payment-method" value="Chuyển khoản ngân hàng">
                     <img class="payment-icon" src="../images/mobile-banking.png" alt="onl-banking"> Chuyển Khoản ngân hàng<br>
                     <img src="../images/qrcode_mobilebangking.png" alt="QR-code" class="qr-code hidden">
                 </label>
                 <label>
-                    <input type="radio" name="payment-method" value="credit-card">
+                    <input id="payment-method-creditcard" type="radio" name="payment-method" value="Thẻ Nội địa">
                     <img class="payment-icon" src="../images/credit-card.png" alt="credit-card"> Thanh toán bằng thẻ nội địa
                     <div class="credit-card-inputs hidden">
                         <input class="card-style" type="text" name="card-number" placeholder="Số thẻ">
@@ -94,7 +94,7 @@
         <div class="popup-content-confirm">
             <div class="alert-confirm">
                 <img src="../images/warning.png" alt="">
-                <h3>Hãy xác nhận bạn đã chọn đúng thông tin thanh toán và thanh toán thành công</h3>
+                <h3>Hãy xác nhận bạn đã chọn đúng thông tin thanh toán</h3>
                 <div class="button-group">
                     <button id="huydathang">Hủy</button>
                     <button id="xacnhandathang">Xác nhận</button>

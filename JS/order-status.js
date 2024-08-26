@@ -26,7 +26,8 @@ document.addEventListener("DOMContentLoaded", () => {
                 <p>Trạng thái: <span id="status">${order.status}</span></p>
                 <p><strong>Thông tin người nhận</strong></p>
                 <p><span id="user-name"></span> | <span id="user-phone"></p>
-                <p class="user-address"><span id="user-address"></span></p>
+                <p><span id="user-address"></span></p>
+                <p><strong>Phương thức thanh toán:</strong> <span id="payment-method"></span></p>
                 <div class="order-products">
                     ${productListHTML}
                 </div>
@@ -37,6 +38,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
             // Gọi các hàm để hiển thị tên, số điện thoại và địa chỉ của người dùng
             UserInfo(orderItem);
+            displayPaymentMethod(orderItem);
         });
 
           // Attach event listeners to the "Hủy đơn hàng" buttons
@@ -54,7 +56,7 @@ document.addEventListener("DOMContentLoaded", () => {
   function UserInfo(orderItem) {
     const userNameElement = orderItem.querySelector("#user-name");
     const userPhoneElement = orderItem.querySelector("#user-phone");
-    const addressElement = document.querySelector('.user-address');
+    const addressElement = document.querySelector('#user-address');
 
     const userName = localStorage.getItem("loggedInUserName");
     const userPhone = localStorage.getItem("loggedInUserPhone");
@@ -66,6 +68,13 @@ document.addEventListener("DOMContentLoaded", () => {
         const fullAddress = `${userAddress.street} ${userAddress.ward}, ${userAddress.district}, ${userAddress.city}`;
         addressElement.innerHTML = `<span class="text-deco"></span> ${fullAddress}`;
     }
+}
+ // Function to display payment method
+ function displayPaymentMethod(orderItem) {
+    const paymentMethodElement = orderItem.querySelector("#payment-method");
+    const paymentMethod = localStorage.getItem("Payment");
+
+    paymentMethodElement.textContent = paymentMethod;
 }
 
   // Function to cancel an order

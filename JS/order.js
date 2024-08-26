@@ -114,3 +114,40 @@ function saveInfo() {
   localStorage.setItem("loggedInUserName",updateName);
 }
 
+document.addEventListener("DOMContentLoaded", () => {
+  const addressSelect = document.getElementById("save-add");
+
+  addressSelect.addEventListener("change", () => {
+    if (addressSelect.value === "old-add") {
+      const savedAddress = JSON.parse(localStorage.getItem("userAddress"));
+      const savedPhone = localStorage.getItem("loggedInUserPhone");
+      const savedName = localStorage.getItem("loggedInUserName");
+
+      if (savedAddress && savedPhone && savedName) {
+        // Split the saved name into first and last name
+        const nameParts = savedName.split(" ");
+        const firstName = nameParts.slice(0, -1).join(" "); // All parts except the last
+        const lastName = nameParts.slice(-1).join(""); // The last part
+
+        document.getElementById("first-name").value = firstName;
+        document.getElementById("last-name").value = lastName;
+        document.getElementById("phone-num").value = savedPhone;
+        document.getElementById("city").value = savedAddress.city;
+        document.getElementById("district").value = savedAddress.district;
+        document.getElementById("ward").value = savedAddress.ward;
+        document.getElementById("street").value = savedAddress.street;
+      } else {
+        alert("Không có địa chỉ nào được lưu trước đó.");
+      }
+    } else {
+      // Clear the form if "Sử dụng địa chỉ mới" is selected
+      document.getElementById("first-name").value = "";
+      document.getElementById("last-name").value = "";
+      document.getElementById("phone-num").value = "";
+      document.getElementById("city").value = "";
+      document.getElementById("district").value = "";
+      document.getElementById("ward").value = "";
+      document.getElementById("street").value = "";
+    }
+  });
+});
