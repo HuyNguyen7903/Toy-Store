@@ -100,6 +100,16 @@ $(document).ready(function () {
 document.addEventListener('DOMContentLoaded', () => {
     const popup = document.getElementById("popup-confirm");
     const popupsuccess=document.getElementById("popup-success")
+
+    function savePayment() {
+      const selectedPaymentMethod = document.querySelector('input[name="payment-method"]:checked');
+  
+      if (selectedPaymentMethod) {
+          const paymentMethodValue = selectedPaymentMethod.value;
+          localStorage.setItem("Payment", paymentMethodValue);
+      }
+  }  
+
     function showPopup(contentUrl) {
         popup.style.display = 'block'; 
     }
@@ -115,7 +125,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
     $('#xacnhandathang').click(function () {
         popupsuccess.style.display='block';
-
+        savePayment();
         let order = {
           id: Date.now(), // Unique ID based on timestamp
           status: "Chờ xác nhận", // Pending confirmation status
