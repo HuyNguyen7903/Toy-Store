@@ -74,7 +74,9 @@ $base_url = "../html/filter.php?category=" . urlencode($category);
 </head>
 
 <body>
-    <div id="header"></div>
+    <div
+        style="position: fixed; top: 0; left: 0; width: 100%; z-index: 1"
+        id="header"></div>
     <div class="container-product">
         <h2>Sản phẩm theo danh mục: "<?php echo htmlspecialchars($category); ?>"</h2>
         <div class="product-list">
@@ -122,7 +124,23 @@ $base_url = "../html/filter.php?category=" . urlencode($category);
         </div>
     </div>
     <div id="footer"></div>
-    <div id="popup-container"></div>
+    <div id="popup-container" class="popup-container">
+        <div class="popup-content">
+            <span id="close-popup" class="close-popup">&times;</span>
+            <div id="add-to-cart">
+                <img src="../images/checked.png" />
+                <h3>Sản phẩm đã được thêm vào giỏ hàng</h3>
+            </div>
+            <div id="wishlist">
+                <img src="../images/checked.png" />
+                <h3 id="wishlist">Sản phẩm đã được thêm vào danh sách yêu thích</h3>
+            </div>
+            <div id="erorr-wishlist">
+                <img src="../images/checked.png" />
+                <h3 id="erorr-wishlist">Sản phẩm đã có trong danh sách yêu thích</h3>
+            </div>
+        </div>
+    </div>
 </body>
 
 </html>

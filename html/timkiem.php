@@ -70,7 +70,9 @@ $base_url = "../html/timkiem.php?tukhoa=" . urlencode($tukhoa);
 </head>
 
 <body>
-    <div id="header"></div>
+    <div
+        style="position: fixed; top: 0; left: 0; width: 100%; z-index: 1"
+        id="header"></div>
     <div class="container-product">
         <h2>Kết quả tìm kiếm cho: "<?php echo htmlspecialchars($tukhoa); ?>"</h2>
         <div class="product-list">
