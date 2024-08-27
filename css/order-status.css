@@ -128,6 +128,7 @@ body {
 #status {
   color: #ff0000;
   font-style: italic;
+  font-weight: bold;
 }
 /* popup*/
 .popup-confirm,.popup-success {
@@ -202,4 +203,78 @@ body {
 }
 .popup-content-success button#tatpopup:hover {
   background-color: #cc0000;
+}
+
+.order-item {
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 16px;
+  margin-bottom: 20px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.order-item h2 {
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.order-item p {
+  margin: 4px 0;
+  font-size: 14px;
+  color: #555;
+}
+
+.order-item .order-products {
+  margin-top: 20px;
+}
+
+.order-product {
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.order-product img {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-right: 15px;
+  border: 1px solid #ddd;
+}
+
+.order-product .product-info h3 {
+  font-size: 16px;
+  margin: 0 0 5px;
+}
+
+.order-product .product-info p {
+  margin: 0;
+  font-size: 14px;
+  color: #888;
+}
+
+.remove-order {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #e74c3c;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+  margin-top: 20px;
+  transition: background-color 0.3s ease;
+}
+
+.remove-order:hover {
+  background-color: #c0392b;
+}
+
+
+#user-name, #user-phone, #user-address, #payment-method {
+  font-weight: bold;
+  color: #333;
 }

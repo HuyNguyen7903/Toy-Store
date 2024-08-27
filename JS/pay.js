@@ -149,12 +149,17 @@ document.addEventListener('DOMContentLoaded', () => {
 document.addEventListener('DOMContentLoaded', () => {
   function loadAndDisplayAddress() {
       const userAddress = JSON.parse(localStorage.getItem('userAddress'));
-
+      const UserName=localStorage.getItem('UserName');
+      const phone=localStorage.getItem('UserPhone');
       if (userAddress) {
           // Construct the full address
           const fullAddress = `${userAddress.street} ${userAddress.ward}, ${userAddress.district}, ${userAddress.city}`;
 
           // Display the address in the user-address section
+          const nameElement=document.querySelector('.user-name');
+          nameElement.innerHTML = `<span class="text-deco">Họ và tên:</span> ${UserName}`;
+          const phoneElement=document.querySelector('.user-phone');
+          phoneElement.innerHTML=`<span class="text-deco">Điện thoại:</span>${phone}`
           const addressElement = document.querySelector('.user-address');
           addressElement.innerHTML = `<span class="text-deco">Địa chỉ:</span> ${fullAddress}`;
       } else {

@@ -58,8 +58,8 @@ document.addEventListener("DOMContentLoaded", () => {
     const userPhoneElement = orderItem.querySelector("#user-phone");
     const addressElement = document.querySelector('#user-address');
 
-    const userName = localStorage.getItem("loggedInUserName");
-    const userPhone = localStorage.getItem("loggedInUserPhone");
+    const userName = localStorage.getItem("UserName");
+    const userPhone = localStorage.getItem("UserPhone");
     const userAddress = JSON.parse(localStorage.getItem('userAddress'));
     
     if (userName) userNameElement.textContent = userName;

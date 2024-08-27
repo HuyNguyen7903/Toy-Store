@@ -61,9 +61,9 @@ document.addEventListener("DOMContentLoaded", () => {
     const district = document.getElementById("district").value.trim();
     const ward = document.getElementById("ward").value.trim();
 
-    if (!firstName || !lastName || !phoneNum || !city || !district|| !ward || phoneNum.length != 10 || /\D/.test(phoneNum)) {
-        document.getElementById("popup-address").style.display = "block";
-        return false;
+    if (!firstName || !lastName || !phoneNum || !city || !district || !ward || phoneNum.length !== 10 || /\D/.test(phoneNum)) {
+      document.getElementById("popup-address").style.display = "block";
+      return false;
     }
     return true;
   }
@@ -94,60 +94,22 @@ document.addEventListener("DOMContentLoaded", () => {
 
 // Save selected address function
 function saveInfo() {
-  const selectedCity = citis.options[citis.selectedIndex].value;
-  const selectedDistrict = districts.options[districts.selectedIndex].value;
-  const selectedWard = wards.options[wards.selectedIndex].value;
-  const inputStreet=document.getElementById('street').value;
+  const selectedCity = document.getElementById('city').value;
+  const selectedDistrict = document.getElementById('district').value;
+  const selectedWard = document.getElementById('ward').value;
+  const inputStreet = document.getElementById('street').value;
   const newPhone = document.getElementById('phone-num').value;
-  const firstName =document.getElementById('first-name').value;
-  const lastName =document.getElementById('last-name').value;
+  const firstName = document.getElementById('first-name').value;
+  const lastName = document.getElementById('last-name').value;
 
-  const updateName =`${firstName} ${lastName}`;
+  const updateName = `${firstName} ${lastName}`;
   const address = {
     city: selectedCity,
     district: selectedDistrict,
     ward: selectedWard,
-    street:inputStreet,
+    street: inputStreet,
   };
-  localStorage.setItem("loggedInUserPhone", newPhone);
+  localStorage.setItem("UserPhone", newPhone);
   localStorage.setItem('userAddress', JSON.stringify(address));
-  localStorage.setItem("loggedInUserName",updateName);
+  localStorage.setItem("UserName", updateName);
 }
-
-document.addEventListener("DOMContentLoaded", () => {
-  const addressSelect = document.getElementById("save-add");
-
-  addressSelect.addEventListener("change", () => {
-    if (addressSelect.value === "old-add") {
-      const savedAddress = JSON.parse(localStorage.getItem("userAddress"));
-      const savedPhone = localStorage.getItem("loggedInUserPhone");
-      const savedName = localStorage.getItem("loggedInUserName");
-
-      if (savedAddress && savedPhone && savedName) {
-        // Split the saved name into first and last name
-        const nameParts = savedName.split(" ");
-        const firstName = nameParts.slice(0, -1).join(" "); // All parts except the last
-        const lastName = nameParts.slice(-1).join(""); // The last part
-
-        document.getElementById("first-name").value = firstName;
-        document.getElementById("last-name").value = lastName;
-        document.getElementById("phone-num").value = savedPhone;
-        document.getElementById("city").value = savedAddress.city;
-        document.getElementById("district").value = savedAddress.district;
-        document.getElementById("ward").value = savedAddress.ward;
-        document.getElementById("street").value = savedAddress.street;
-      } else {
-        alert("Không có địa chỉ nào được lưu trước đó.");
-      }
-    } else {
-      // Clear the form if "Sử dụng địa chỉ mới" is selected
-      document.getElementById("first-name").value = "";
-      document.getElementById("last-name").value = "";
-      document.getElementById("phone-num").value = "";
-      document.getElementById("city").value = "";
-      document.getElementById("district").value = "";
-      document.getElementById("ward").value = "";
-      document.getElementById("street").value = "";
-    }
-  });
-});

@@ -107,25 +107,6 @@
   <div class="container-product">
     <h2>Top Những Sản Phẩm Bán Chạy</h2>
     <div class="product-list">
-
-      <div class="product">
-        <div class="discount">-20%</div>
-        <a href="../html/pab034.html">
-          <img src="../images/pab0.png" alt="Pab0" />
-        </a>
-        <div class="product-info">
-          <h3>PABO34</h3>
-          <p>Đồ chơi trẻ em: Bảng vẽ đa năng PAB034 Xanh</p>
-          <p class="price">
-            <span class="old-price">469.000 Đ</span> 375.000 Đ
-          </p>
-          <div class="add-to-cart">
-            <a href="#">Thêm Vào Giỏ Hàng</a>
-            <span class="heart-icon">&#x2764;</span>
-          </div>
-        </div>
-      </div>
-
       <!-- thêm sp từ db -->
       <?php include '../php/fetch_product.php'; ?>
     </div>

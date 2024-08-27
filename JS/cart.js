@@ -102,59 +102,12 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     document.getElementById("checkout-button").addEventListener("click", () => {
-        const loggedInUser = localStorage.getItem("loggedInUser");
-        if (loggedInUser === null) {
-            showPopup('login.html');
-            $(document).on('click', '#dangnhap', function () {
-                function loginCheck() {
-                    const email = document.getElementById("email").value;
-                    const password = document.getElementById("password").value;
-                    const users = [
-                      { email: "admin@example.com", password: "admin123", role: 1 },
-                      {email: "tinh@gmail.com",password: "tinh123",name: "Tinh",gender: "Nam",role: 0,},
-                      {email: "huy@gmail.com",password: "huy123",name: "Huy",gender: "Nam",role: 1,},
-                    ];
-                    const user = users.find((user) => user.email === email && user.password === password);
-                    if (user) {
-                      localStorage.setItem("loggedInUser", user.email);
-                      localStorage.setItem("loggedInUserName", user.name);
-                      localStorage.setItem("loggedInUserPhone", user.phone);
-                      localStorage.setItem("loggedInUserGender", user.gender);
-                      localStorage.setItem("userRole", user.role);
-                    }
-                  }
-                    const loginForm = document.getElementById('loginForm');
-                    if (loginForm) {
-                        loginForm.addEventListener('submit', (event) => {
-                            event.preventDefault();
-                            loginCheck();
-                        });
-                    }
-                hidePopup();
-                window.location.reload();
-            });
-            $(document).on('click', '#register-acc', function () {
-                handleRegisterClick();
-                
-                $(document).on('click', '#submitButton', function (event) {
-                    event.preventDefault();  // Prevent the default form submission
-                    document.getElementById("registerForm").submit();
-                    
-                    // Show the login popup again after registration
-                    setTimeout(() => {
-                        showPopup('login.html');
-                    }, 500);  // Delay to ensure registration process completes
-                });
-            });
-        } else {
-            hidePopup();
-            const cart = JSON.parse(localStorage.getItem('cart')) || [];
+        const cart = JSON.parse(localStorage.getItem('cart')) || [];
             if (cart.length === 0) {
                 showPopupMessage("cart")
             } else {
                 window.location.href = "order.html";
             }
-        }
     });
 
     function showPopupMessage() {

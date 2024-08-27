@@ -1,27 +1,28 @@
-/* thay doi chu dang nhap thanh ten user */
 window.onload = function () {
-    const loggedInUser = localStorage.getItem("loggedInUser");
-    const userRole = localStorage.getItem("userRole");
-    const loggedInUserName = localStorage.getItem("loggedInUserName");
-    if (loggedInUser) {
-      const loginLink = document.getElementById("linkdangnhap");
+  const loginLink = document.getElementById("linkdangnhap");
+
+  // Debugging: Log localStorage values
+  console.log("loggedInUser:", localStorage.getItem("loggedInUser"));
+  console.log("userRole:", localStorage.getItem("userRole"));
+  console.log("loggedInUserName:", localStorage.getItem("loggedInUserName"));
+
+  const loggedInUser = localStorage.getItem("loggedInUser");
+  const userRole = localStorage.getItem("userRole");
+  const loggedInUserName = localStorage.getItem("loggedInUserName");
+
+  if (loggedInUser) {
       loginLink.innerText = `Xin chào, ${loggedInUserName}`;
-        
-        // Đổi URL dựa trên role của người dùng khi click vào link
-        loginLink.addEventListener("click", function (event) {
-          event.preventDefault(); // Ngăn không cho liên kết hoạt động ngay
-          if (userRole==1) {
-            loginLink.href ="../admin/index.php";
-            }else {
-                loginLink.href ="../html/user.html";
-              
-            }
-            window.location.href = loginLink.href; 
-        });
-      updateCartCount();
-      updateWishlistCount();
-    } else { $('#linkdangnhap').click(function () {
-      window.location.href="../html/login.html";
-    });
-    }
-  };
+      loginLink.addEventListener("click", function (event) {
+          event.preventDefault();
+          if (userRole == 1) {
+              window.location.href = "../admin/index.php";
+          } else {
+              window.location.href = "../html/user.html";
+          }
+      });
+  } else {
+      loginLink.addEventListener("click", function () {
+          window.location.href = "../html/login.html";
+      });
+  }
+};

@@ -138,6 +138,26 @@ $conn = null;
     </div>
     <div id="footer"></div>
     <script src="../JS/product.js"></script>
+    <!--popup-->
+  <!-- Popup -->
+<div id="popup-container" class="popup-container">
+    <div class="popup-content">
+        <span id="close-popup" class="close-popup">&times;</span>
+        <div id="add-to-cart" style="display: none;">
+            <img src="../images/checked.png" />
+            <h3>Sản phẩm đã được thêm vào giỏ hàng</h3>
+        </div>
+        <div id="wishlist" style="display: none;">
+            <img src="../images/checked.png" />
+            <h3>Sản phẩm đã được thêm vào danh sách yêu thích</h3>
+        </div>
+        <div id="erorr-wishlist" style="display: none;">
+            <img src="../images/error.png" />
+            <h3>Sản phẩm đã có trong danh sách yêu thích</h3>
+        </div>
+    </div>
+</div>
+
 </body>
 
 </html>
