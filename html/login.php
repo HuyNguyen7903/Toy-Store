@@ -34,29 +34,29 @@ if (isset($_GET['error'])) {
    <div id="header"></div>
   <!-- form dang nhap -->
   <div class="login-container">
-        <form id="loginForm" action="logincheck.php" method="POST">
-            <h1>Đăng Nhập</h1>
+  <form id="loginForm" action="logincheck.php" method="POST">
+    <h1>Đăng Nhập</h1>
 
-            <?php if ($error_message): ?>
-                <div class="error-message">
-                    <p><?php echo $error_message; ?></p>
-                </div>
-            <?php endif; ?>
+    <?php if ($error_message): ?>
+        <div class="error-message">
+            <p><?php echo $error_message; ?></p>
+        </div>
+    <?php endif; ?>
 
-            <label for="email">Email <span class="required-fields">*</span></label>
-            <input type="email" id="e" name="e" required>
-            
-            <label for="password">Mật khẩu <span class="required-fields">*</span></label>
-            <div class="password-container">
-                <input type="password" id="p" name="p" required>
-                <button type="button" onclick="togglePasswordVisibility('p')">
-                    <i class="fas fa-eye" id="toggleIcon"></i>
-                </button>
-            </div>
-            <button id="dangnhap" type="submit">Đăng Nhập</button>
-            <a href="/forgot-password" class="forgot-password">Quên mật khẩu?</a>
-            <p>Chưa có tài khoản? <a href="../html/register.php" id="register-acc">Đăng ký tài khoản</a></p>
-        </form>
+    <label for="email">Email <span class="required-fields">*</span></label>
+    <input type="email" id="e" name="e" required>
+
+    <label for="password">Mật khẩu <span class="required-fields">*</span></label>
+    <div class="password-container">
+        <input type="password" id="p" name="p" required>
+        <button type="button" onclick="togglePasswordVisibility('p')">
+            <i class="fas fa-eye" id="toggleIcon"></i>
+        </button>
+    </div>
+    <button id="dangnhap" type="submit">Đăng Nhập</button>
+    <a href="/forgot-password" class="forgot-password">Quên mật khẩu?</a>
+    <p>Chưa có tài khoản? <a href="../html/register.php" id="register-acc">Đăng ký tài khoản</a></p>
+</form>
     </div>
      <!-- popup -->
      <div id="popup-alert" class="popup-alert"> 
