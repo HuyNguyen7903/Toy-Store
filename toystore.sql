@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th8 26, 2024 lúc 06:15 PM
+-- Thời gian đã tạo: Th8 27, 2024 lúc 12:13 PM
 -- Phiên bản máy phục vụ: 10.4.32-MariaDB
 -- Phiên bản PHP: 8.2.12
 
@@ -136,13 +136,22 @@ CREATE TABLE `users` (
   `user_id` int(11) NOT NULL,
   `username` varchar(255) NOT NULL,
   `email` varchar(255) NOT NULL,
-  `password` varchar(255) NOT NULL,
+  `pass` varchar(255) NOT NULL,
   `full_name` varchar(255) DEFAULT NULL,
   `phone` varchar(20) DEFAULT NULL,
   `address` text DEFAULT NULL,
   `is_admin` tinyint(1) DEFAULT 0,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng `users`
+--
+
+INSERT INTO `users` (`user_id`, `username`, `email`, `pass`, `full_name`, `phone`, `address`, `is_admin`, `created_at`) VALUES
+(1, 'admin', 'admin@gmail.com', 'admin123', NULL, NULL, NULL, 1, '2024-08-27 09:28:51'),
+(2, 'tinh', 'tinh@gmail.com', 'tinh123', 'thaivantinh', '0123456789', 'CM', 0, '2024-08-27 09:28:51'),
+(4, 'thai tinh', 'tinhthai@gmail.com', 'tinh123', 'thai tinh', '1234567890', NULL, 0, '2024-08-27 10:10:33');
 
 -- --------------------------------------------------------
 
@@ -251,7 +260,7 @@ ALTER TABLE `toy_products`
 -- AUTO_INCREMENT cho bảng `users`
 --
 ALTER TABLE `users`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT cho bảng `wishlist`

@@ -21,7 +21,7 @@ window.onload = function () {
       updateCartCount();
       updateWishlistCount();
     } else { $('#linkdangnhap').click(function () {
-      window.location.href="../html/login.html";
+      window.location.href="../html/login.php";
     });
     }
   };
