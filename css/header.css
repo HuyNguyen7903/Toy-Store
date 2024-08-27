@@ -40,7 +40,38 @@ header {
 .navigation-top a:hover {
   color: #e04343;
 }
+/* Admin Link (Aligned to Left) */
+#admin {
+  position: absolute; /* Take it out of the normal flow */
+  left: 0;
+  color: white;
+  font-weight: bold;
+  text-decoration: none;
+}
+#admin:hover {
+  color: #e04343;
+}
+#admin::after {
+  content: none; /* Remove divider after admin link */
+}
+/* Responsive Adjustments (Optional) */
+@media (max-width: 768px) {
+  .navigation-top {
+    flex-direction: column;
+    align-items: center;
+  }
 
+  .navigation-links {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  #admin {
+    position: relative;
+    text-align: center;
+    margin: 5px 0 0 0;
+  }
+}
 /* chỉnh logo */
 
 .logo img {

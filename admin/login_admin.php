@@ -22,7 +22,7 @@ if (isset($_GET['error'])) {
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
       $(document).ready(function () {
-        $("#header").load("header.html");
+        $("#header").load("../html/header.html");
         $("#footer").load("footer.html");
       });
     </script>
@@ -32,7 +32,7 @@ if (isset($_GET['error'])) {
   <!-- form dang nhap -->
   <div class="login-container">
   <form id="loginForm" action="logincheck.php" method="POST">
-    <h1>Đăng Nhập</h1>
+    <h1>Đăng Nhập Admin</h1>
 
     <?php if ($error_message): ?>
         <div class="error-message">
@@ -51,8 +51,7 @@ if (isset($_GET['error'])) {
         </button>
     </div>
     <button id="dangnhap" type="submit">Đăng Nhập</button>
-    <a href="/forgot-password" class="forgot-password">Quên mật khẩu?</a>
-    <p>Chưa có tài khoản? <a href="../html/register.php" id="register-acc">Đăng ký tài khoản</a></p>
+    <p><a href="../html/toy.php" id="register-acc">Trở lại trang chủ</a></p>
 </form>
     </div>
      <!-- popup -->

@@ -56,6 +56,8 @@ $conn = null;
 
 <body>
     <div id="header"></div>
+    <div> <a href="../html/toy.php">Trang chủ</a>/ <a href="#">Sản phẩm</a></div>
+
     <div class="product-container">
         <div class="product-image-section">
             <img
