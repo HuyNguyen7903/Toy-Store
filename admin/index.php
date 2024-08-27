@@ -29,11 +29,8 @@
         <div class="content-wrapper">
             <div class="sidebar">
                 <h2>Chức Năng</h2>
-                <a href="./dashboard.html">Bảng Điều Khiển</a>
-                <a href="./user-management.html">Quản Lý Người Dùng</a>
                 <a href="../admin/product_list.php">Quản Lý Sản Phẩm</a>
-                <a href="./order-management.html">Quản Lý Đơn Hàng</a>
-                <a href="./settings.html">Cài Đặt</a>
+                <a href="../admin/order-management.php">Quản Lý Đơn Hàng</a>
                 <a onclick="logout()">Đăng xuất</a>
             </div>
             <div class="info">

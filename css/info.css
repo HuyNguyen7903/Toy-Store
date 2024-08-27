@@ -135,6 +135,12 @@ section {
 .info5 {
   flex-direction: column;
   margin: 30px 50px;
+  width: 600px;
+}
+
+.info4 img,
+.info5 img {
+  width: 300px;
 }
 
 /* Điều chỉnh các container cột */

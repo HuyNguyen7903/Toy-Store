@@ -190,6 +190,9 @@
 }
 
 @media (max-width: 1200px) {
+  .container-product {
+    margin-top: 250px;
+  }
   .container-product h2 {
     font-size: 35px;
   }

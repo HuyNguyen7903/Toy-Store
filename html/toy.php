@@ -134,19 +134,19 @@
   <div class="popular-content">
     <h1>Danh Mục Nổi Bật</h1>
     <div class="main-popular">
-      <a href="../html/filter.php?category=Xe%20mô%20hình"><img src="../images/popular car.png" /></a>
+      <a href="../html/filter.php?category=Xe mô hình"><img src="../images/popular car.png" /></a>
       <p>Xe Mô Hình</p>
     </div>
     <div class="sub-popular">
       <div class="sub">
         <div class="sub-img-wrapper">
-          <a href="../html/filter.php?category=Đồ%20chơi%20lắp%20ghép"><img src="../images/popular lego.png" /></a>
+          <a href="../html/filter.php?category=Đồ chơi lắp ghép"><img src="../images/popular lego.png" /></a>
         </div>
         <p>Đồ Chơi Lắp Ghép</p>
       </div>
       <div class="sub">
         <div class="sub-img-wrapper">
-          <a href="../html/filter.php?category=Bút%20màu%20và%20bảng%20vẽ"><img src="../images/popular color.png" /></a>
+          <a href="../html/filter.php?category=Bút màu và bảng vẽ"><img src="../images/popular color.png" /></a>
         </div>
         <p>Bút Màu</p>
       </div>
@@ -168,7 +168,7 @@
         <a href="#"><img src="../images/munchkin.png" alt="Vecto" /></a>
       </div>
       <div class="brand">
-        <a href="#"><img src="../images/hotwheels.png" alt="Barbie" /></a>
+        <a href="../html/brand.php?brand=Hot Whells"><img src="../images/hotwheels.png" alt="Barbie" /></a>
       </div>
       <div class="brand">
         <a href="#"><img src="../images/lego.png" alt="Hot Wheels" /></a>
