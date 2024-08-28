@@ -35,6 +35,7 @@
                                 <div class="product-info">
                                     <h3>${product.name}</h3>
                                     <p>${product.price.toLocaleString('vi-VN')} Đ</p>
+                                    <p>Số lượng: ${product.quantity}</p>
                                 </div>
                             </div>
                         `).join('');
