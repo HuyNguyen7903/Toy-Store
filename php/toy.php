@@ -11,10 +11,12 @@
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <script>
     $(document).ready(function() {
-      $("#header").load("header.html");
-      $("#footer").load("footer.html");
+      $("#header").load("../html/header.html");
+      $("#footer").load("../html/footer.html");
+      loadProducts();
     });
   </script>
+
   <title>Toy Store</title>
 </head>
 
@@ -107,25 +109,6 @@
   <div class="container-product">
     <h2>Top Những Sản Phẩm Bán Chạy</h2>
     <div class="product-list">
-
-      <div class="product">
-        <div class="discount">-20%</div>
-        <a href="../html/pab034.html">
-          <img src="../images/pab0.png" alt="Pab0" />
-        </a>
-        <div class="product-info">
-          <h3>PABO34</h3>
-          <p>Đồ chơi trẻ em: Bảng vẽ đa năng PAB034 Xanh</p>
-          <p class="price">
-            <span class="old-price">469.000 Đ</span> 375.000 Đ
-          </p>
-          <div class="add-to-cart">
-            <a href="#">Thêm Vào Giỏ Hàng</a>
-            <span class="heart-icon">&#x2764;</span>
-          </div>
-        </div>
-      </div>
-
       <!-- thêm sp từ db -->
       <?php include '../php/fetch_product.php'; ?>
     </div>
@@ -134,19 +117,19 @@
   <div class="popular-content">
     <h1>Danh Mục Nổi Bật</h1>
     <div class="main-popular">
-      <a href="../html/filter.php?category=Xe mô hình"><img src="../images/popular car.png" /></a>
+      <a href="../php/filter.php?category=Xe mô hình"><img src="../images/popular car.png" /></a>
       <p>Xe Mô Hình</p>
     </div>
     <div class="sub-popular">
       <div class="sub">
         <div class="sub-img-wrapper">
-          <a href="../html/filter.php?category=Đồ chơi lắp ghép"><img src="../images/popular lego.png" /></a>
+          <a href="../php/filter.php?category=Đồ chơi lắp ghép"><img src="../images/popular lego.png" /></a>
         </div>
         <p>Đồ Chơi Lắp Ghép</p>
       </div>
       <div class="sub">
         <div class="sub-img-wrapper">
-          <a href="../html/filter.php?category=Bút màu và bảng vẽ"><img src="../images/popular color.png" /></a>
+          <a href="../php/filter.php?category=Bút màu và bảng vẽ"><img src="../images/popular color.png" /></a>
         </div>
         <p>Bút Màu</p>
       </div>
@@ -168,7 +151,7 @@
         <a href="#"><img src="../images/munchkin.png" alt="Vecto" /></a>
       </div>
       <div class="brand">
-        <a href="../html/brand.php?brand=Hot Whells"><img src="../images/hotwheels.png" alt="Barbie" /></a>
+        <a href="../php/brand.php?brand=Hot Whells"><img src="../images/hotwheels.png" alt="Barbie" /></a>
       </div>
       <div class="brand">
         <a href="#"><img src="../images/lego.png" alt="Hot Wheels" /></a>

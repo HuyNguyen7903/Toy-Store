@@ -20,8 +20,8 @@
         document.addEventListener("DOMContentLoaded", () => {
             function formatPrice(price) {
                 return new Intl.NumberFormat("vi-VN", {
-                style: "currency",
-                currency: "VND",
+                    style: "currency",
+                    currency: "VND",
                 }).format(price);
             }
 
@@ -71,7 +71,7 @@
                                 )}</p>
                             </div>
                             <select class="order-status-select" data-id="${order.id}">
-                                <option value="Chờ Xử Lý" ${order.status === "Chờ Xử Lý" ? "selected" : ""}>Chờ Xử Lý</option>
+                                <option value="Chờ xác nhận" ${order.status === "Chờ xác nhận" ? "selected" : ""}>Chờ xác nhận</option>
                                 <option value="Đang Giao" ${order.status === "Đang Giao" ? "selected" : ""}>Đang Giao</option>
                                 <option value="Đã Giao" ${order.status === "Đã Giao" ? "selected" : ""}>Đã Giao</option>
                             </select>

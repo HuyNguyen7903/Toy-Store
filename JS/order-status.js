@@ -28,7 +28,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 <img src="${product.imgSrc}" alt="${product.name}" />
                 <div class="product-info">
                   <h3>${product.name}</h3>
-                  <p>${product.price.toLocaleString('vi-VN')} Đ</p>
+                  <p>${product.price.toLocaleString("vi-VN")} Đ</p>
                   <p class="product-quantity">Số lượng: ${product.quantity}</p>
                 </div>
               </div>`;
@@ -48,16 +48,20 @@ document.addEventListener("DOMContentLoaded", () => {
           <div class="order-total">
             <p class="tienhang">Tiền Hàng hóa: ${formatPrice(totalAmount)}</p>
             <p class="giamgia">Giảm giá: ${formatPrice(order.discount || 0)}</p>
-            <p class="vanchuyen">Vận chuyển: ${formatPrice(order.shipping || 30000)}</p>
+            <p class="vanchuyen">Vận chuyển: ${formatPrice(
+              order.shipping || 30000
+            )}</p>
             <p class="tongtien">Tổng cộng: ${formatPrice(
               totalAmount - (order.discount || 0) + (order.shipping || 30000)
             )}</p>
-          </div>
-          <button class="remove-order" data-id="${order.id}">Hủy đơn hàng</button>
+           </div>
+          <button class="remove-order" data-id="${order.id}">${
+          order.status === "Đã Giao" ? "Trả hàng" : "Hủy đơn hàng"
+        }</button>
         `;
 
         orderListContainer.appendChild(orderItem);
-        
+
         // Display user info and payment method
         UserInfo(orderItem);
         displayPaymentMethod(orderItem);

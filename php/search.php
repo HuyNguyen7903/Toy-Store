@@ -1,35 +1,34 @@
 <?php
-// Kết nối cơ sở dữ liệu
+// Connect to the database
 require '../admin/database/connectdb.php';
 
-$category = isset($_GET['category']) ? trim(strip_tags($_GET['category'])) : '';
+$tukhoa = trim(strip_tags($_GET['tukhoa']));
 $page_size = 12;
 $page_num = 1;
-
 if (isset($_GET['page_num'])) {
     $page_num = (int)$_GET['page_num'];
     if ($page_num <= 0) $page_num = 1;
 }
 
-function layKetQuaTim($category, $page_num, $page_size)
+function layKetQuaTim($tukhoa, $page_num, $page_size)
 {
     global $conn;
     $offset = ($page_num - 1) * $page_size;
-    $sql = "SELECT * FROM toy_products WHERE category LIKE :category LIMIT :offset, :page_size";
+    $sql = "SELECT * FROM toy_products WHERE name LIKE :tukhoa OR description LIKE :tukhoa LIMIT :offset, :page_size";
     $stmt = $conn->prepare($sql);
-    $stmt->bindValue(':category', '%' . $category . '%', PDO::PARAM_STR);
+    $stmt->bindValue(':tukhoa', '%' . $tukhoa . '%', PDO::PARAM_STR);
     $stmt->bindValue(':offset', $offset, PDO::PARAM_INT);
     $stmt->bindValue(':page_size', $page_size, PDO::PARAM_INT);
     $stmt->execute();
     return $stmt->fetchAll(PDO::FETCH_ASSOC);
 }
 
-function demSoTin($category)
+function demSoTin($tukhoa)
 {
     global $conn;
-    $sql = "SELECT COUNT(*) FROM toy_products WHERE category LIKE :category";
+    $sql = "SELECT COUNT(*) FROM toy_products WHERE name LIKE :tukhoa OR description LIKE :tukhoa";
     $stmt = $conn->prepare($sql);
-    $stmt->bindValue(':category', '%' . $category . '%', PDO::PARAM_STR);
+    $stmt->bindValue(':tukhoa', '%' . $tukhoa . '%', PDO::PARAM_STR);
     $stmt->execute();
     return $stmt->fetchColumn();
 }
@@ -45,14 +44,11 @@ function taoLinkPhanTrang($base_url, $total_rows, $page_num, $page_size)
     return $pagination;
 }
 
-if ($category != "") {
-    $listTin = layKetQuaTim($category, $page_num, $page_size);
-} else {
-    $listTin = NULL;
-}
+if ($tukhoa != "") $listTin = layKetQuaTim($tukhoa, $page_num, $page_size);
+else $listTin = NULL;
 
-$total_rows = demSoTin($category);
-$base_url = "../html/filter.php?category=" . urlencode($category);
+$total_rows = demSoTin($tukhoa);
+$base_url = "../php/search.php?tukhoa=" . urlencode($tukhoa);
 ?>
 
 <!DOCTYPE html>
@@ -63,12 +59,13 @@ $base_url = "../html/filter.php?category=" . urlencode($category);
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/search.css">
     <script src="../js/toy.js"></script>
-    <title>Kết quả lọc sản phẩm</title>
+    <title>Kết quả tìm kiếm</title>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
         $(document).ready(function() {
-            $("#header").load("header.html");
-            $("#footer").load("footer.html");
+            $("#header").load("../html/header.html");
+            $("#footer").load("../html/footer.html");
+            loadProducts();
         });
     </script>
 </head>
@@ -78,9 +75,9 @@ $base_url = "../html/filter.php?category=" . urlencode($category);
         style="position: fixed; top: 0; left: 0; width: 100%; z-index: 1"
         id="header"></div>
     <div class="container-product">
-        <h2>Sản phẩm theo danh mục: "<?php echo htmlspecialchars($category); ?>"</h2>
+        <h2>Kết quả tìm kiếm cho: "<?php echo htmlspecialchars($tukhoa); ?>"</h2>
         <div class="product-list">
-            <?php if ($listTin && count($listTin) > 0) {
+            <?php if ($listTin) {
                 foreach ($listTin as $tin) {
                     $discount_percentage = $tin['discount_percentage'] > 0 ? '-' . htmlspecialchars($tin['discount_percentage']) . '%' : '';
                     $out_of_stock = $tin['quantity'] == 0;
@@ -89,7 +86,7 @@ $base_url = "../html/filter.php?category=" . urlencode($category);
                         <?php if ($discount_percentage) { ?>
                             <div class="discount"><?= $discount_percentage ?></div>
                         <?php } ?>
-                        <a href="../php/product_detail.php?product_id=<?= htmlspecialchars($tin['product_id']) ?>">
+                        <a href="../php/product_detail.php?product_id=<?= htmlspecialchars($tin['product_id']) ?>" target="_blank">
                             <img src="<?= htmlspecialchars($tin['image_url']) ?>" alt="<?= htmlspecialchars($tin['name']) ?>" />
                         </a>
                         <div class="product-info">
@@ -116,7 +113,7 @@ $base_url = "../html/filter.php?category=" . urlencode($category);
                     </div>
                 <?php }
             } else { ?>
-                <p>Không tìm thấy sản phẩm nào trong danh mục "<?php echo htmlspecialchars($category); ?>"</p>
+                <p>Không tìm thấy kết quả nào phù hợp với từ khóa "<?php echo htmlspecialchars($tukhoa); ?>"</p>
             <?php } ?>
         </div>
         <div class="pagination">

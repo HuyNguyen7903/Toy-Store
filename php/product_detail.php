@@ -57,7 +57,7 @@ $conn = null;
 
 <body>
     <div id="header"></div>
-    <div class="breadcrumb"> <a href="../html/toy.php">Trang chủ</a> <a href="#">Sản phẩm</a></div>
+    <div class="breadcrumb"> <a href="../php/toy.php">Trang chủ</a> <a href="#">Sản phẩm</a></div>
     <div class="product-container">
         <div class="product-image-section">
             <img
