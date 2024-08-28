@@ -41,6 +41,7 @@ $conn = null;
         referrerpolicy="no-referrer" />
     <link rel="shortcut icon" href="../images/android-icon-48x48.png" />
     <link rel="stylesheet" href="../css/product.css" />
+    <link rel="stylesheet" href="../css/breadcrumb.css" />
     <script src="../JS/toy.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
@@ -56,6 +57,7 @@ $conn = null;
 
 <body>
     <div id="header"></div>
+    <div class="breadcrumb"> <a href="../html/toy.php">Trang chủ</a> <a href="#">Sản phẩm</a></div>
     <div class="product-container">
         <div class="product-image-section">
             <img
@@ -138,6 +140,24 @@ $conn = null;
     </div>
     <div id="footer"></div>
     <script src="../JS/product.js"></script>
+    <!-- Popup -->
+    <div id="popup-container" class="popup-container">
+        <div class="popup-content">
+            <span id="close-popup" class="close-popup">&times;</span>
+            <div id="add-to-cart" style="display: none;">
+                <img src="../images/checked.png" />
+                <h3>Sản phẩm đã được thêm vào giỏ hàng</h3>
+            </div>
+            <div id="wishlist" style="display: none;">
+                <img src="../images/checked.png" />
+                <h3>Sản phẩm đã được thêm vào danh sách yêu thích</h3>
+            </div>
+            <div id="erorr-wishlist" style="display: none;">
+                <img src="../images/error.png" />
+                <h3>Sản phẩm đã có trong danh sách yêu thích</h3>
+            </div>
+        </div>
+    </div>
 </body>
 
 </html>

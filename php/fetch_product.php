@@ -17,7 +17,7 @@ if ($result->rowCount() > 0) {
         }
 
         // Tạo liên kết đến trang chi tiết sản phẩm
-        echo '<a href="../php/product_detail.php?product_id=' . htmlspecialchars($row['product_id']) . '">';
+        echo '<a href="../php/product_detail.php?product_id=' . htmlspecialchars($row['product_id']) . ' " target="_blank">';
         echo '<img src="' . htmlspecialchars($row['image_url']) . '" alt="' . htmlspecialchars($row['name']) . '" />';
         echo '</a>';
 

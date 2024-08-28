@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="shortcut icon" href="../images/android-icon-48x48.png" />
     <link rel="stylesheet" href="../css/user.css" />
+    <link rel="stylesheet" href="../css/breadcrumb.css" />
     <script src="../js/toy.js"></script>
     <script src="../JS/loginCheck.js"></script>
     <script src="../JS/userinfo.js"></script>
@@ -22,7 +23,10 @@
   <body>
     <!-- header -->
     <div id="header"></div>
-
+    <div class="breadcrumb">
+      <a href="../html/toy.php">Trang chủ</a
+      ><a href="../html/user.html">Tài khoản</a>
+    </div>
     <!-- form thong tin user -->
     <div class="main-content">
       <h1 class="center-text">Tài Khoản Của Bạn</h1>
@@ -40,13 +44,17 @@
             <div class="section">
               <h3>Thông tin tài khoản</h3>
               <div id="user-info">
-                <p class="user-name"><span class="text-deco">Họ và tên:</span></p>
+                <p class="user-name">
+                  <span class="text-deco">Họ và tên:</span>
+                </p>
                 <p class="user-phone">
                   <span class="text-deco">Điện thoại:</span>
                 </p>
-                <p class="email-user">Email: </p>
+                <p class="email-user">Email:</p>
                 <p class="gender"><span class="text-deco">Giới tính:</span></p>
-                <script>displayLoggedInUserInfo()</script> 
+                <script>
+                  displayLoggedInUserInfo();
+                </script>
               </div>
             </div>
           </div>
