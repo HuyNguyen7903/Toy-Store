@@ -2,10 +2,10 @@
 window.onload = function () {
     const loggedInUser = localStorage.getItem("loggedInUser");
     const userRole = localStorage.getItem("userRole");
-    const loggedInUserName = localStorage.getItem("loggedInUserName");
+    const loginACC = localStorage.getItem("LogginAcc");
     if (loggedInUser) {
       const loginLink = document.getElementById("linkdangnhap");
-      loginLink.innerText = `Xin chào!`;
+      loginLink.innerText = `Xin chào, ${loginACC}`;
         
         // Đổi URL dựa trên role của người dùng khi click vào link
         loginLink.addEventListener("click", function (event) {

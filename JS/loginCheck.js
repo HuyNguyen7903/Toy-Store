@@ -7,7 +7,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Hardcoded users
     const users = [
-      { email: "admin@example.com", password: "admin123", role: 1 },
+      { email: "admin@example.com", password: "admin123",name:"admin", role: 1 },
       {
         email: "tinh@gmail.com",
         password: "tinh123",
@@ -47,7 +47,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (user) {
       // Save user information in localStorage for logged-in session
       localStorage.setItem("loggedInUser", user.email);
-
+      localStorage.setItem("LogginAcc", user.name);
       localStorage.setItem("loggedInUserGender", user.gender);
       localStorage.setItem("userRole", user.role);
 
