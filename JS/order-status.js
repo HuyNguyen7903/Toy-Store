@@ -13,16 +13,15 @@ document.addEventListener("DOMContentLoaded", () => {
 
         let productListHTML = order.products
           .map(
-            (product) => `
-            <div class="order-product">
+            (product) =>
+              `<div class="order-product">
               <img src="${product.imgSrc}" alt="${product.name}" />
               <div class="product-info">
                 <h3>${product.name}</h3>
                 <p>${product.price.toLocaleString("vi-VN")} Đ</p>
                 <p>Số lượng: ${product.quantity}</p> 
               </div>
-            </div>
-          `
+            </div>`
           )
           .join("");
 
@@ -30,7 +29,7 @@ document.addEventListener("DOMContentLoaded", () => {
             <h2>Đơn hàng #${order.id}</h2>
             <p>Trạng thái: <span id="status">${order.status}</span></p>
             <p><strong>Thông tin người nhận</strong></p>
-            <p><span id="user-name"></span> | <span id="user-phone"></p>
+            <p><span id="user-name"></span> | <span id="user-phone"></span></p>
             <p><span id="user-address"></span></p>
             <p><strong>Phương thức thanh toán:</strong> <span id="payment-method"></span></p>
             <div class="order-products">
@@ -62,7 +61,7 @@ document.addEventListener("DOMContentLoaded", () => {
   function UserInfo(orderItem) {
     const userNameElement = orderItem.querySelector("#user-name");
     const userPhoneElement = orderItem.querySelector("#user-phone");
-    const addressElement = document.querySelector("#user-address");
+    const addressElement = orderItem.querySelector("#user-address");
 
     const userName = localStorage.getItem("loggedInUserName");
     const userPhone = localStorage.getItem("loggedInUserPhone");
@@ -72,7 +71,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (userPhone) userPhoneElement.textContent = userPhone;
     if (userAddress) {
       const fullAddress = `${userAddress.street} ${userAddress.ward}, ${userAddress.district}, ${userAddress.city}`;
-      addressElement.innerHTML = `<span class="text-deco"></span> ${fullAddress}`;
+      addressElement.innerHTML = fullAddress;
     }
   }
 

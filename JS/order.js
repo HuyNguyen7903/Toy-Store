@@ -1,9 +1,9 @@
 document.addEventListener("DOMContentLoaded", () => {
   // Function to format the price with currency
   function formatPrice(price) {
-    return new Intl.NumberFormat('vi-VN', {
-      style: 'currency',
-      currency: 'VND',
+    return new Intl.NumberFormat("vi-VN", {
+      style: "currency",
+      currency: "VND",
     }).format(price);
   }
 
@@ -40,16 +40,24 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     // Display total amount
-    document.querySelector(".tienhang").innerText = `Tiền Hàng hóa: ${formatPrice(totalAmount)}`;
+    document.querySelector(
+      ".tienhang"
+    ).innerText = `Tiền Hàng hóa: ${formatPrice(totalAmount)}`;
 
     // Handle discount (assuming a discount can be applied)
     const ship = 30000;
     const discount = 0; // Change this value based on the discount logic
     const finalAmount = totalAmount - discount + ship;
 
-    document.querySelector(".giamgia").innerText = `Giảm giá: ${formatPrice(discount)}`;
-    document.querySelector(".vanchuyen").innerText = `Vận chuyển: ${formatPrice(ship)}`;
-    document.querySelector(".tongtien").innerText = `Tổng cộng: ${formatPrice(finalAmount)}`;
+    document.querySelector(".giamgia").innerText = `Giảm giá: ${formatPrice(
+      discount
+    )}`;
+    document.querySelector(".vanchuyen").innerText = `Vận chuyển: ${formatPrice(
+      ship
+    )}`;
+    document.querySelector(".tongtien").innerText = `Tổng cộng: ${formatPrice(
+      finalAmount
+    )}`;
   }
 
   // Function to validate form fields
@@ -61,9 +69,18 @@ document.addEventListener("DOMContentLoaded", () => {
     const district = document.getElementById("district").value.trim();
     const ward = document.getElementById("ward").value.trim();
 
-    if (!firstName || !lastName || !phoneNum || !city || !district|| !ward || phoneNum.length != 10 || /\D/.test(phoneNum)) {
-        document.getElementById("popup-address").style.display = "block";
-        return false;
+    if (
+      !firstName ||
+      !lastName ||
+      !phoneNum ||
+      !city ||
+      !district ||
+      !ward ||
+      phoneNum.length != 10 ||
+      /\D/.test(phoneNum)
+    ) {
+      document.getElementById("popup-address").style.display = "block";
+      return false;
     }
     return true;
   }
@@ -97,21 +114,21 @@ function saveInfo() {
   const selectedCity = citis.options[citis.selectedIndex].value;
   const selectedDistrict = districts.options[districts.selectedIndex].value;
   const selectedWard = wards.options[wards.selectedIndex].value;
-  const inputStreet=document.getElementById('street').value;
-  const newPhone = document.getElementById('phone-num').value;
-  const firstName =document.getElementById('first-name').value;
-  const lastName =document.getElementById('last-name').value;
+  const inputStreet = document.getElementById("street").value;
+  const newPhone = document.getElementById("phone-num").value;
+  const firstName = document.getElementById("first-name").value;
+  const lastName = document.getElementById("last-name").value;
 
-  const updateName =`${firstName} ${lastName}`;
+  const updateName = `${firstName} ${lastName}`;
   const address = {
     city: selectedCity,
     district: selectedDistrict,
     ward: selectedWard,
-    street:inputStreet,
+    street: inputStreet,
   };
   localStorage.setItem("loggedInUserPhone", newPhone);
-  localStorage.setItem('userAddress', JSON.stringify(address));
-  localStorage.setItem("loggedInUserName",updateName);
+  localStorage.setItem("userAddress", JSON.stringify(address));
+  localStorage.setItem("loggedInUserName", updateName);
 }
 
 document.addEventListener("DOMContentLoaded", () => {
