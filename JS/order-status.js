@@ -1,4 +1,11 @@
 document.addEventListener("DOMContentLoaded", () => {
+  function formatPrice(price) {
+    return new Intl.NumberFormat("vi-VN", {
+      style: "currency",
+      currency: "VND",
+    }).format(price);
+  }
+
   // Function to render orders
   function renderOrders() {
     const orderListContainer = document.getElementById("list-order");
@@ -11,36 +18,47 @@ document.addEventListener("DOMContentLoaded", () => {
         const orderItem = document.createElement("div");
         orderItem.className = "order-item";
 
+        let totalAmount = 0; // Initialize total amount for the order
         let productListHTML = order.products
-          .map(
-            (product) =>
-              `<div class="order-product">
-              <img src="${product.imgSrc}" alt="${product.name}" />
-              <div class="product-info">
-                <h3>${product.name}</h3>
-                <p>${product.price.toLocaleString("vi-VN")} Đ</p>
-                <p>Số lượng: ${product.quantity}</p> 
-              </div>
-            </div>`
-          )
+          .map((product) => {
+            const itemTotal = product.price * product.quantity;
+            totalAmount += itemTotal; // Add product total to order total
+            return `
+              <div class="order-product">
+                <img src="${product.imgSrc}" alt="${product.name}" />
+                <div class="product-info">
+                  <h3>${product.name}</h3>
+                  <p>${product.price.toLocaleString('vi-VN')} Đ</p>
+                  <p class="product-quantity">Số lượng: ${product.quantity}</p>
+                </div>
+              </div>`;
+          })
           .join("");
 
         orderItem.innerHTML = `
-            <h2>Đơn hàng #${order.id}</h2>
-            <p>Trạng thái: <span id="status">${order.status}</span></p>
-            <p><strong>Thông tin người nhận</strong></p>
-            <p><span id="user-name"></span> | <span id="user-phone"></span></p>
-            <p><span id="user-address"></span></p>
-            <p><strong>Phương thức thanh toán:</strong> <span id="payment-method"></span></p>
-            <div class="order-products">
-              ${productListHTML}
-            </div>
-            <button class="remove-order" data-id="${order.id}">Hủy đơn hàng</button>
-          `;
+          <h2>Đơn hàng #${order.id}</h2>
+          <p>Trạng thái: <span id="status">${order.status}</span></p>
+          <p><strong>Thông tin người nhận</strong></p>
+          <p><span id="user-name"></span> | <span id="user-phone"></span></p>
+          <p><span id="user-address"></span></p>
+          <p><strong>Phương thức thanh toán:</strong> <span id="payment-method"></span></p>
+          <div class="order-products">
+            ${productListHTML}
+          </div>
+          <div class="order-total">
+            <p class="tienhang">Tiền Hàng hóa: ${formatPrice(totalAmount)}</p>
+            <p class="giamgia">Giảm giá: ${formatPrice(order.discount || 0)}</p>
+            <p class="vanchuyen">Vận chuyển: ${formatPrice(order.shipping || 30000)}</p>
+            <p class="tongtien">Tổng cộng: ${formatPrice(
+              totalAmount - (order.discount || 0) + (order.shipping || 30000)
+            )}</p>
+          </div>
+          <button class="remove-order" data-id="${order.id}">Hủy đơn hàng</button>
+        `;
 
         orderListContainer.appendChild(orderItem);
-
-        // Gọi các hàm để hiển thị tên, số điện thoại và địa chỉ của người dùng
+        
+        // Display user info and payment method
         UserInfo(orderItem);
         displayPaymentMethod(orderItem);
       });

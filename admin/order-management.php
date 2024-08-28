@@ -18,6 +18,13 @@
         });
 
         document.addEventListener("DOMContentLoaded", () => {
+            function formatPrice(price) {
+                return new Intl.NumberFormat("vi-VN", {
+                style: "currency",
+                currency: "VND",
+                }).format(price);
+            }
+
             function renderOrders() {
                 const orderListContainer = document.getElementById("list-order");
                 let orders = JSON.parse(localStorage.getItem("orders")) || [];
@@ -29,16 +36,21 @@
                         const orderItem = document.createElement("div");
                         orderItem.className = "order-item";
 
-                        let productListHTML = order.products.map(product => `
-                            <div class="order-product">
-                                <img src="${product.imgSrc}" alt="${product.name}" />
-                                <div class="product-info">
-                                    <h3>${product.name}</h3>
-                                    <p>${product.price.toLocaleString('vi-VN')} Đ</p>
-                                    <p>Số lượng: ${product.quantity}</p>
+                        // Tính tổng số tiền cho đơn hàng
+                        let totalAmount = 0;
+                        let productListHTML = order.products.map(product => {
+                            totalAmount += product.price * product.quantity;
+                            return `
+                                <div class="order-product">
+                                    <img src="${product.imgSrc}" alt="${product.name}" />
+                                    <div class="product-info">
+                                        <h3>${product.name}</h3>
+                                        <p>${product.price.toLocaleString('vi-VN')} Đ</p>
+                                        <p>Số lượng: ${product.quantity}</p>
+                                    </div>
                                 </div>
-                            </div>
-                        `).join('');
+                            `;
+                        }).join('');
 
                         orderItem.innerHTML = `
                             <h2>Đơn hàng #${order.id}</h2>
@@ -50,11 +62,18 @@
                             <div class="order-products">
                                 ${productListHTML}
                             </div>
+                            <div class="order-total">
+                                <p class="tienhang">Tiền Hàng hóa: ${formatPrice(totalAmount)}</p>
+                                <p class="giamgia">Giảm giá: ${formatPrice(order.discount || 0)}</p>
+                                <p class="vanchuyen">Vận chuyển: ${formatPrice(order.shipping || 30000)}</p>
+                                <p class="tongtien">Tổng cộng: ${formatPrice(
+                                totalAmount - (order.discount || 0) + (order.shipping || 30000)
+                                )}</p>
+                            </div>
                             <select class="order-status-select" data-id="${order.id}">
                                 <option value="Chờ Xử Lý" ${order.status === "Chờ Xử Lý" ? "selected" : ""}>Chờ Xử Lý</option>
                                 <option value="Đang Giao" ${order.status === "Đang Giao" ? "selected" : ""}>Đang Giao</option>
                                 <option value="Đã Giao" ${order.status === "Đã Giao" ? "selected" : ""}>Đã Giao</option>
-    
                             </select>
                             <button class="remove-order" data-id="${order.id}">Hủy đơn hàng</button>
                         `;
@@ -151,7 +170,7 @@
                 popupSuccess.style.display = 'block';
 
                 document.getElementById("trove").onclick = () => {
-                    window.location.href = 'ordermanagement.php';
+                    window.location.href = 'order-management.php';
                 };
                 document.getElementById("tatpopup").onclick = () => {
                     popupSuccess.style.display = 'none';

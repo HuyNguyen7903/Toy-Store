@@ -53,6 +53,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
       // Redirect based on user role
       if (user.role === 1) {
+        localStorage.setItem("AdminName", user.name);
+        localStorage.setItem("AdminEmail", user.email);
+        localStorage.setItem("AdminPhone", user.phone);
+        localStorage.setItem("AdminGender", user.gender);
         window.location.href = "../admin/index.php";
       } else {
         window.location.href = "../html/user.html";

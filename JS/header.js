@@ -5,7 +5,7 @@ window.onload = function () {
     const loggedInUserName = localStorage.getItem("loggedInUserName");
     if (loggedInUser) {
       const loginLink = document.getElementById("linkdangnhap");
-      loginLink.innerText = `Xin chào, ${loggedInUserName}`;
+      loginLink.innerText = `Xin chào!`;
         
         // Đổi URL dựa trên role của người dùng khi click vào link
         loginLink.addEventListener("click", function (event) {
