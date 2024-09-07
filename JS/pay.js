@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
-    // Function to format the price with currency
+ 
     function formatPrice(price) {
       return new Intl.NumberFormat('vi-VN', {
         style: 'currency',
@@ -7,7 +7,7 @@ document.addEventListener("DOMContentLoaded", () => {
       }).format(price);
     }
   
-    // Function to display cart items in the pay.html page
+    
     function displayCartItems() {
       let cart = JSON.parse(localStorage.getItem("cart")) || [];
       const productContainer = document.querySelector(".product");
@@ -40,12 +40,12 @@ document.addEventListener("DOMContentLoaded", () => {
         productContainer.appendChild(productDiv);
       });
   
-      // Display total amount
+    
       document.querySelector(".tienhang").innerText = `Tiền Hàng hóa: ${formatPrice(totalAmount)}`;
   
-      // Handle discount (assuming a discount can be applied)
+     
       const ship=30000;
-      const discount = 0; // Change this value based on the discount logic
+      const discount = 0; 
       const finalAmount = totalAmount - discount + ship;
   
       document.querySelector(".giamgia").innerText = `Giảm giá: ${formatPrice(discount)}`;
@@ -55,18 +55,18 @@ document.addEventListener("DOMContentLoaded", () => {
     document.getElementById("confirm-button").addEventListener("click", () => {
       let cart = JSON.parse(localStorage.getItem("cart")) || [];
     });
-    // Call the displayCartItems function when the page is loaded
+   
     displayCartItems();
   });
   
 $(document).ready(function () {
-    // Payment method selection handling
+   
     $('input[name="payment-method"]').change(function() {
-        // Hide all QR codes and credit card inputs
+    
         $('.qr-code').addClass('hidden');
         $('.credit-card-inputs').addClass('hidden');
         
-        // Show the corresponding QR code or credit card inputs based on the selected payment method
+       
         if (this.value === 'VNPAY' || this.value === 'Banking') {
             $(this).siblings('.qr-code').removeClass('hidden');
         } else if (this.value === 'credit-card') {
@@ -74,17 +74,17 @@ $(document).ready(function () {
         }
     });
 
-    // Expiration date input handling
+    
     $('input[name="ngayhethan"]').on('input', function (e) {
         let value = $(this).val();
     
-        // Automatically add '/' after the month
+        
         if (value.length === 2 && e.originalEvent.inputType !== 'deleteContentBackward') {
             $(this).val(value + '/');
-            value = $(this).val(); // Update the value after adding the slash
+            value = $(this).val(); 
         }
     
-        // Validate month and year
+       
         if (value.length === 5) {
             const [MM, YY] = value.split('/').map(num => parseInt(num, 10));
             
@@ -119,7 +119,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     document.getElementById("confirm-button").addEventListener("click", showPopup);
 
-    // Hide popup when the close button is clicked
+
     $('#huydathang').click(function () {
         $('#popup-confirm').hide();
     });
@@ -127,17 +127,17 @@ document.addEventListener('DOMContentLoaded', () => {
         popupsuccess.style.display='block';
         savePayment();
         let order = {
-          id: Date.now(), // Unique ID based on timestamp
-          status: "Chờ xác nhận", // Pending confirmation status
-          products: JSON.parse(localStorage.getItem("cart")) || [] // Get products from cart
+          id: Date.now(), 
+          status: "Chờ xác nhận", 
+          products: JSON.parse(localStorage.getItem("cart")) || [] 
       };
 
-      // Save the order to localStorage
+    
       let orders = JSON.parse(localStorage.getItem("orders")) || [];
       orders.push(order);
       localStorage.setItem("orders", JSON.stringify(orders));
 
-      // Clear the cart after placing the order
+ 
       localStorage.removeItem("cart");
     });
     $('#trove').click(function() {
@@ -151,10 +151,10 @@ document.addEventListener('DOMContentLoaded', () => {
       const userAddress = JSON.parse(localStorage.getItem('userAddress'));
 
       if (userAddress) {
-          // Construct the full address
+    
           const fullAddress = `${userAddress.street} ${userAddress.ward}, ${userAddress.district}, ${userAddress.city}`;
 
-          // Display the address in the user-address section
+       
           const addressElement = document.querySelector('.user-address');
           addressElement.innerHTML = `<span class="text-deco">Địa chỉ:</span> ${fullAddress}`;
       } else {
@@ -164,7 +164,6 @@ document.addEventListener('DOMContentLoaded', () => {
       }
   }
 
-  // Call the function when the page loads
   loadAndDisplayAddress();
 });
 

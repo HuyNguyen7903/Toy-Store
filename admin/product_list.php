@@ -1,7 +1,7 @@
 <?php
 require '../admin/database/connectdb.php';
 
-// Update SQL query to include the code field
+
 $sql = "SELECT product_id, name, code, brand, original_price, discounted_price, discount_percentage, quantity, image_url, category FROM toy_products";
 $products = $conn->query($sql);
 ?>
@@ -47,7 +47,7 @@ $products = $conn->query($sql);
                             <tr>
                                 <th>Hình Ảnh</th>
                                 <th>Tên Sản Phẩm</th>
-                                <th>Mã Sản Phẩm</th> <!-- New column for product code -->
+                                <th>Mã Sản Phẩm</th>
                                 <th>Loại Sản Phẩm</th>
                                 <th>Giá Gốc</th>
                                 <th>Giá Giảm</th>

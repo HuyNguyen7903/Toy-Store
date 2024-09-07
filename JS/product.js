@@ -113,7 +113,7 @@ function addToCart(product) {
   }
 
   localStorage.setItem("cart", JSON.stringify(cart));
-  showPopupMessage("cart"); // Hiển thị popup thêm vào giỏ hàng
+  showPopupMessage("cart");
   updateCartCount();
 }
 
@@ -127,10 +127,10 @@ function addToWishlist(product) {
   if (existingProductIndex === -1) {
     wishlist.push(product);
     localStorage.setItem("wishlist", JSON.stringify(wishlist));
-    showPopupMessage("wishlist"); // Hiển thị popup thêm vào wishlist
+    showPopupMessage("wishlist");
     updateWishlistCount();
   } else {
-    showPopupMessage("error-wishlist"); // Hiển thị popup sản phẩm đã có trong wishlist
+    showPopupMessage("error-wishlist");
   }
 }
 

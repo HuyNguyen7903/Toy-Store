@@ -134,9 +134,9 @@
             <p>Tổng tiền: ${formatPrice(order.products.reduce((sum, product) => sum + (product.price * product.quantity), 30000))}</p>
         `;
 
-        document.getElementById("popup-order").style.display = "block"; // Hiển thị popup
+        document.getElementById("popup-order").style.display = "block"; 
         document.getElementById("popup-order-detail").style.display = "block"; 
-        document.body.classList.add("popup-active"); // Thêm class để làm mờ nền
+        document.body.classList.add("popup-active");
     }
 }
 
@@ -193,12 +193,12 @@
                 };
             }
 
-            // Close order details popup
+           
             document.querySelectorAll("#popup-order-detail #tatpopup").forEach(button => {
     button.addEventListener("click", () => {
         document.getElementById("popup-order").style.display = "none";
         document.getElementById("popup-order-detail").style.display = "none";
-        document.body.classList.remove("popup-active"); // Xóa class để khôi phục nền
+        document.body.classList.remove("popup-active"); 
     });
 });
 
@@ -221,28 +221,26 @@
             </div>
             <div class="info">
                 <div id="list-order" class="info-container">
-                    <!-- Orders will be rendered here by JavaScript -->
                 </div>
             </div>
         </div>
     </div>
     <div id="footer"></div>
 
-    <!-- Popup Confirm -->
+  
     <div id="popup-confirm">
         <p>Bạn có chắc chắn muốn hủy <span id="popup-confirm-order-id"></span> không?</p>
         <button id="xacnhan">Xác nhận</button>
         <button id="huy">Hủy</button>
     </div>
 
-    <!-- Popup Success -->
+ 
     <div id="popup-success">
         <h2>Hủy đơn hàng thành công!</h2>
         <button id="trove">Trở về danh sách đơn hàng</button>
         <button id="tatpopup">Đóng</button>
     </div>
 
-    <!-- Popup Order Detail -->
     <div id="popup-order" class="popup-order">
         <div id="popup-order-detail">
             <div class="order-detail">

@@ -7,7 +7,7 @@ body {
   /* Main container */
   .white-list-container {
     display: flex;
-    justify-content: flex-start; /* Align items to the start of the row */
+    justify-content: flex-start; 
     padding: 20px;
     margin-left: 10%;
   }
@@ -46,8 +46,8 @@ body {
   
   /* Wishlist Container */
   .list-container {
-    flex: 1; /* Allow the wishlist container to take up the remaining space */
-    max-width: 65%; /* Adjust for the sidebar width and margin */
+    flex: 1; 
+    max-width: 65%; 
     margin-left: 5%;
   }
   h1 {
@@ -165,13 +165,13 @@ body {
   margin: 0;
 }
 .popup-content-confirm button,.popup-content-success button {
-  width: 48%; /* Adjust the width to fit two buttons in a row */
+  width: 48%; 
   padding: 15px;
   border: none;
   border-radius: 8px;
   font-size: 16px;
   cursor: pointer;
-  margin-top: 5px; /* Remove the margin-top */
+  margin-top: 5px; 
 }
 
 .popup-content-confirm button#huy {

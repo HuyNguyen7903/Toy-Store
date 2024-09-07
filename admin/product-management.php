@@ -16,18 +16,18 @@
             $("#footer").load("../html/footer.html");
 
             $("#add-product-form").on("submit", function(event) {
-                // Validate that the 'Mã' field is not empty
+
                 var code = $("#code").val().trim();
                 if (code === "") {
                     alert("Mã không được để trống.");
-                    return false; // Prevent form submission
+                    return false;
                 }
 
-                // Validate that at least one category checkbox is selected
+
                 var categoryChecked = $("input[name='category[]']:checked").length > 0;
                 if (!categoryChecked) {
                     alert("Vui lòng chọn ít nhất một loại sản phẩm.");
-                    return false; // Prevent form submission
+                    return false;
                 }
 
                 // Perform AJAX request
@@ -37,7 +37,7 @@
                     data: $(this).serialize(),
                     success: function(response) {
                         alert(response);
-                        // Optionally reset the form or redirect
+
                         $("#add-product-form")[0].reset();
                     },
                     error: function() {
@@ -45,7 +45,7 @@
                     }
                 });
 
-                // Prevent form submission to allow AJAX to handle it
+
                 event.preventDefault();
             });
 
@@ -55,7 +55,7 @@
 
                 if (!isNaN(originalPrice) && !isNaN(discountPercentage)) {
                     var discountedPrice = originalPrice * (1 - (discountPercentage / 100));
-                    $("#discounted_price").val(Math.round(discountedPrice)); // Round to nearest integer
+                    $("#discounted_price").val(Math.round(discountedPrice));
                 } else {
                     $("#discounted_price").val('');
                 }
@@ -98,7 +98,6 @@
                                 <label><input type="checkbox" name="category[]" value="BỘT NẶN"> BỘT NẶN</label>
                                 <label><input type="checkbox" name="category[]" value="BÚT MÀU VÀ BẢNG VẼ"> BÚT MÀU VÀ BẢNG VẼ</label>
                                 <label><input type="checkbox" name="category[]" value="ĐỒ CHƠI LẮP GHÉP"> ĐỒ CHƠI LẮP GHÉP</label>
-                                <!-- Add more options as needed -->
                             </div>
                             <label for="brand">Thương Hiệu:<span class="required">*</span></label>
                             <input type="text" id="brand" name="brand" required>

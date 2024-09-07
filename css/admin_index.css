@@ -1,4 +1,4 @@
-/* admin.css */
+
 
 body {
   font-family: Arial, sans-serif;
@@ -6,8 +6,7 @@ body {
   padding: 0;
 }
 
-/* chinh form thong tin admin */
-/* form admin */
+
 .main-content {
   padding: 20px;
   margin-left: 20%;
@@ -16,14 +15,14 @@ body {
 .content-wrapper {
   display: flex;
   margin-top: 20px;
-  /* justify-content: center;  Centering the content horizontally */
+
 }
 
 .sidebar {
   padding: 0;
   margin-right: 20px;
   height: 30%;
-  width: 250px; /* Set fixed width */
+  width: 250px;
   border: 1px solid black;
   background-color: #efefef;
   border-radius: 10px;

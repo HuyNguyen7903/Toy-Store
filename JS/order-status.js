@@ -6,23 +6,22 @@ document.addEventListener("DOMContentLoaded", () => {
     }).format(price);
   }
 
-  // Function to render orders
   function renderOrders() {
     const orderListContainer = document.getElementById("list-order");
     let orders = JSON.parse(localStorage.getItem("orders")) || [];
 
-    orderListContainer.innerHTML = ""; // Clear the container
+    orderListContainer.innerHTML = "";
 
     if (orders.length > 0) {
       orders.forEach((order) => {
         const orderItem = document.createElement("div");
         orderItem.className = "order-item";
 
-        let totalAmount = 0; // Initialize total amount for the order
+        let totalAmount = 0;
         let productListHTML = order.products
           .map((product) => {
             const itemTotal = product.price * product.quantity;
-            totalAmount += itemTotal; // Add product total to order total
+            totalAmount += itemTotal;
             return `
               <div class="order-product">
                 <img src="${product.imgSrc}" alt="${product.name}" />
@@ -62,12 +61,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
         orderListContainer.appendChild(orderItem);
 
-        // Display user info and payment method
         UserInfo(orderItem);
         displayPaymentMethod(orderItem);
       });
 
-      // Attach event listeners to the "Hủy đơn hàng" buttons
       const removeButtons = document.querySelectorAll(".remove-order");
       removeButtons.forEach((button) => {
         button.addEventListener("click", (e) => {
@@ -97,7 +94,6 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
-  // Function to display payment method
   function displayPaymentMethod(orderItem) {
     const paymentMethodElement = orderItem.querySelector("#payment-method");
     const paymentMethod = localStorage.getItem("Payment");
@@ -105,43 +101,36 @@ document.addEventListener("DOMContentLoaded", () => {
     paymentMethodElement.textContent = paymentMethod;
   }
 
-  // Function to cancel an order
   function huyDonHang(orderId) {
     let orders = JSON.parse(localStorage.getItem("orders")) || [];
     orders = orders.filter((order) => order.id !== parseInt(orderId));
     localStorage.setItem("orders", JSON.stringify(orders));
-    renderOrders(); // Re-render the order list
+    renderOrders();
   }
 
-  // Function to show the confirmation popup
   function showPopup(orderId) {
     const popup = document.getElementById("popup-confirm");
     popup.style.display = "block";
 
-    // Confirm button event
     document.getElementById("xacnhan").onclick = () => {
       huyDonHang(orderId);
       showSuccessPopup();
     };
 
-    // Cancel button event
     document.getElementById("huy").onclick = () => {
       hidePopup();
     };
   }
 
-  // Function to hide the confirmation popup
   function hidePopup() {
     const popup = document.getElementById("popup-confirm");
     popup.style.display = "none";
   }
 
-  // Function to show the success popup
   function showSuccessPopup() {
     const popupSuccess = document.getElementById("popup-success");
     popupSuccess.style.display = "block";
 
-    // Redirect to appropriate pages
     document.getElementById("trove").onclick = () => {
       window.location.href = "toy.php";
     };
@@ -151,6 +140,5 @@ document.addEventListener("DOMContentLoaded", () => {
     };
   }
 
-  // Render orders when the page loads
   renderOrders();
 });

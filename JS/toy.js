@@ -1,7 +1,5 @@
-
 /*them san pham vao gio hang*/
 document.addEventListener("DOMContentLoaded", () => {
-  // Function to update cart count based on items in localStorage
   function updateCartCount() {
     let cart = JSON.parse(localStorage.getItem("cart")) || [];
     const totalItems = cart.reduce(
@@ -13,11 +11,11 @@ document.addEventListener("DOMContentLoaded", () => {
     if (totalItems > 0) {
       cartCountElement.classList.add("visible");
       cartCountElement.querySelector("label").innerText = totalItems;
-      // Lưu số lượng sản phẩm vào localStorage
+
       localStorage.setItem("cartCount", totalItems);
     } else {
       cartCountElement.classList.remove("visible");
-      // Nếu giỏ hàng trống, lưu giá trị 0 vào localStorage
+
       localStorage.setItem("cartCount", 0);
     }
   }
@@ -29,16 +27,15 @@ document.addEventListener("DOMContentLoaded", () => {
     if (wishlist.length > 0) {
       wishlistCountElement.classList.add("visible");
       wishlistCountElement.querySelector("label").innerText = wishlist.length;
-      // Save the wishlist length to localStorage
+
       localStorage.setItem("wishlistCount", wishlist.length);
     } else {
       wishlistCountElement.classList.remove("visible");
-      // Save the count as 0 to localStorage when wishlist is empty
+
       localStorage.setItem("wishlistCount", 0);
     }
   }
 
-  // Function to add a product to the cart
   function addToCart(product) {
     let cart = JSON.parse(localStorage.getItem("cart")) || [];
     const existingProductIndex = cart.findIndex(
@@ -57,7 +54,6 @@ document.addEventListener("DOMContentLoaded", () => {
     updateCartCount();
   }
 
-  // Function to add a product to the wishlist
   function addToWishlist(product) {
     let wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
     const existingProductIndex = wishlist.findIndex(
@@ -74,20 +70,19 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
-  // Attach event listeners to "Add to cart" buttons
   const addToCartButtons = document.querySelectorAll(".add-to-cart a");
   addToCartButtons.forEach((button) => {
     button.addEventListener("click", (e) => {
       e.preventDefault();
       const productElement = e.target.closest(".product");
       const product = {
-        id: productElement.querySelector("img").alt, // using alt text as a unique id
+        id: productElement.querySelector("img").alt,
         name: productElement.querySelector("p").innerText,
         price: parseFloat(
           productElement
             .querySelector(".price")
             .innerText.replace(" Đ", "")
-            .replace(/\./g, "") // remove dots
+            .replace(/\./g, "")
             .replace(",", ".")
         ),
         imgSrc: productElement.querySelector("img").src,
@@ -96,20 +91,19 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  // Attach event listeners to "Add to wishlist" buttons
   const wishlistButtons = document.querySelectorAll(".heart-icon");
   wishlistButtons.forEach((button) => {
     button.addEventListener("click", (e) => {
       e.preventDefault();
       const productElement = e.target.closest(".product");
       const product = {
-        id: productElement.querySelector("img").alt, // using alt text as a unique id
+        id: productElement.querySelector("img").alt,
         name: productElement.querySelector("p").innerText,
         price: parseFloat(
           productElement
             .querySelector(".price")
             .innerText.replace(" Đ", "")
-            .replace(/\./g, "") // remove dots
+            .replace(/\./g, "")
             .replace(",", ".")
         ),
         imgSrc: productElement.querySelector("img").src,
@@ -118,13 +112,12 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  // Call updateCartCount and updateWishlistCount when the page is loaded
   updateCartCount();
   updateWishlistCount();
 });
 
 /* POPUP */
-// Function to show the popup with specific content
+
 function showPopupMessage(type) {
   const popupContainer = document.getElementById("popup-container");
   const addToCartMessage = document.querySelector("#add-to-cart");
@@ -157,4 +150,3 @@ function showPopupMessage(type) {
 document.getElementById("close-popup").addEventListener("click", () => {
   document.getElementById("popup-container").style.display = "none";
 });
-

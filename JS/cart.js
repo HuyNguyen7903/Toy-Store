@@ -137,13 +137,13 @@ document.addEventListener('DOMContentLoaded', () => {
                 handleRegisterClick();
                 
                 $(document).on('click', '#submitButton', function (event) {
-                    event.preventDefault();  // Prevent the default form submission
+                    event.preventDefault();  
                     document.getElementById("registerForm").submit();
                     
-                    // Show the login popup again after registration
+             
                     setTimeout(() => {
                         showPopup('login.html');
-                    }, 500);  // Delay to ensure registration process completes
+                    }, 500); 
                 });
             });
         } else {

@@ -1,5 +1,4 @@
 document.addEventListener("DOMContentLoaded", () => {
-  // Function to format the price with currency
   function formatPrice(price) {
     return new Intl.NumberFormat("vi-VN", {
       style: "currency",
@@ -7,7 +6,6 @@ document.addEventListener("DOMContentLoaded", () => {
     }).format(price);
   }
 
-  // Function to display cart items in the order.html page
   function displayCartItems() {
     let cart = JSON.parse(localStorage.getItem("cart")) || [];
     const productContainer = document.querySelector(".product");
@@ -39,14 +37,12 @@ document.addEventListener("DOMContentLoaded", () => {
       productContainer.appendChild(productDiv);
     });
 
-    // Display total amount
     document.querySelector(
       ".tienhang"
     ).innerText = `Tiền Hàng hóa: ${formatPrice(totalAmount)}`;
 
-    // Handle discount (assuming a discount can be applied)
     const ship = 30000;
-    const discount = 0; // Change this value based on the discount logic
+    const discount = 0;
     const finalAmount = totalAmount - discount + ship;
 
     document.querySelector(".giamgia").innerText = `Giảm giá: ${formatPrice(
@@ -60,7 +56,6 @@ document.addEventListener("DOMContentLoaded", () => {
     )}`;
   }
 
-  // Function to validate form fields
   function validateForm() {
     const firstName = document.getElementById("first-name").value.trim();
     const lastName = document.getElementById("last-name").value.trim();
@@ -85,7 +80,6 @@ document.addEventListener("DOMContentLoaded", () => {
     return true;
   }
 
-  // Show the confirmation popup when the order button is clicked
   document.getElementById("order-button").addEventListener("click", () => {
     if (validateForm()) {
       let cart = JSON.parse(localStorage.getItem("cart")) || [];
@@ -93,23 +87,19 @@ document.addEventListener("DOMContentLoaded", () => {
       if (cart.length === 0) {
         alert("Giỏ hàng của bạn đang trống.");
       } else {
-        // Show the confirmation popup
         saveInfo();
         window.location.href = "pay.html";
       }
     }
   });
 
-  // Hide popup when the "Nhập lại địa chỉ" button is clicked
   document.getElementById("chonlai").addEventListener("click", () => {
     document.getElementById("popup-address").style.display = "none";
   });
 
-  // Call the displayCartItems function when the page is loaded
   displayCartItems();
 });
 
-// Save selected address function
 function saveInfo() {
   const selectedCity = citis.options[citis.selectedIndex].value;
   const selectedDistrict = districts.options[districts.selectedIndex].value;
@@ -141,10 +131,9 @@ document.addEventListener("DOMContentLoaded", () => {
       const savedName = localStorage.getItem("loggedInUserName");
 
       if (savedAddress && savedPhone && savedName) {
-        // Split the saved name into first and last name
         const nameParts = savedName.split(" ");
-        const firstName = nameParts.slice(0, -1).join(" "); // All parts except the last
-        const lastName = nameParts.slice(-1).join(""); // The last part
+        const firstName = nameParts.slice(0, -1).join(" ");
+        const lastName = nameParts.slice(-1).join("");
 
         document.getElementById("first-name").value = firstName;
         document.getElementById("last-name").value = lastName;
@@ -157,7 +146,6 @@ document.addEventListener("DOMContentLoaded", () => {
         alert("Không có địa chỉ nào được lưu trước đó.");
       }
     } else {
-      // Clear the form if "Sử dụng địa chỉ mới" is selected
       document.getElementById("first-name").value = "";
       document.getElementById("last-name").value = "";
       document.getElementById("phone-num").value = "";

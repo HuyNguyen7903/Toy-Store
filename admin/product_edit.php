@@ -1,21 +1,19 @@
 <?php
 require '../admin/database/connectdb.php';
 
-// Get product_id from query parameter
 $product_id = isset($_GET['product_id']) ? intval($_GET['product_id']) : 0;
-// Fetch product details from database
+
 $sql = "SELECT * FROM toy_products WHERE product_id = :product_id";
 $stmt = $conn->prepare($sql);
 $stmt->bindParam(':product_id', $product_id, PDO::PARAM_INT);
 $stmt->execute();
 $product = $stmt->fetch(PDO::FETCH_ASSOC);
 
-// If product not found, redirect or show an error
+
 if (!$product) {
     die("Sản phẩm không tồn tại.");
 }
 
-// Define available categories
 $allCategories = [
     'BÁN CHẠY',
     'ĐỒ CHƠI PHƯƠNG TIỆN',
@@ -29,7 +27,6 @@ $allCategories = [
     'ĐỒ CHƠI LẮP GHÉP',
 ];
 
-// Convert product categories from comma-separated string to array
 $categoriesArray = array_map('trim', explode(',', $product['category']));
 ?>
 
@@ -50,11 +47,11 @@ $categoriesArray = array_map('trim', explode(',', $product['category']));
             $("#footer").load("../html/footer.html");
 
             $("#edit-product-form").on("submit", function(event) {
-                // Validate that at least one category checkbox is selected
+
                 var categoryChecked = $("input[name='category[]']:checked").length > 0;
                 if (!categoryChecked) {
                     alert("Vui lòng chọn ít nhất một loại sản phẩm.");
-                    return false; // Prevent form submission
+                    return false;
                 }
 
                 event.preventDefault();

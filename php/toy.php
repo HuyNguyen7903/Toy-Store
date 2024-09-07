@@ -109,7 +109,6 @@
   <div class="container-product">
     <h2>Top Những Sản Phẩm Bán Chạy</h2>
     <div class="product-list">
-      <!-- thêm sp từ db -->
       <?php include '../php/fetch_product.php'; ?>
     </div>
   </div>

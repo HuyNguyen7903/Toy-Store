@@ -8,9 +8,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: calc(
-    100vh - 200px
-  ); /* Adjust height to account for header and footer */
+  height: calc(100vh - 200px);
   padding: 20px;
   font-size: x-large;
 }
@@ -118,9 +116,8 @@ label {
   font-size: 20px;
 }
 
-
 /*popup*/
-.popup-alert{
+.popup-alert {
   display: none;
   position: fixed;
   z-index: 1000;
@@ -132,7 +129,7 @@ label {
   background-color: rgba(0, 0, 0, 0.5);
 }
 
-.popup-content-alert{
+.popup-content-alert {
   position: relative;
   margin: 10% auto;
   padding: 20px;
@@ -144,10 +141,9 @@ label {
   align-items: center;
 }
 
-.popup-content-alert img{
+.popup-content-alert img {
   width: 20%;
   padding-left: 37%;
-
 }
 
 .popup-content-alert h3 {
@@ -157,13 +153,13 @@ label {
 .popup-content-alert button {
   margin-left: 25%;
   margin-top: 10px;
-  width: 48%; /* Adjust the width to fit two buttons in a row */
+  width: 48%;
   padding: 15px;
   border: none;
   border-radius: 8px;
   font-size: 16px;
   cursor: pointer;
-  margin-top: 5px; /* Remove the margin-top */
+  margin-top: 5px;
 }
 
 .popup-content-alert button#xacnhan {

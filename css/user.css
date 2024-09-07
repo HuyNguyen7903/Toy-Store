@@ -14,7 +14,6 @@ body {
 .content-wrapper {
   display: flex;
   margin-top: 20px;
-  /* justify-content: center;  Centering the content horizontally */
 }
 
 .sidebar {

@@ -1,11 +1,11 @@
 <?php
 require '../admin/database/connectdb.php';
 
-// Check if product_id is set
+
 if (isset($_POST['product_id'])) {
     $product_id = intval($_POST['product_id']);
     $name = $_POST['name'];
-    $category = isset($_POST['category']) ? implode(',', $_POST['category']) : ''; // Convert array to comma-separated string
+    $category = isset($_POST['category']) ? implode(',', $_POST['category']) : '';
     $brand = $_POST['brand'];
     $original_price = $_POST['original_price'];
     $discounted_price = $_POST['discounted_price'];
@@ -20,12 +20,12 @@ if (isset($_POST['product_id'])) {
     $age = $_POST['age'];
     $brand_origin = $_POST['brand_origin'];
 
-    // Process sub_images
-    $sub_images = isset($_POST['sub_images']) ? $_POST['sub_images'] : '';
-    $sub_images_array = array_map('trim', explode(',', $sub_images)); // Split by comma and trim spaces
-    $sub_images_string = implode(',', $sub_images_array); // Convert back to a comma-separated string
 
-    // Check if the code already exists for a different product
+    $sub_images = isset($_POST['sub_images']) ? $_POST['sub_images'] : '';
+    $sub_images_array = array_map('trim', explode(',', $sub_images));
+    $sub_images_string = implode(',', $sub_images_array);
+
+
     $sql_check = "SELECT COUNT(*) FROM toy_products WHERE code = :code AND product_id != :product_id";
 
     try {
@@ -35,7 +35,7 @@ if (isset($_POST['product_id'])) {
         $stmt_check->execute();
 
         if ($stmt_check->fetchColumn() == 0) {
-            // If the code is unique or it's the same product, perform the update
+
             $sql = "UPDATE toy_products SET
                 name = :name,
                 category = :category,
@@ -66,7 +66,7 @@ if (isset($_POST['product_id'])) {
             $stmt->bindParam(':description', $description);
             $stmt->bindParam(':detailed_description', $detailed_description);
             $stmt->bindParam(':image_url', $image_url);
-            $stmt->bindParam(':sub_images', $sub_images_string); // Bind the comma-separated sub_images
+            $stmt->bindParam(':sub_images', $sub_images_string);
             $stmt->bindParam(':theme', $theme);
             $stmt->bindParam(':origin', $origin);
             $stmt->bindParam(':code', $code);
@@ -86,7 +86,7 @@ if (isset($_POST['product_id'])) {
         echo "Lỗi: " . $e->getMessage();
     }
 
-    // Close connection
+
     $conn = null;
 } else {
     echo "ID sản phẩm không được xác định.";

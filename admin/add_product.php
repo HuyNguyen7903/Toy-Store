@@ -5,7 +5,7 @@ require '../admin/database/connectdb.php';
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Lấy dữ liệu từ form
     $name = $_POST['name'];
-    $categories = isset($_POST['category']) ? $_POST['category'] : [];  // Fetch categories array
+    $categories = isset($_POST['category']) ? $_POST['category'] : [];
     $brand = $_POST['brand'];
     $original_price = $_POST['original_price'];
     $discounted_price = $_POST['discounted_price'];
@@ -45,7 +45,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $stmt_insert = $conn->prepare($sql_insert);
 
             $stmt_insert->bindParam(':name', $name);
-            $stmt_insert->bindParam(':category', $category_string);  // Bind the comma-separated categories string
+            $stmt_insert->bindParam(':category', $category_string);
             $stmt_insert->bindParam(':brand', $brand);
             $stmt_insert->bindParam(':original_price', $original_price);
             $stmt_insert->bindParam(':discounted_price', $discounted_price);
@@ -59,7 +59,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $stmt_insert->bindParam(':code', $code);
             $stmt_insert->bindParam(':age', $age);
             $stmt_insert->bindParam(':brand_origin', $brand_origin);
-            $stmt_insert->bindParam(':sub_images', $sub_images_string); // Bind the comma-separated sub_images
+            $stmt_insert->bindParam(':sub_images', $sub_images_string);
 
             if ($stmt_insert->execute()) {
                 echo "Sản phẩm đã được thêm vào cơ sở dữ liệu thành công!";
@@ -73,6 +73,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         echo "Lỗi: " . $e->getMessage();
     }
 
-    // Đóng kết nối
+
     $conn = null;
 }

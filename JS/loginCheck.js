@@ -5,9 +5,13 @@ document.addEventListener("DOMContentLoaded", () => {
     const email = document.getElementById("email").value;
     const password = document.getElementById("password").value;
 
-    // Hardcoded users
     const users = [
-      { email: "admin@example.com", password: "admin123",name:"admin", role: 1 },
+      {
+        email: "admin@example.com",
+        password: "admin123",
+        name: "admin",
+        role: 1,
+      },
       {
         email: "tinh@gmail.com",
         password: "tinh123",
@@ -24,7 +28,6 @@ document.addEventListener("DOMContentLoaded", () => {
       },
     ];
 
-    // Check if there's a registered user in localStorage
     const newUserEmail = localStorage.getItem("NewUserEmail");
     const newUserPassword = localStorage.getItem("NewUserPassword");
 
@@ -39,19 +42,16 @@ document.addEventListener("DOMContentLoaded", () => {
       });
     }
 
-    // Find the user with matching email and password
     const user = users.find(
       (user) => user.email === email && user.password === password
     );
 
     if (user) {
-      // Save user information in localStorage for logged-in session
       localStorage.setItem("loggedInUser", user.email);
       localStorage.setItem("LogginAcc", user.name);
       localStorage.setItem("loggedInUserGender", user.gender);
       localStorage.setItem("userRole", user.role);
 
-      // Redirect based on user role
       if (user.role === 1) {
         localStorage.setItem("AdminName", user.name);
         localStorage.setItem("AdminEmail", user.email);
@@ -62,7 +62,6 @@ document.addEventListener("DOMContentLoaded", () => {
         window.location.href = "../html/user.html";
       }
     } else {
-      // Show error message
       popup.style.display = "block";
       document.getElementById("xacnhan").onclick = () => {
         popup.style.display = "none";
@@ -71,7 +70,6 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
-  // Handle login form submission
   const loginForm = document.getElementById("loginForm");
   if (loginForm) {
     loginForm.addEventListener("submit", (event) => {

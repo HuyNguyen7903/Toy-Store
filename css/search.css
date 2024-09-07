@@ -206,7 +206,7 @@
     font-size: 28px;
   }
 
-  /* Adjust the grid layout for smaller screens */
+  
   .product-list {
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   }
